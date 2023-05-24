@@ -66,6 +66,7 @@ private:
 	bool checkValidRookMove(const Move& move) const;
 	bool checkValidQueenMove(const Move& move) const;
 	bool checkValidKingMove(const Move& move) const;
+	bool canCastle(const Move& move) const;
 
 	void movePiece(const Move& move);
 
@@ -88,5 +89,9 @@ private:
 
 	// Keep track of the current player's turn
 	Player currentPlayer;
+
+	// Keep track of if each player has castled
+	bool hasWhiteCastled = false;
+	bool hasBlackCastled = false;
 
 };
