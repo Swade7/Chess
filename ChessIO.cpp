@@ -23,28 +23,34 @@ std::ostream& operator<<(std::ostream& out, PieceType const& pieceType)
 	{
 		return out << "Pawn";
 	}
-
 	if (pieceType == PieceType::Rook)
 	{
 		return out << "Rook";
 	}
-
-
+	if (pieceType == PieceType::Knight)
+	{
+		return out << "Knight";
+	}
+	if (pieceType == PieceType::Bishop)
+	{
+		return out << "Bishop";
+	}
+	if (pieceType == PieceType::Queen)
+	{
+		return out << "Queen";
+	}
+	if (pieceType == PieceType::King)
+	{
+		return out << "King";
+	}
+	else
+	{
+		return out << "Invalid piece";
+	}
 }
 
 void chessIO::printBoard(const Chess& chess)
 {
-	// Output who's turn it is
-	/*if (chess.currentPlayer == Player::White)
-	{
-		cout << "White's turn" << endl;
-	}
-
-	else if (chess.currentPlayer == Player::Black)
-	{
-		cout << "Black's turn" << endl;
-	}
-	*/
 	Player p = chess.getCurrentPlayer();
 	cout << p << "'s turn";
 	cout << endl << " ";
@@ -106,12 +112,7 @@ void chessIO::printBoard(const Chess& chess)
 				cout << "K ";
 			}
 			
-
 			cout << " ";
-			//for (int k = 0; k < BOARD_SIZE; k++)
-			//{
-			//	cout << "--";
-			//}
 		}
 		cout << "|";
 		if (row < 7)
@@ -134,6 +135,11 @@ void chessIO::printMove(const Chess& chess, const Move& move)
 	Player p = chess.getCurrentPlayer();
 
 	cout << p << " Moved their " << chess.getPieceType(move) << " from "  << intToChar(move.fromCol) << move.fromRow << " to " << intToChar(move.toCol) << move.toRow << endl;
+}
+
+void chessIO::printInvalidMove(std::ostream& out)
+{
+	out << "Invalid move" << endl;
 }
 
 const char chessIO::intToChar(const int& i)

@@ -1,5 +1,6 @@
 #pragma once
 
+#include<string>
 #include<vector>
 using std::vector;
 
@@ -46,12 +47,11 @@ public:
 	Move GetPossibleMoves();
 
 	// Getters
-	const Player getCurrentPlayer() const;
+	const Player& getCurrentPlayer() const;
 	const Piece& getBoard(const int row, const int col) const;
 	const PieceType& getPieceType(const Move& move) const;
 
-	// Keep track of the current player's turn
-	Player currentPlayer;
+	
 
 
 private:
@@ -83,8 +83,10 @@ private:
 	vector<Piece> blackPieces;
 
 	// Vectors for captured pieces
-	vector<Piece> capturedWhitePieces;
-	vector<Piece> capturedBlackPieces;
+	vector<PieceType> capturedWhitePieces;
+	vector<PieceType> capturedBlackPieces;
 
+	// Keep track of the current player's turn
+	Player currentPlayer;
 
 };
