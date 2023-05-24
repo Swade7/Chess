@@ -11,54 +11,54 @@ void Chess::initializeBoard()
 	for (int i = 0; i < BOARD_SIZE; i++)
 	{
 		// White pawns
-		board[1][i].pieceType = PieceType::Pawn;
-		board[1][i].player = Player::White;
+		board[i][1].pieceType = PieceType::Pawn;
+		board[i][1].player = Player::White;
 
 		// Black pawns
-		board[6][i].pieceType = PieceType::Pawn;
-		board[6][i].player = Player::Black;
+		board[i][6].pieceType = PieceType::Pawn;
+		board[i][6].player = Player::Black;
 	}
 
 	// Place remaining white peices
 	// Rooks
 	board[0][0].pieceType = PieceType::Rook;;
-	board[0][7].pieceType = PieceType::Rook;
+	board[7][0].pieceType = PieceType::Rook;
 	// Knights
-	board[0][1].pieceType = PieceType::Knight;
-	board[0][6].pieceType = PieceType::Knight;
+	board[1][0].pieceType = PieceType::Knight;
+	board[6][0].pieceType = PieceType::Knight;
 	// Bishops
-	board[0][2].pieceType = PieceType::Bishop;
-	board[0][5].pieceType = PieceType::Bishop;
+	board[2][0].pieceType = PieceType::Bishop;
+	board[5][0].pieceType = PieceType::Bishop;
 	//Queen
-	board[0][3].pieceType = PieceType::Queen;
+	board[3][0].pieceType = PieceType::Queen;
 	//King
-	board[0][4].pieceType = PieceType::King;
+	board[4][0].pieceType = PieceType::King;
 
 	// Place the remaining black pieces
 	// Rooks
-	board[7][0].pieceType = PieceType::Rook;;
+	board[0][7].pieceType = PieceType::Rook;;
 	board[7][7].pieceType = PieceType::Rook;
 	// Knights
-	board[7][1].pieceType = PieceType::Knight;
-	board[7][6].pieceType = PieceType::Knight;
+	board[1][7].pieceType = PieceType::Knight;
+	board[6][7].pieceType = PieceType::Knight;
 	// Bishops
-	board[7][2].pieceType = PieceType::Bishop;
-	board[7][5].pieceType = PieceType::Bishop;
+	board[2][7].pieceType = PieceType::Bishop;
+	board[5][7].pieceType = PieceType::Bishop;
 	//Queen
-	board[7][3].pieceType = PieceType::Queen;
+	board[3][7].pieceType = PieceType::Queen;
 	//King
-	board[7][4].pieceType = PieceType::King;
+	board[4][7].pieceType = PieceType::King;
 
 	// Initialize the pieces as the correct color
 	for (int i = 0; i < BOARD_SIZE; i++)
 	{
-		board[0][i].player = Player::White;
-		board[7][i].player = Player::Black;
+		board[i][0].player = Player::White;
+		board[i][7].player = Player::Black;
 		// Initialize empty places
 		for (int j = 2; j < 6; j++)
 		{
-			board[j][i].pieceType = PieceType::Empty;
-			board[j][i].player = Player::None;
+			board[i][j].pieceType = PieceType::Empty;
+			board[i][j].player = Player::None;
 		}
 	}
 
@@ -405,7 +405,18 @@ bool Chess::checkValidKingMove(const Move& move) const
 	return true;
 }
 
-const Piece& Chess::getBoard(int row, int col) const
+// Getters
+const Player Chess::getCurrentPlayer() const
+{
+	return currentPlayer;
+}
+
+const Piece& Chess::getBoard(const int row, const int col) const
 {
 	return board[row][col];
+}
+
+const PieceType& Chess::getPieceType(const Move& move) const
+{
+	return board[move.toCol][move.toRow].pieceType;
 }

@@ -45,7 +45,10 @@ public:
 
 	Move GetPossibleMoves();
 
-	const Piece& getBoard(int row, int col) const;
+	// Getters
+	const Player getCurrentPlayer() const;
+	const Piece& getBoard(const int row, const int col) const;
+	const PieceType& getPieceType(const Move& move) const;
 
 	// Keep track of the current player's turn
 	Player currentPlayer;
