@@ -13,23 +13,26 @@ void chessIO::printBoard(const Chess& chess)
 		cout << "Black's turn" << endl;
 	}
 
+	cout << endl << " ";
+
+	for (int col = 0; col < BOARD_SIZE * 4 + 1; col++)
+	{
+		cout << "_";
+	}
 
 	cout << endl;
-	for (int i = 0; i < BOARD_SIZE; i++)
+	for (int row = 0; row < BOARD_SIZE; row++)
 	{
-		cout << "|";
-		for (int j = 0; j < BOARD_SIZE; j++)
+		cout << "| ";
+		for (int col = 0; col < BOARD_SIZE; col++)
 		{
-			for (int k = 0; k < BOARD_SIZE; k++)
-			{
-				cout << "--";
-			}
-			const Piece& piece = chess.getBoard(i, j);
+			
+			const Piece& piece = chess.getBoard(row, col);
 
 			// Output which player the piece belongs to
 			if (piece.player == Player::None)
 			{
-				cout << " ";
+				cout << "+ ";
 			}
 			else if (piece.player == Player::White)
 			{
@@ -46,37 +49,44 @@ void chessIO::printBoard(const Chess& chess)
 			}
 			else if (piece.pieceType == PieceType::Pawn)
 			{
-				cout << "P";
+				cout << "P ";
 			}
 			else if (piece.pieceType == PieceType::Rook)
 			{
-				cout << "R";
+				cout << "R ";
 			}
 			else if (piece.pieceType == PieceType::Knight)
 			{
-				cout << "N";
+				cout << "N ";
 			}
 			else if (piece.pieceType == PieceType::Bishop)
 			{
-				cout << "B";
+				cout << "B ";
 			}
 			else if (piece.pieceType == PieceType::Queen)
 			{
-				cout << "Q";
+				cout << "Q ";
 			}
 			else if (piece.pieceType == PieceType::King)
 			{
-				cout << "K";
+				cout << "K ";
 			}
-			cout << "|";
+			
 
 			cout << " ";
-			for (int k = 0; k < BOARD_SIZE; k++)
-			{
-				cout << "--";
-			}
+			//for (int k = 0; k < BOARD_SIZE; k++)
+			//{
+			//	cout << "--";
+			//}
 		}
-
-		cout << endl;
+		cout << "|";
+		if (row < 7)
+		{
+			cout << endl << endl;
+		}
+		
 	}
+	cout << endl << " ";
+	for (int col = 0; col < BOARD_SIZE * 4 + 1; col++)
+		cout << "-";
 }
