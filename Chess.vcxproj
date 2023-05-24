@@ -129,7 +129,7 @@
   <ItemGroup>
     <ClCompile Include="ChessIO.cpp" />
     <ClCompile Include="ChessLogic.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Chess.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChessIO.hpp" />
