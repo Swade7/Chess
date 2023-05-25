@@ -7,6 +7,13 @@ class Pawn : public Pieces
 public:
 	// Constructor
 	Pawn(Player player);
+
+	// Setters
+	void PreventEnPassant();
+
+	// Getters
+	bool getEnPassant();
+
 private:
 	// Overridden functions
 	bool checkValidMove(const Move& move, const Chess& chess) const override;
@@ -14,5 +21,5 @@ private:
 
 	// Boolean checks
 	bool hasMoved;
-	bool beCapByEnPassant;
+	bool enPassant;
 };

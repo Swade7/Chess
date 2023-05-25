@@ -7,6 +7,16 @@ Pawn::Pawn(Player player)
 	beCapByEnPassant = false;
 }
 
+void Pawn::PreventEnPassant()
+{
+	enPassant = false;
+}
+
+bool Pawn::getEnPassant()
+{
+	return enPassant;
+}
+
 bool Pawn::checkValidMove(const Move& move, const Chess& chess) const
 {
 	// Get the board
