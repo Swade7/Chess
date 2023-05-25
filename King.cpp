@@ -47,12 +47,17 @@ bool King::checkValidMove(const Move& move, const Chess& chess) const
 			// Left rook
 			if (move.toCol < move.fromCol)
 			{
-				for (int i = move.fromCol; i >= move.toCol; i--)
+				for (int i = move.fromCol; i > 0; i--)
 				{
-					//if (check(board[i][move.fromRow])
+					//if (check(board[i][move.fromRow] && i >= move.toCol)
 					//{
 					//	return false;
 					//}
+
+					if (board[i][move.fromRow].pieceType != PieceType::Empty)
+					{
+						return false;
+					}
 				}
 				vector<Move> moves = chess.getMoves();
 				for (int i = 0; i < moves.size(); i++)
@@ -67,12 +72,16 @@ bool King::checkValidMove(const Move& move, const Chess& chess) const
 			// Right rook
 			else
 			{
-				for (int i = move.fromCol; i <= move.toCol; i++)
+				for (int i = move.fromCol; i < 7; i++)
 				{
-					//if (check(board[i][move.fromRow])
+					//if (check(board[i][move.fromRow] && i <= move.toCol)
 					//{
 					//	return false;
 					//}
+					if (board[i][move.fromRow].pieceType != PieceType::Empty)
+					{
+						return false;
+					}
 				}
 				vector<Move> moves = chess.getMoves();
 				for (int i = 0; i < moves.size(); i++)
@@ -91,12 +100,17 @@ bool King::checkValidMove(const Move& move, const Chess& chess) const
 			// Left rook
 			if (move.toCol < move.fromCol)
 			{
-				for (int i = move.fromCol; i >= move.toCol; i--)
+				for (int i = move.fromCol; i > 0; i--)
 				{
-					//if (check(board[i][move.fromRow])
+					//if (check(board[i][move.fromRow] && i >= move.toCol)
 					//{
 					//	return false;
 					//}
+
+					if (board[i][move.fromRow].pieceType != PieceType::Empty)
+					{
+						return false;
+					}
 				}
 				vector<Move> moves = chess.getMoves();
 				for (int i = 0; i < moves.size(); i++)
@@ -106,17 +120,20 @@ bool King::checkValidMove(const Move& move, const Chess& chess) const
 						return false;
 					}
 				}
-
 			}
 			// Right rook
 			else
 			{
-				for (int i = move.fromCol; i <= move.toCol; i++)
+				for (int i = move.fromCol; i < 7; i++)
 				{
-					//if (check(board[i][move.fromRow])
+					//if (check(board[i][move.fromRow] && i <= move.toCol)
 					//{
 					//	return false;
 					//}
+					if (board[i][move.fromRow].pieceType != PieceType::Empty)
+					{
+						return false;
+					}
 				}
 				vector<Move> moves = chess.getMoves();
 				for (int i = 0; i < moves.size(); i++)
@@ -126,6 +143,7 @@ bool King::checkValidMove(const Move& move, const Chess& chess) const
 						return false;
 					}
 				}
+
 			}
 		}
 	}

@@ -244,30 +244,6 @@ bool Chess::checkValidQueenMove(const Move& move) const
 	return false;
 }
 
-bool Chess::checkValidKingMove(const Move& move) const
-{
-	// Does not currently support castling (use moved to determine if the king or rook has been moved)
-	if (board[move.fromCol][move.fromRow].moved == false && std::abs(move.fromCol - move.toCol == 2) && move.fromRow == move.toRow)
-	{
-		if (board[move.fromCol][move.fromRow].player == Player::White)
-		{
-
-		}
-
-		else if (board[move.fromCol][move.fromRow].player == Player::Black)
-		{
-
-		}
-	}
-
-	// Prevent the king from moving more than one space 
-	if (std::abs(move.toCol - move.fromCol) > 1 || std::abs(move.toRow - move.fromRow) > 1)
-	{
-		return false;
-	}
-
-	return true;
-}
 
 bool Chess::canCastle(const Move& move) const
 {
