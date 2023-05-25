@@ -3,19 +3,11 @@
 Pawn::Pawn(Player player)
 	: Pieces(PieceType::Pawn, player)
 {
-	hasMoved = false;
-	enPassant = -1;
+	
 }
 
-void Pawn::PreventEnPassant()
-{
-	enPassant = false;
-}
 
-bool Pawn::getEnPassant()
-{
-	return enPassant;
-}
+
 
 bool Pawn::checkValidMove(const Move& move, const Chess& chess) const
 {
