@@ -44,6 +44,7 @@ public:
 	void movePiece(const Move& move);
 	void changeTurn();
 	void updateBoard(const Move& move);
+	void increaseMoves();
 
 	// Checks for check/checkmate/stalemate
 	bool checkmate();

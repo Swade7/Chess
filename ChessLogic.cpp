@@ -443,6 +443,11 @@ void Chess::updateBoard(const Move& move)
 	board[move.fromCol][move.fromRow].player = Player::None;
 }
 
+void Chess::increaseMoves()
+{
+	moves++;
+}
+
 // Getters
 
 
