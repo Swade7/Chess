@@ -132,10 +132,12 @@ bool Pawn::checkValidMove(const Move& move, const Chess& chess) const
 				}
 				else
 				{
-					if (chess.getMoves() == 
+					Move lastMove = chess.getLastMove();
+					if (lastMove.fromCol != move.toCol || lastMove.fromRow != move.toRow - 1 || lastMove.toCol != move.toCol || lastMove.toRow != move.fromRow)
+					{
+						return false;
+					}
 				}
-				if (move.fromRow != 3 || (board[move.toCol][move.fromRow].pieceType != PieceType::Pawn && board[move.toCol][move.fromRow].player != Player::White))
-					return false;
 			}
 		}
 
