@@ -1,5 +1,12 @@
 #include "Pawn.hpp"
 
+Pawn::Pawn(Player player)
+	: Pieces(PieceType::Pawn, player)
+{
+	hasMoved = false;
+	beCapByEnPassant = false;
+}
+
 bool Pawn::checkValidMove(const Move& move, const Chess& chess) const
 {
 	// Get the board
@@ -138,5 +145,11 @@ void Pawn::movePiece(const Move& move, Chess& chess)
 	if (checkValidMove(move, chess))
 	{
 		chess.updateBoard(move);
+		
+		// Update canBeCapByEnPassant if the piece was moved two places
+		if (std::abs(move.fromRow - move.toRow) == 2)
+		{
+			beCapByEnPassant = true;
+		}
 	}
 }
