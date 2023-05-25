@@ -1,5 +1,11 @@
 #include "King.hpp"
 
+King::King(Player player)
+	: Pieces(PieceType::King, player)
+{
+	hasMoved = false;
+}
+
 bool King::checkValidMove(const Move& move, const Chess& chess) const
 {
 	// Get the board
@@ -28,6 +34,109 @@ bool King::checkValidMove(const Move& move, const Chess& chess) const
 	{
 		return false;
 	}
+
+	// King specific checks
+	// Check if trying to castle
+	if (!hasMoved && std::abs(move.fromCol - move.toCol) == 2 && move.fromRow == move.toRow)
+	{
+		// White
+		if (board[move.fromCol][move.fromRow].player == Player::White)
+		{
+			
+
+			// Left rook
+			if (move.toCol < move.fromCol)
+			{
+				for (int i = move.fromCol; i >= move.toCol; i--)
+				{
+					//if (check(board[i][move.fromRow])
+					//{
+					//	return false;
+					//}
+				}
+				vector<Move> moves = chess.getMoves();
+				for (int i = 0; i < moves.size(); i++)
+				{
+					if (moves.at(i).fromCol == 0 && moves.at(i).fromRow == 0)
+					{
+						return false;
+					}
+				}
+
+			}
+			// Right rook
+			else
+			{
+				for (int i = move.fromCol; i <= move.toCol; i++)
+				{
+					//if (check(board[i][move.fromRow])
+					//{
+					//	return false;
+					//}
+				}
+				vector<Move> moves = chess.getMoves();
+				for (int i = 0; i < moves.size(); i++)
+				{
+					if (moves.at(i).fromCol == 7 && moves.at(i).fromRow == 0)
+					{
+						return false;
+					}
+				}
+			}
+		}
+
+		// Black
+		else 
+		{
+			// Left rook
+			if (move.toCol < move.fromCol)
+			{
+				for (int i = move.fromCol; i >= move.toCol; i--)
+				{
+					//if (check(board[i][move.fromRow])
+					//{
+					//	return false;
+					//}
+				}
+				vector<Move> moves = chess.getMoves();
+				for (int i = 0; i < moves.size(); i++)
+				{
+					if (moves.at(i).fromCol == 0 && moves.at(i).fromRow == 7)
+					{
+						return false;
+					}
+				}
+
+			}
+			// Right rook
+			else
+			{
+				for (int i = move.fromCol; i <= move.toCol; i++)
+				{
+					//if (check(board[i][move.fromRow])
+					//{
+					//	return false;
+					//}
+				}
+				vector<Move> moves = chess.getMoves();
+				for (int i = 0; i < moves.size(); i++)
+				{
+					if (moves.at(i).fromCol == 7 && moves.at(i).fromRow == 7)
+					{
+						return false;
+					}
+				}
+			}
+		}
+	}
+
+	// Prevent the king from moving more than one space 
+	if (std::abs(move.toCol - move.fromCol) > 1 || std::abs(move.toRow - move.fromRow) > 1)
+	{
+		return false;
+	}
+
+	return true;
 }
 
 void King::movePiece(const Move& move, Chess& chess)
