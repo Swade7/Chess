@@ -178,4 +178,64 @@ const char chessIO::intToChar(const int& i)
 	}
 }
 
+const int chessIO::charToInt(char& c)
+{
+	c = toupper(c);
+	if (c == 'A')
+	{
+		return 0;
+	}
+	else if (c == 'B')
+	{
+		return 1;
+	}
+	else if (c == 'C')
+	{
+		return 2;
+	}
+	else if (c == 'D')
+	{
+		return 3;
+	}
+	else if (c == 'E')
+	{
+		return 4;
+	}
+	else if (c == 'F')
+	{
+		return 5;
+	}
+	else if (c == 'G')
+	{
+		return 6;
+	}
+	else if (c == 'H')
+	{
+		return 7;
+	}
+}
+
+Move chessIO::getMove()
+{
+	char from[2];
+	char to[2];
+	// Get the from and to locations from the user
+	cout << "Enter the piece you would like to move: ";
+	cin.getline(from, 2);
+	cout << endl;
+	cout << "Enter the destination location: ";
+	cin.getline(to, 2);
+	cout << endl;
+
+	// TO DO -- Add data validation checks
+
+	Move move;
+	move.fromCol = charToInt(from[0]);
+	move.fromRow = int(from[1] + 1);
+	move.toCol = charToInt(to[0]);
+	move.toRow = int(to[1] + 1);
+
+	return move;
+}
+
 

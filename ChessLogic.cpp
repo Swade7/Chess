@@ -589,19 +589,31 @@ void Chess::movePiece(const Move& move)
 	}
 }
 
+void Chess::changeTurn()
+{
+	if (currentPlayer == Player::White)
+	{
+		currentPlayer == Player::Black;
+	}
+	else if (currentPlayer == Player::Black)
+	{
+		currentPlayer = Player::White;
+	}
+}
+
 // Getters
+
+
 const Player& Chess::getCurrentPlayer() const
 {
 	return currentPlayer;
 }
 
-const Piece& Chess::getBoard(const int row, const int col) const
+const Piece(&Chess::getBoard() const)[BOARD_SIZE][BOARD_SIZE]
 {
-	return board[row][col];
+	return board;
 }
 
-const PieceType& Chess::getPieceType(const Move& move) const
-{
-	return board[move.toCol][move.toRow].pieceType;
-}
+
+
 

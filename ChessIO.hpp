@@ -4,6 +4,7 @@
 #include<iostream>
 #include <ostream>
 using std::cout;
+using std::cin;
 using std::endl;
 
 
@@ -19,4 +20,6 @@ public:
 	void printMove(const Chess& chess, const Move& move);
 	void printInvalidMove(std::ostream& out);
 	const char intToChar(const int& i);
+	const int charToInt(char& c);
+	Move getMove();
 };

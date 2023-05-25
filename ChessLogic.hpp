@@ -1,22 +1,21 @@
 #pragma once
 
+#include "Pieces.hpp"
 #include<string>
-#pragma once
-
-#include "Pieces.hpp"
 #include<vector>
-#include "Pieces.hpp"
+
 using std::vector;
 
 
 
 
-
-enum class Player : char
+enum class Status
 {
-	White = 'W',
-	Black = 'B',
-	None = 'N'
+	Active,
+	WhiteWin,
+	BlackWin,
+	Stalemate,
+	GameOver
 };
 
 struct Move {
@@ -38,10 +37,16 @@ public:
 
 	// Getters
 	const Player& getCurrentPlayer() const;
-	const Piece& getBoard(const int row, const int col) const;
-	
+	const Piece(&getBoard() const)[BOARD_SIZE][BOARD_SIZE];
 
-	
+	// Setters
+	void movePiece(const Move& move);
+	void changeTurn();
+
+	// Checks for check/checkmate/stalemate
+	bool checkmate();
+	bool check(Piece piece, int col, int row);
+	bool isStalemate();
 
 
 private:
@@ -63,7 +68,7 @@ private:
 	
 
 
-	// Declare the board using a 2D array of type Piece(char)
+	// Declare the board using a 2D array of type Piece
 	Piece board[BOARD_SIZE][BOARD_SIZE];
 
 
