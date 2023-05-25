@@ -63,12 +63,9 @@ void Chess::initializeBoard()
 		}
 	}
 
-
 	// Set the current player to white
 	currentPlayer = Player::White;
 }
-
-
 
 bool Chess::checkValidKnightMove(const Move& move) const
 {
