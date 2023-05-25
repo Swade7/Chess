@@ -92,7 +92,7 @@ bool Bishop::checkValidMove(const Move& move, const Chess& chess) const
 
 void Bishop::movePiece(const Move& move, Chess& chess)
 {
-	if (checkValidMove)
+	if (checkValidMove(move, chess))
 	{
 		chess.updateBoard(move);
 	}
