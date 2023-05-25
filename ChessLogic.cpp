@@ -438,6 +438,15 @@ void Chess::changeTurn()
 
 void Chess::updateBoard(const Move& move)
 {
+	// If a piece is captured, add it to the capturedPieces vector and remove it from the appropriate pieces vector
+	if (board[move.toCol][move.toRow].pieceType != PieceType::Empty)
+	{
+		Pieces::addToCapturedPieces(board[move.toCol][move.toRow].pieceType, board[move.toCol][move.toRow].player);
+		Pieces::removeFromPieces(board[move.toCol][move.toRow].pieceType, board[move.toCol][move.toRow].player);
+	}
+	
+
+	// Set the to location equal to the from location
 	board[move.toCol][move.toRow] = board[move.fromCol][move.fromRow];
 	board[move.fromCol][move.fromRow].pieceType = PieceType::Empty;
 	board[move.fromCol][move.fromRow].player = Player::None;

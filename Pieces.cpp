@@ -26,14 +26,14 @@ void Pieces::addToCapturedPieces(PieceType capturedPiece, Player player)
     }
 }
 
-void Pieces::removeFromPieces(Piece piece, Player player)
+void Pieces::removeFromPieces(PieceType piece, Player player)
 {
     // White
     if (player == Player::White)
     {
         for (int i = 0; i < whitePieces.size(); i++)
         {
-            if (whitePieces.at(i).pieceType == piece.pieceType)
+            if (whitePieces.at(i).pieceType == piece)
             {
                 whitePieces.erase(whitePieces.begin() + i);
                 return;
@@ -45,7 +45,7 @@ void Pieces::removeFromPieces(Piece piece, Player player)
     {
         for (int i = 0; i < blackPieces.size(); i++)
         {
-            if (blackPieces.at(i).pieceType == piece.pieceType)
+            if (blackPieces.at(i).pieceType == piece)
             {
                 blackPieces.erase(blackPieces.begin() + i);
                 return;

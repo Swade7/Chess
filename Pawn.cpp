@@ -166,11 +166,5 @@ void Pawn::movePiece(const Move& move, Chess& chess)
 	if (checkValidMove(move, chess))
 	{
 		chess.updateBoard(move);
-		
-		// Update canBeCapByEnPassant if the piece was moved two places
-		if (std::abs(move.fromRow - move.toRow) == 2)
-		{
-			enPassant = true;
-		}
 	}
 }

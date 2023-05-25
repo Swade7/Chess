@@ -35,24 +35,27 @@ public:
 	// Getters
 	const PieceType& getPieceType(const Chess& board, const Move& move) const;
 
+	// Setters
+	static void addToCapturedPieces(PieceType capturedPiece, Player player);
+	static void removeFromPieces(PieceType piece, Player player);
+
 protected:
 	// Constructor
 	Pieces(PieceType pieceType, Player player);
 
 	virtual bool checkValidMove(const Move& move, const Chess& chess) const = 0;
 	virtual void movePiece(const Move& move, Chess& chess) = 0;
-	void addToCapturedPieces(PieceType capturedPiece, Player player);
-	void removeFromPieces(Piece piece, Player player);
+
 	
 
 	
 
 private:
 	// Vectors for pieces
-	vector<Piece> whitePieces;
-	vector<Piece> blackPieces;
+	static vector<Piece> whitePieces;
+	static vector<Piece> blackPieces;
 
 	// Vectors for captured pieces
-	vector<PieceType> capturedWhitePieces;
-	vector<PieceType> capturedBlackPieces;
+	static vector<PieceType> capturedWhitePieces;
+	static vector<PieceType> capturedBlackPieces;
 };
