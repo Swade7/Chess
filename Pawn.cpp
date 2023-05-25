@@ -4,7 +4,7 @@ Pawn::Pawn(Player player)
 	: Pieces(PieceType::Pawn, player)
 {
 	hasMoved = false;
-	beCapByEnPassant = false;
+	enPassant = -1;
 }
 
 void Pawn::PreventEnPassant()
@@ -125,6 +125,14 @@ bool Pawn::checkValidMove(const Move& move, const Chess& chess) const
 		{
 			if (board[move.toCol][move.toRow].player != Player::White)
 			{
+				if (board[move.toCol][move.toRow].pieceType != PieceType::Pawn)
+				{
+					return false;
+				}
+				else
+				{
+					if (board[move.toCol][move.toRow].)
+				}
 				if (move.fromRow != 3 || (board[move.toCol][move.fromRow].pieceType != PieceType::Pawn && board[move.toCol][move.fromRow].player != Player::White))
 					return false;
 			}
@@ -159,7 +167,7 @@ void Pawn::movePiece(const Move& move, Chess& chess)
 		// Update canBeCapByEnPassant if the piece was moved two places
 		if (std::abs(move.fromRow - move.toRow) == 2)
 		{
-			beCapByEnPassant = true;
+			enPassant = true;
 		}
 	}
 }

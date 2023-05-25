@@ -38,6 +38,7 @@ public:
 	// Getters
 	const Player& getCurrentPlayer() const;
 	const Piece(&getBoard() const)[BOARD_SIZE][BOARD_SIZE];
+	const int getMoves() const;
 
 	// Setters
 	void movePiece(const Move& move);
@@ -80,5 +81,8 @@ private:
 	// Keep track of if each player has castled
 	bool hasWhiteCastled = false;
 	bool hasBlackCastled = false;
+
+	// Keep track of the number of moves
+	int moves;
 
 };

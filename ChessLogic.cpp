@@ -456,6 +456,11 @@ const Piece(&Chess::getBoard() const)[BOARD_SIZE][BOARD_SIZE]
 	return board;
 }
 
+const int Chess::getMoves() const
+{
+	moves;
+}
+
 
 
 

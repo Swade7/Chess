@@ -21,5 +21,5 @@ private:
 
 	// Boolean checks
 	bool hasMoved;
-	bool enPassant;
+	int enPassant;
 };
