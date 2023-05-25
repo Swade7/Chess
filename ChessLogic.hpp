@@ -1,32 +1,22 @@
 #pragma once
 
 #include<string>
+#pragma once
+
+#include "Pieces.hpp"
 #include<vector>
+#include "Pieces.hpp"
 using std::vector;
 
-enum class PieceType : char
-{
-	Empty = '+',
-	Pawn = 'P',
-	Knight = 'N',
-	Bishop = 'B',
-	Rook = 'R',
-	Queen = 'Q',
-	King = 'K'
-};
+
+
+
 
 enum class Player : char
 {
 	White = 'W',
 	Black = 'B',
 	None = 'N'
-};
-
-struct Piece
-{
-	PieceType pieceType;
-	Player player;
-	bool moved;
 };
 
 struct Move {
@@ -49,7 +39,7 @@ public:
 	// Getters
 	const Player& getCurrentPlayer() const;
 	const Piece& getBoard(const int row, const int col) const;
-	const PieceType& getPieceType(const Move& move) const;
+	
 
 	
 
@@ -59,7 +49,7 @@ private:
 	void initializeBoard();
 
 	// Functions to check if a move is valid
-	bool checkValidMove(const Move& move);
+	
 	bool checkValidPawnMove(const Move& move) const;
 	bool checkValidKnightMove(const Move& move) const;
 	bool checkValidBishopMove(const Move& move) const;
@@ -68,24 +58,15 @@ private:
 	bool checkValidKingMove(const Move& move) const;
 	bool canCastle(const Move& move) const;
 
-	void movePiece(const Move& move);
+	
 
-	// Checks for check/checkmate/stalemate
-	bool checkmate();
-	bool check(Piece piece, int col, int row);
-	bool isStalemate();
+	
 
 
 	// Declare the board using a 2D array of type Piece(char)
 	Piece board[BOARD_SIZE][BOARD_SIZE];
 
-	// Vectors for pieces
-	vector<Piece> whitePieces;
-	vector<Piece> blackPieces;
 
-	// Vectors for captured pieces
-	vector<PieceType> capturedWhitePieces;
-	vector<PieceType> capturedBlackPieces;
 
 	// Keep track of the current player's turn
 	Player currentPlayer;
