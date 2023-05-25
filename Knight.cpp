@@ -30,6 +30,10 @@ bool Knight::checkValidMove(const Move& move, const Chess& chess) const
 	}
 }
 
-void Knight::movePiece(const Move& move, Chess& board)
+void Knight::movePiece(const Move& move, Chess& chess)
 {
+	if (checkValidMove(move, chess))
+	{
+		chess.updateBoard(move);
+	}
 }

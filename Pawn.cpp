@@ -1,12 +1,11 @@
 #include "Pawn.hpp"
 
+// Constructor
 Pawn::Pawn(Player player)
 	: Pieces(PieceType::Pawn, player)
 {
 	
 }
-
-
 
 
 bool Pawn::checkValidMove(const Move& move, const Chess& chess) const

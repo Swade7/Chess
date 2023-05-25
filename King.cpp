@@ -32,4 +32,8 @@ bool King::checkValidMove(const Move& move, const Chess& chess) const
 
 void King::movePiece(const Move& move, Chess& chess)
 {
+	if (checkValidMove(move, chess))
+	{
+		chess.updateBoard(move);
+	}
 }
