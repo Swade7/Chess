@@ -39,8 +39,8 @@ protected:
 	// Constructor
 	Pieces(PieceType pieceType, Player player);
 
-	virtual bool checkValidMove(const Move& move, const Chess& board) const = 0;
-	virtual void movePiece(const Move& move, Chess& board) = 0;
+	virtual bool checkValidMove(const Move& move, const Chess& chess) const = 0;
+	virtual void movePiece(const Move& move, Chess& chess) = 0;
 	void addToCapturedPieces(PieceType capturedPiece, Player player);
 	void removeFromPieces(Piece piece, Player player);
 	
