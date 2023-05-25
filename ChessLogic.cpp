@@ -63,14 +63,6 @@ void Chess::initializeBoard()
 		}
 	}
 
-	// Initialize moved for all spaces as false
-	for (int i = 0; i < BOARD_SIZE; i++)
-	{
-		for (int j = 0; j < BOARD_SIZE; j++)
-		{
-			board[i][j].moved = false;
-		}
-	}
 
 	// Set the current player to white
 	currentPlayer = Player::White;
@@ -245,127 +237,7 @@ bool Chess::checkValidQueenMove(const Move& move) const
 }
 
 
-bool Chess::canCastle(const Move& move) const
-{
-	if (std::abs(move.fromCol - move.toCol) == 2)
-	{
-		// Make sure the king has not already moved and that it is moving two spaces horizontally
-		if (board[move.fromCol][move.fromRow].moved == false && move.fromRow == move.toRow)
-		{
-			// If white
-			if (board[move.fromCol][move.fromRow].player == Player::White && !hasWhiteCastled)
-			{
-				if (move.fromCol > move.toCol)
-				{
-					if (board[0][0].moved == false && board[0][0].pieceType == PieceType::Rook && board[0][0].player == Player::White)
-					{
-						int valid = true;
-						for (int i = move.toCol - 1; i > move.fromCol; i--)
-						{
-							// Check if any space between the king and rook is not empty
-							if (board[i][0].pieceType != PieceType::Empty)
-							{
-								valid = false;
-							}
-						}
-						/*for (int i = move.fromCol; i >= move.toCol; i--)
-						{
 
-							if (check(Player::White, i, move.fromRow)
-							* {
-							*	valid = false;
-							* }
-						}
-							 */
-
-						return valid;
-					}
-				}
-				else
-				{
-					if (board[7][0].moved == false && board[7][0].pieceType == PieceType::Rook && board[7][0].player == Player::White)
-					{
-						int valid;
-						for (int i = move.toCol + 1; i < move.fromCol; i++)
-						{
-							if (board[i][0].pieceType != PieceType::Empty)
-							{
-								valid = false;
-							}
-						}
-						/*for (int i = move.fromCol; i >= move.toCol; i--)
-						{
-
-							if (check(Player::White, i, move.fromRow)
-							* {
-							*	valid = false;
-							* }
-						}
-							 */
-
-						return valid;
-					}
-				}
-			}
-
-			// If black
-			else if (board[move.fromCol][move.fromRow].player == Player::Black && !hasBlackCastled)
-			{
-				if (move.fromCol > move.toCol)
-				{
-					if (board[0][7].moved == false && board[0][7].pieceType == PieceType::Rook && board[0][7].player == Player::Black)
-					{
-						int valid;
-						for (int i = move.toCol - 1; i > move.fromCol; i--)
-						{
-							if (board[i][7].pieceType != PieceType::Empty)
-							{
-								valid = false;
-							}
-						}
-
-						/*for (int i = move.fromCol; i >= move.toCol; i--)
-						{
-
-							if (check(Player::White, i, move.fromRow)
-							* {
-							*	valid = false;
-							* }
-						}
-							 */
-					}
-				}
-			}
-			else
-			{
-				if (board[0][7].moved == false && board[0][7].pieceType == PieceType::Rook && board[7][0].player == Player::Black)
-				{
-					int valid;
-					for (int i = move.toCol + 1; i < move.fromCol; i++)
-					{
-						if (board[i][7].pieceType != PieceType::Empty)
-						{
-							valid = false;
-						}
-					}
-					/*for (int i = move.fromCol; i >= move.toCol; i--)
-					{
-
-						if (check(Player::White, i, move.fromRow)
-						* {
-						*	valid = false;
-						* }
-					}
-						 */
-
-					return valid;
-				}
-			}
-		}
-	}
-
-	return false;
-}
 
 // Setters
 void Chess::movePiece(const Move& move)
