@@ -72,7 +72,7 @@ private:
 
 	// Checks for check/checkmate/stalemate
 	bool checkmate();
-	bool check();
+	bool check(Piece piece, int col, int row);
 	bool isStalemate();
 
 
