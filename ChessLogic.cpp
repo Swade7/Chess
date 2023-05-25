@@ -601,6 +601,13 @@ void Chess::changeTurn()
 	}
 }
 
+void Chess::updateBoard(const Move& move)
+{
+	board[move.toCol][move.toRow] = board[move.fromCol][move.fromRow];
+	board[move.fromCol][move.fromRow].pieceType = PieceType::Empty;
+	board[move.fromCol][move.fromRow].player = Player::None;
+}
+
 // Getters
 
 
