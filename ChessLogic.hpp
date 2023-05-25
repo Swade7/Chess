@@ -38,13 +38,15 @@ public:
 	// Getters
 	const Player& getCurrentPlayer() const;
 	const Piece(&getBoard() const)[BOARD_SIZE][BOARD_SIZE];
-	const int getMoves() const;
+	const vector<Move> getMoves() const;
+	const Move& getLastMove() const;
+	const int getNumMoves() const;
 
 	// Setters
 	void movePiece(const Move& move);
 	void changeTurn();
 	void updateBoard(const Move& move);
-	void increaseMoves();
+	void addMove(const Move& move);
 
 	// Checks for check/checkmate/stalemate
 	bool checkmate();
@@ -74,8 +76,6 @@ private:
 	// Declare the board using a 2D array of type Piece
 	Piece board[BOARD_SIZE][BOARD_SIZE];
 
-
-
 	// Keep track of the current player's turn
 	Player currentPlayer;
 
@@ -84,6 +84,9 @@ private:
 	bool hasBlackCastled = false;
 
 	// Keep track of the number of moves
-	int moves;
+	int moveCount;
+
+	// Keep track of the moves
+	vector<Move> moves;
 
 };

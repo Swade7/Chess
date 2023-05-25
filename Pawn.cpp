@@ -125,13 +125,14 @@ bool Pawn::checkValidMove(const Move& move, const Chess& chess) const
 		{
 			if (board[move.toCol][move.toRow].player != Player::White)
 			{
+				// Check for en passant
 				if (board[move.toCol][move.toRow].pieceType != PieceType::Pawn)
 				{
 					return false;
 				}
 				else
 				{
-					if (board[move.toCol][move.toRow].)
+					if (chess.getMoves() == 
 				}
 				if (move.fromRow != 3 || (board[move.toCol][move.fromRow].pieceType != PieceType::Pawn && board[move.toCol][move.fromRow].player != Player::White))
 					return false;

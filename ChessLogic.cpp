@@ -443,13 +443,12 @@ void Chess::updateBoard(const Move& move)
 	board[move.fromCol][move.fromRow].player = Player::None;
 }
 
-void Chess::increaseMoves()
+void Chess::addMove(const Move& move)
 {
-	moves++;
+	moves.push_back(move);
 }
 
 // Getters
-
 
 const Player& Chess::getCurrentPlayer() const
 {
@@ -461,9 +460,19 @@ const Piece(&Chess::getBoard() const)[BOARD_SIZE][BOARD_SIZE]
 	return board;
 }
 
-const int Chess::getMoves() const
+const vector<Move> Chess::getMoves() const
 {
-	moves;
+	return moves;
+}
+
+const Move& Chess::getLastMove() const
+{
+	return moves.at(moves.size() - 1);
+}
+
+const int Chess::getNumMoves() const
+{
+	return moves.size();
 }
 
 
