@@ -43,7 +43,6 @@ public:
 	const int getNumMoves() const;
 
 	// Setters
-	void movePiece(const Move& move);
 	void changeTurn();
 	void updateBoard(const Move& move);
 	void addMove(const Move& move);
@@ -57,21 +56,6 @@ public:
 private:
 	// Function Definitions
 	void initializeBoard();
-
-	// Functions to check if a move is valid
-	
-	bool checkValidPawnMove(const Move& move) const;
-	bool checkValidKnightMove(const Move& move) const;
-	bool checkValidBishopMove(const Move& move) const;
-	bool checkValidRookMove(const Move& move) const;
-	bool checkValidQueenMove(const Move& move) const;
-	bool checkValidKingMove(const Move& move) const;
-	bool canCastle(const Move& move) const;
-
-	
-
-	
-
 
 	// Declare the board using a 2D array of type Piece
 	Piece board[BOARD_SIZE][BOARD_SIZE];

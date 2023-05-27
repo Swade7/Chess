@@ -70,37 +70,7 @@ void Chess::initializeBoard()
 
 
 // Setters
-void Chess::movePiece(const Move& move)
-{
-	if (checkValidMove(move))
-	{
-		// If a piece is captured, add it to the correct vector
-		if (board[move.toCol][move.toRow].player == Player::White)
-		{
-			capturedWhitePieces.push_back(board[move.toCol][move.toRow].pieceType);
-		}
-		else if (board[move.toCol][move.toRow].player == Player::Black)
-		{
-			capturedBlackPieces.push_back(board[move.toCol][move.toRow].pieceType);
-		}
 
-		// Update the board
-		board[move.toCol][move.toRow].moved = true;
-		board[move.toCol][move.toRow].pieceType = board[move.fromCol][move.fromRow].pieceType;
-		board[move.toCol][move.toRow].player = board[move.fromCol][move.fromRow].player;
-		board[move.fromCol][move.fromRow].moved = true;
-
-		// set currentPlayer to the opponent
-		if (currentPlayer == Player::White)
-		{
-			currentPlayer == Player::Black;
-		}
-		else
-		{
-			currentPlayer = Player::White;
-		}
-	}
-}
 
 void Chess::changeTurn()
 {
