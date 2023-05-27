@@ -69,15 +69,7 @@ void Chess::initializeBoard()
 
 bool Chess::checkValidKnightMove(const Move& move) const
 {
-	int rowDifference = std::abs(move.toRow - move.fromRow);
-	int colDifference = std::abs(move.toCol - move.fromCol);
-
-	if (rowDifference == 1 && colDifference == 2 || colDifference == 1 && rowDifference == 2)
-	{
-		return true;
-	}
-
-	return false;
+	
 }
 
 bool Chess::checkValidBishopMove(const Move& move) const

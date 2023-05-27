@@ -23,11 +23,16 @@ bool Knight::checkValidMove(const Move& move, const Chess& chess) const
 		return false;
 	}
 
-	// Make sure they are actually moving
-	else if (move.fromCol == move.toCol && move.toRow == move.fromRow)
+	// Knight specific checks
+	int rowDifference = std::abs(move.toRow - move.fromRow);
+	int colDifference = std::abs(move.toCol - move.fromCol);
+
+	if (rowDifference == 1 && colDifference == 2 || colDifference == 1 && rowDifference == 2)
 	{
-		return false;
+		return true;
 	}
+
+	return false;
 }
 
 void Knight::movePiece(const Move& move, Chess& chess)
