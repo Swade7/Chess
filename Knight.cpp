@@ -28,7 +28,7 @@ bool Knight::checkValidMove(const Move& move, const Chess& chess) const
 	}
 
 	// Check if the space to be moved to is already occupied by the current player's piece
-	if (board[move.toCol][move.toRow].player == chess.getCurrentPlayer())
+	if (board[move.toCol][move.toRow]->getPlayer() == chess.getCurrentPlayer())
 	{
 		return false;
 	}
