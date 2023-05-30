@@ -65,7 +65,7 @@ bool Rook::checkValidMove(const Move& move, const Chess& chess) const
 		{
 			for (int i = move.fromRow; i < move.toRow; i++)
 			{
-				if (board[i][move.fromCol].player != Player::None)
+				if (board[i][move.fromCol]->getPlayer() != Player::None)
 				{
 					return false;
 				}
@@ -76,7 +76,7 @@ bool Rook::checkValidMove(const Move& move, const Chess& chess) const
 		{
 			for (int i = move.toRow; i < move.fromRow; i++)
 			{
-				if (board[i][move.fromCol].player != Player::None)
+				if (board[i][move.fromCol]->getPlayer() != Player::None)
 				{
 					return false;
 				}
@@ -91,7 +91,7 @@ bool Rook::checkValidMove(const Move& move, const Chess& chess) const
 		{
 			for (int i = move.fromCol; i < move.toCol; i++)
 			{
-				if (board[move.fromRow][i].player != Player::None)
+				if (board[move.fromRow][i]->getPlayer() != Player::None)
 				{
 					return false;
 				}
@@ -102,7 +102,7 @@ bool Rook::checkValidMove(const Move& move, const Chess& chess) const
 		{
 			for (int i = move.toCol; i < move.fromCol; i++)
 			{
-				if (board[move.fromRow][i].player != Player::None)
+				if (board[move.fromRow][i]->getPlayer() != Player::None)
 				{
 					return false;
 				}
