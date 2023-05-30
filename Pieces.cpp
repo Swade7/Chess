@@ -3,6 +3,8 @@
 
 Pieces::Pieces(PieceType pieceType, Player player)
 {
+    this->pieceType = pieceType;
+    this->player = player;
 }
 
 
