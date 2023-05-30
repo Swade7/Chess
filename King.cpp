@@ -6,6 +6,8 @@ King::King(Player player)
 	hasMoved = false;
 }
 
+King::~King() = default;
+
 bool King::checkValidMove(const Move& move, const Chess& chess) const
 {
 	// Check if the move is out of bounds

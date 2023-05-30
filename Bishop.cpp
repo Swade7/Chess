@@ -1,10 +1,14 @@
 #include "Bishop.hpp"
 
-
+// Constructor
 Bishop::Bishop(Player player)
 	: Pieces(PieceType::Bishop, player)
 {
 }
+
+// Destructor
+Bishop::~Bishop() = default;
+
 bool Bishop::checkValidMove(const Move& move, const Chess& chess) const
 {
 	// Check if the move is out of bounds
@@ -33,7 +37,6 @@ bool Bishop::checkValidMove(const Move& move, const Chess& chess) const
 	{
 		return false;
 	}
-
 
 	// Bishop specific checks
 	int rowDifference = std::abs(move.toRow - move.fromRow);

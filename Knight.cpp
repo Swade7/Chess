@@ -1,10 +1,14 @@
 #include "knight.hpp"
 
 
+// Constructor
 Knight::Knight(Player player)
 	: Pieces(PieceType::Knight, player)
 {
 }
+
+// Destructor
+Knight::~Knight() = default;
 
 bool Knight::checkValidMove(const Move& move, const Chess& chess) const
 {

@@ -33,7 +33,7 @@ public:
 	Pieces(PieceType pieceType, Player player);
 	
 	// Destructor
-	~Pieces();
+	virtual ~Pieces();
 
 	// Getters
 	const PieceType& getPieceType(const Chess& board, const Move& move) const;
@@ -54,4 +54,8 @@ private:
 	// Vectors for captured pieces
 	static vector<PieceType> capturedWhitePieces;
 	static vector<PieceType> capturedBlackPieces;
+
+	// Store the PieceType and Player
+	PieceType pieceType;
+	Player player;
 };

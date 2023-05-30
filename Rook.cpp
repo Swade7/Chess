@@ -1,10 +1,14 @@
 #include "Rook.hpp"
 
 
+// Constructor
 Rook::Rook(Player player)
 	: Pieces(PieceType::Rook, player)
 {
 }
+
+// Destructor
+Rook::~Rook() = default;
 
 bool Rook::checkValidMove(const Move& move, const Chess& chess) const
 {

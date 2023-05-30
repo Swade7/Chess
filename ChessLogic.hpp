@@ -13,8 +13,6 @@
 using std::vector;
 
 
-
-
 enum class Status
 {
 	Active,

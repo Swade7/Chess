@@ -7,6 +7,8 @@ Pawn::Pawn(Player player)
 	
 }
 
+Pawn::~Pawn() = default;
+
 
 bool Pawn::checkValidMove(const Move& move, const Chess& chess) const 
 {

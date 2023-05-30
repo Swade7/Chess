@@ -8,6 +8,9 @@ public:
 	// Constructor
 	Pawn(Player player);
 
+	// Destructor
+	~Pawn() override;
+
 private:
 	// Overridden functions
 	bool checkValidMove(const Move& move, const Chess& chess) const override;

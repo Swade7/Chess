@@ -3,7 +3,6 @@
 
 Pieces::Pieces(PieceType pieceType, Player player)
 {
-    
 }
 
 Pieces::~Pieces()
