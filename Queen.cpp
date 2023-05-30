@@ -60,7 +60,7 @@ bool Queen::checkValidStraightMove(const Move& move, const Chess& chess) const
 	}
 
 	// Get the board
-	const Piece(&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
+	const Pieces* (&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
 
 	// Check if another piece is blocking the path
 	// Checks for vertical movements
@@ -72,7 +72,7 @@ bool Queen::checkValidStraightMove(const Move& move, const Chess& chess) const
 
 			for (int i = move.fromRow; i < move.toRow; i++)
 			{
-				if (board[i][move.fromCol].player != Player::None)
+				if (board[i][move.fromCol]->getPlayer() != Player::None)
 				{
 					return false;
 				}
@@ -83,7 +83,7 @@ bool Queen::checkValidStraightMove(const Move& move, const Chess& chess) const
 		{
 			for (int i = move.toRow; i < move.fromRow; i++)
 			{
-				if (board[i][move.fromCol].player != Player::None)
+				if (board[i][move.fromCol]->getPlayer() != Player::None)
 				{
 					return false;
 				}
@@ -98,7 +98,7 @@ bool Queen::checkValidStraightMove(const Move& move, const Chess& chess) const
 		{
 			for (int i = move.fromCol; i < move.toCol; i++)
 			{
-				if (board[move.fromRow][i].player != Player::None)
+				if (board[move.fromRow][i]->getPlayer() != Player::None)
 				{
 					return false;
 				}
@@ -109,7 +109,7 @@ bool Queen::checkValidStraightMove(const Move& move, const Chess& chess) const
 		{
 			for (int i = move.toCol; i < move.fromCol; i++)
 			{
-				if (board[move.fromRow][i].player != Player::None)
+				if (board[move.fromRow][i]->getPlayer() != Player::None)
 				{
 					return false;
 				}
@@ -131,7 +131,7 @@ bool Queen::checkValidDiagonalMove(const Move& move, const Chess& chess) const
 	}
 
 	// Get the board
-	const Piece(&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
+	const Pieces* (&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
 
 	// Check for pieces blocking the path
 	if (move.toCol > move.fromCol)
@@ -140,7 +140,7 @@ bool Queen::checkValidDiagonalMove(const Move& move, const Chess& chess) const
 		{
 			for (int i = move.fromRow + 1; i < move.toRow; i++)
 			{
-				if (board[i][move.fromCol + (i - move.fromRow)].player != Player::None)
+				if (board[i][move.fromCol + (i - move.fromRow)]->getPlayer() != Player::None)
 				{
 					return false;
 				}
@@ -150,7 +150,7 @@ bool Queen::checkValidDiagonalMove(const Move& move, const Chess& chess) const
 		{
 			for (int i = move.fromRow - 1; i > move.toRow; i--)
 			{
-				if (board[i][move.fromCol + (i - move.fromRow)].player != Player::None)
+				if (board[i][move.fromCol + (i - move.fromRow)]->getPlayer() != Player::None)
 				{
 					return false;
 				}
@@ -163,7 +163,7 @@ bool Queen::checkValidDiagonalMove(const Move& move, const Chess& chess) const
 		{
 			for (int i = move.fromRow + 1; i < move.toRow; i++)
 			{
-				if (board[i][move.fromCol - (i - move.fromRow)].player != Player::None)
+				if (board[i][move.fromCol - (i - move.fromRow)]->getPlayer() != Player::None)
 				{
 					return false;
 				}
@@ -173,7 +173,7 @@ bool Queen::checkValidDiagonalMove(const Move& move, const Chess& chess) const
 		{
 			for (int i = move.fromRow - 1; i > move.toRow; i--)
 			{
-				if (board[i][move.fromCol - (i - move.fromRow)].player != Player::None)
+				if (board[i][move.fromCol - (i - move.fromRow)]->getPlayer() != Player::None)
 				{
 					return false;
 				}
