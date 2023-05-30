@@ -64,7 +64,7 @@ private:
 	void initializeBoard();
 
 	// Declare the board using a 2D array of type Piece
-	Pieces board[BOARD_SIZE][BOARD_SIZE];
+	Pieces* board[BOARD_SIZE][BOARD_SIZE];
 
 	// Keep track of the current player's turn
 	Player currentPlayer;
@@ -78,5 +78,6 @@ private:
 
 	// Keep track of the moves
 	vector<Move> moves;
+
 
 };

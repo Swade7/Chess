@@ -29,6 +29,12 @@ enum class Player : char
 class Pieces
 {
 public:
+	// Constructor
+	Pieces(PieceType pieceType, Player player);
+	
+	// Destructor
+	~Pieces();
+
 	// Getters
 	const PieceType& getPieceType(const Chess& board, const Move& move) const;
 
@@ -37,9 +43,6 @@ public:
 	static void removeFromPieces(PieceType piece, Player player);
 
 protected:
-	// Constructor
-	Pieces(PieceType pieceType, Player player);
-
 	virtual bool checkValidMove(const Move& move, const Chess& chess) const = 0;
 	virtual void movePiece(const Move& move, Chess& chess) = 0;
 
