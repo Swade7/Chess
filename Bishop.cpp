@@ -62,7 +62,7 @@ bool Bishop::checkValidMove(const Move& move, const Chess& chess) const
 				}
 			}
 		}
-	}
+	}  
 	else
 	{
 		if (move.toRow > move.fromRow)
