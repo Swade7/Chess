@@ -5,9 +5,7 @@ Pieces::Pieces(PieceType pieceType, Player player)
 {
 }
 
-Pieces::~Pieces()
-{
-}
+
 
 
 const PieceType& Pieces::getPieceType() const
