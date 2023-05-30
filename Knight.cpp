@@ -19,10 +19,10 @@ bool Knight::checkValidMove(const Move& move, const Chess& chess) const
 	}
 
 	// Get the board
-	const Piece(&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
+	const Pieces* (&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
 
 	// Check if the piece belongs to the current player
-	if (board[move.fromCol][move.fromRow].player != chess.getCurrentPlayer())
+	if (board[move.fromCol][move.fromRow]->getPlayer() != chess.getCurrentPlayer())
 	{
 		return false;
 	}

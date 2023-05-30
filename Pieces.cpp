@@ -10,10 +10,14 @@ Pieces::~Pieces()
 }
 
 
-const PieceType& Pieces::getPieceType(const Chess& chess, const Move& move) const
+const PieceType& Pieces::getPieceType() const
 {
-    const Piece(&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
-    return board[move.toRow][move.toCol].pieceType;
+    return pieceType;
+}
+
+const Player& Pieces::getPlayer() const
+{
+    return player;
 }
 
 void Pieces::addToCapturedPieces(PieceType capturedPiece, Player player)

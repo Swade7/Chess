@@ -36,7 +36,8 @@ public:
 	virtual ~Pieces();
 
 	// Getters
-	const PieceType& getPieceType(const Chess& board, const Move& move) const;
+	const PieceType& getPieceType() const;
+	const Player& getPlayer() const;
 
 	// Setters
 	static void addToCapturedPieces(PieceType capturedPiece, Player player);
