@@ -72,21 +72,21 @@ bool Pawn::checkValidMove(const Move& move, const Chess& chess) const
 		// Only allow horizontal moves if capturing
 		if (move.toCol != move.fromCol)
 		{
-			if (board[move.toCol][move.toRow].player != Player::Black)
+			if (board[move.toCol][move.toRow]->getPlayer() != Player::Black)
 			{
-				if (move.fromRow != 4 || (board[move.toCol][move.fromRow].pieceType != PieceType::Pawn && board[move.toCol][move.fromRow].player != Player::Black))
+				if (move.fromRow != 4 || (board[move.toCol][move.fromRow]->getPieceType() != PieceType::Pawn && board[move.toCol][move.fromRow]->getPlayer() != Player::Black))
 					return false;
 			}
 		}
 
 		// Check if the location is already occupied if not capturing
-		else if (board[move.toCol][move.toRow].player != Player::None)
+		else if (board[move.toCol][move.toRow]->getPlayer() != Player::None)
 		{
 			return false;
 		}
 
 		// If moving two places, make sure the piece is not moving through another piece
-		else if (move.toRow - move.fromRow == 2 && board[move.toCol][move.toRow - 1].player != Player::None)
+		else if (move.toRow - move.fromRow == 2 && board[move.toCol][move.toRow - 1]->getPlayer() != Player::None)
 		{
 			return false;
 		}
@@ -116,10 +116,10 @@ bool Pawn::checkValidMove(const Move& move, const Chess& chess) const
 		// Only allow horizontal moves if capturing
 		if (move.toCol != move.fromCol)
 		{
-			if (board[move.toCol][move.toRow].player != Player::White)
+			if (board[move.toCol][move.toRow]->getPlayer() != Player::White)
 			{
 				// Check for en passant
-				if (board[move.toCol][move.toRow].pieceType != PieceType::Pawn)
+				if (board[move.toCol][move.toRow]->getPieceType() != PieceType::Pawn)
 				{
 					return false;
 				}
@@ -135,13 +135,13 @@ bool Pawn::checkValidMove(const Move& move, const Chess& chess) const
 		}
 
 		// If not capturing, make sure the location is empty
-		else if (board[move.toCol][move.toRow].player != Player::None && move.toCol == move.fromCol)
+		else if (board[move.toCol][move.toRow]->getPlayer() != Player::None && move.toCol == move.fromCol)
 		{
 			return false;
 		}
 
 		// If moving two places, make sure the piece is not moving through another piece
-		else if (move.fromRow - move.toRow == 2 && board[move.toRow + 1][move.toCol].player != Player::None)
+		else if (move.fromRow - move.toRow == 2 && board[move.toRow + 1][move.toCol]->getPlayer() != Player::None)
 		{
 			return false;
 		}
