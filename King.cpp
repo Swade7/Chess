@@ -42,7 +42,7 @@ bool King::checkValidMove(const Move& move, const Chess& chess) const
 	if (!hasMoved && std::abs(move.fromCol - move.toCol) == 2 && move.fromRow == move.toRow)
 	{
 		// White
-		if (board[move.fromCol][move.fromRow].pieceType == PieceType::Empty)
+		if (board[move.fromCol][move.fromRow]->getPieceType() == PieceType::Empty)
 		{
 			// Left rook
 			if (move.toCol < move.fromCol)
@@ -54,7 +54,7 @@ bool King::checkValidMove(const Move& move, const Chess& chess) const
 					//	return false;
 					//}
 
-					if (board[i][move.fromRow].pieceType != PieceType::Empty)
+					if (board[i][move.fromRow]->getPieceType() != PieceType::Empty)
 					{
 						return false;
 					}
@@ -78,7 +78,7 @@ bool King::checkValidMove(const Move& move, const Chess& chess) const
 					//{
 					//	return false;
 					//}
-					if (board[i][move.fromRow].pieceType != PieceType::Empty)
+					if (board[i][move.fromRow]->getPieceType() != PieceType::Empty)
 					{
 						return false;
 					}
@@ -107,7 +107,7 @@ bool King::checkValidMove(const Move& move, const Chess& chess) const
 					//	return false;
 					//}
 
-					if (board[i][move.fromRow].pieceType != PieceType::Empty)
+					if (board[i][move.fromRow]->getPieceType() != PieceType::Empty)
 					{
 						return false;
 					}
@@ -130,7 +130,7 @@ bool King::checkValidMove(const Move& move, const Chess& chess) const
 					//{
 					//	return false;
 					//}
-					if (board[i][move.fromRow].pieceType != PieceType::Empty)
+					if (board[i][move.fromRow]->getPieceType() != PieceType::Empty)
 					{
 						return false;
 					}
