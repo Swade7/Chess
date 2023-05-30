@@ -5,6 +5,7 @@
 class King : public Pieces
 {
 public:
+	// Constructor
 	King(Player player);
 
 	bool checkValidMove(const Move& move, const Chess& chess) const override;

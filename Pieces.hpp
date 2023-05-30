@@ -17,7 +17,6 @@ struct Piece
 {
 	PieceType pieceType;
 	Player player;
-	//bool moved;
 };
 
 enum class Player : char
@@ -30,8 +29,6 @@ enum class Player : char
 class Pieces
 {
 public:
-	
-
 	// Getters
 	const PieceType& getPieceType(const Chess& board, const Move& move) const;
 
@@ -45,10 +42,6 @@ protected:
 
 	virtual bool checkValidMove(const Move& move, const Chess& chess) const = 0;
 	virtual void movePiece(const Move& move, Chess& chess) = 0;
-
-	
-
-	
 
 private:
 	// Vectors for pieces

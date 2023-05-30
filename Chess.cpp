@@ -12,7 +12,7 @@ int main()
 	while (status == Status::Active)
 	{
 		Move move = io.getMove();
-		chess.movePiece(move);
+		chess.(move);
 
 	}
 	return 0;

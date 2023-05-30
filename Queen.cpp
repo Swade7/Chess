@@ -1,5 +1,10 @@
 #include "Queen.hpp"
 
+Queen::Queen(Player player)
+	: Pieces(PieceType::Queen, player)
+{
+}
+
 bool Queen::checkValidMove(const Move& move, const Chess& chess) const
 {
 	// Check if the move is out of bounds

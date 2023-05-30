@@ -3,8 +3,9 @@
 
 Pieces::Pieces(PieceType pieceType, Player player)
 {
-
+    
 }
+
 
 const PieceType& Pieces::getPieceType(const Chess& chess, const Move& move) const
 {

@@ -1,5 +1,11 @@
 #include "Rook.hpp"
 
+
+Rook::Rook(Player player)
+	: Pieces(PieceType::Rook, player)
+{
+}
+
 bool Rook::checkValidMove(const Move& move, const Chess& chess) const
 {
 	// Check if the move is out of bounds

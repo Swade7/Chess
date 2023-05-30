@@ -14,6 +14,7 @@ void Chess::initializeBoard()
 		// White pawns
 		board[i][1].pieceType = PieceType::Pawn;
 		board[i][1].player = Player::White;
+		board[i][1] = Pawn(Player::White);
 
 		// Black pawns
 		board[i][6].pieceType = PieceType::Pawn;

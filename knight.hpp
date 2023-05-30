@@ -4,6 +4,10 @@
 
 class Knight : public Pieces
 {
+public:
+	// Constructor
+	Knight(Player player);
+
 	bool checkValidMove(const Move& move, const Chess& chess) const override;
 	void movePiece(const Move& move, Chess& chess) override;
 };

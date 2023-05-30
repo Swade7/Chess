@@ -1,6 +1,12 @@
 #pragma once
 
 #include "Pieces.hpp"
+#include "Pawn.hpp"
+#include "King.hpp"
+#include "Queen.hpp"
+#include "Rook.hpp"
+#include "knight.hpp"
+#include "Bishop.hpp"
 #include<string>
 #include<vector>
 
@@ -58,7 +64,7 @@ private:
 	void initializeBoard();
 
 	// Declare the board using a 2D array of type Piece
-	Piece board[BOARD_SIZE][BOARD_SIZE];
+	Pieces board[BOARD_SIZE][BOARD_SIZE];
 
 	// Keep track of the current player's turn
 	Player currentPlayer;

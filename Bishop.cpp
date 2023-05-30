@@ -1,5 +1,10 @@
 #include "Bishop.hpp"
 
+
+Bishop::Bishop(Player player)
+	: Pieces(PieceType::Bishop, player)
+{
+}
 bool Bishop::checkValidMove(const Move& move, const Chess& chess) const
 {
 	// Check if the move is out of bounds
