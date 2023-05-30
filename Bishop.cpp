@@ -54,7 +54,7 @@ bool Bishop::checkValidMove(const Move& move, const Chess& chess) const
 		{
 			for (int i = move.fromRow + 1; i < move.toRow; i++)
 			{
-				if (board[i][move.fromCol + (i - move.fromRow)].player != Player::None)
+				if (board[i][move.fromCol + (i - move.fromRow)]->getPlayer() != Player::None)
 				{
 					return false;
 				}
@@ -64,7 +64,7 @@ bool Bishop::checkValidMove(const Move& move, const Chess& chess) const
 		{
 			for (int i = move.fromRow - 1; i > move.toRow; i--)
 			{
-				if (board[i][move.fromCol + (i - move.fromRow)].player != Player::None)
+				if (board[i][move.fromCol + (i - move.fromRow)]->getPlayer() != Player::None)
 				{
 					return false;
 				}
@@ -77,7 +77,7 @@ bool Bishop::checkValidMove(const Move& move, const Chess& chess) const
 		{
 			for (int i = move.fromRow + 1; i < move.toRow; i++)
 			{
-				if (board[i][move.fromCol - (i - move.fromRow)].player != Player::None)
+				if (board[i][move.fromCol - (i - move.fromRow)]->getPlayer() != Player::None)
 				{
 					return false;
 				}
@@ -87,7 +87,7 @@ bool Bishop::checkValidMove(const Move& move, const Chess& chess) const
 		{
 			for (int i = move.fromRow - 1; i > move.toRow; i--)
 			{
-				if (board[i][move.fromCol - (i - move.fromRow)].player != Player::None)
+				if (board[i][move.fromCol - (i - move.fromRow)]->getPlayer() != Player::None)
 				{
 					return false;
 				}
