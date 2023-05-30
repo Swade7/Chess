@@ -30,6 +30,151 @@ bool Queen::checkValidMove(const Move& move, const Chess& chess) const
 	}
 }
 
+bool Queen::checkValidStraightMove(const Move& move, const Chess& chess) const
+{
+	// Check if trying to move diagonally
+	if (move.toCol != move.fromCol && move.toRow != move.fromRow)
+	{
+		return false;
+	}
+
+	// Determine if moving vertically or horizontally
+	char dir;
+	if (move.fromCol == move.toCol)
+	{
+		dir = 'v';
+	}
+	else
+	{
+		dir = 'h';
+	}
+
+	// Get the board
+	const Piece(&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
+
+	// Check if another piece is blocking the path
+	// Checks for vertical movements
+	if (dir == 'v')
+	{
+		// Right
+		if (move.toRow > move.fromRow)
+		{
+
+			for (int i = move.fromRow; i < move.toRow; i++)
+			{
+				if (board[i][move.fromCol].player != Player::None)
+				{
+					return false;
+				}
+			}
+		}
+		// Left
+		else if (move.toRow < move.fromRow)
+		{
+			for (int i = move.toRow; i < move.fromRow; i++)
+			{
+				if (board[i][move.fromCol].player != Player::None)
+				{
+					return false;
+				}
+			}
+		}
+	}
+	// Checks for horizontal movements
+	else if (dir == 'h')
+	{
+		// Right
+		if (move.toCol > move.fromCol)
+		{
+			for (int i = move.fromCol; i < move.toCol; i++)
+			{
+				if (board[move.fromRow][i].player != Player::None)
+				{
+					return false;
+				}
+			}
+		}
+		// Left
+		else if (move.toCol < move.fromCol)
+		{
+			for (int i = move.toCol; i < move.fromCol; i++)
+			{
+				if (board[move.fromRow][i].player != Player::None)
+				{
+					return false;
+				}
+			}
+		}
+	}
+
+	return true;
+}
+
+bool Queen::checkValidDiagonalMove(const Move& move, const Chess& chess) const
+{
+	int rowDifference = std::abs(move.toRow - move.fromRow);
+	int colDifference = std::abs(move.toCol - move.fromCol);
+
+	if (rowDifference != colDifference)
+	{
+		return false;
+	}
+
+	// Get the board
+	const Piece(&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
+
+	// Check for pieces blocking the path
+	if (move.toCol > move.fromCol)
+	{
+		if (move.toRow > move.fromRow)
+		{
+			for (int i = move.fromRow + 1; i < move.toRow; i++)
+			{
+				if (board[i][move.fromCol + (i - move.fromRow)].player != Player::None)
+				{
+					return false;
+				}
+			}
+		}
+		else
+		{
+			for (int i = move.fromRow - 1; i > move.toRow; i--)
+			{
+				if (board[i][move.fromCol + (i - move.fromRow)].player != Player::None)
+				{
+					return false;
+				}
+			}
+		}
+	}
+	else
+	{
+		if (move.toRow > move.fromRow)
+		{
+			for (int i = move.fromRow + 1; i < move.toRow; i++)
+			{
+				if (board[i][move.fromCol - (i - move.fromRow)].player != Player::None)
+				{
+					return false;
+				}
+			}
+		}
+		else
+		{
+			for (int i = move.fromRow - 1; i > move.toRow; i--)
+			{
+				if (board[i][move.fromCol - (i - move.fromRow)].player != Player::None)
+				{
+					return false;
+				}
+			}
+		}
+	}
+
+	return true;
+
+}
+
 void Queen::movePiece(const Move& move, Chess& chess)
 {
 	if (checkValidMove(move, chess))
