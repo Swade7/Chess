@@ -40,10 +40,8 @@ bool King::checkValidMove(const Move& move, const Chess& chess) const
 	if (!hasMoved && std::abs(move.fromCol - move.toCol) == 2 && move.fromRow == move.toRow)
 	{
 		// White
-		if (board[move.fromCol][move.fromRow].player == Player::White)
+		if (board[move.fromCol][move.fromRow].pieceType == PieceType::Empty)
 		{
-			
-
 			// Left rook
 			if (move.toCol < move.fromCol)
 			{
@@ -163,4 +161,6 @@ void King::movePiece(const Move& move, Chess& chess)
 	{
 		chess.updateBoard(move);
 	}
+
+	hasMoved = true;
 }

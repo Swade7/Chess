@@ -43,8 +43,8 @@ bool Pawn::checkValidMove(const Move& move, const Chess& chess) const
 	{
 		return false;
 	}
-	// Check if move is out of bounds or < 1 or > -1 horizontally
-	else if (move.fromCol - move.toCol > 1 || move.fromCol - move.toCol < -1)
+	// Check if move is  < 1 or > -1 horizontally
+	else if (std::abs(move.fromCol - move.toCol) > 1)
 	{
 		return false;
 	}
