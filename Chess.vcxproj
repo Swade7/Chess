@@ -131,6 +131,7 @@
     <ClCompile Include="ChessIO.cpp" />
     <ClCompile Include="ChessLogic.cpp" />
     <ClCompile Include="Chess.cpp" />
+    <ClCompile Include="Empty.cpp" />
     <ClCompile Include="King.cpp" />
     <ClCompile Include="Knight.cpp" />
     <ClCompile Include="Pawn.cpp" />
@@ -142,6 +143,7 @@
     <ClInclude Include="Bishop.hpp" />
     <ClInclude Include="ChessIO.hpp" />
     <ClInclude Include="ChessLogic.hpp" />
+    <ClInclude Include="Empty.hpp" />
     <ClInclude Include="King.hpp" />
     <ClInclude Include="knight.hpp" />
     <ClInclude Include="Pawn.hpp" />

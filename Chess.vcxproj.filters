@@ -45,6 +45,9 @@
     <ClCompile Include="Pieces.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Empty.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChessLogic.hpp">
@@ -72,6 +75,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Pieces.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Empty.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
