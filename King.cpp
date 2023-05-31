@@ -86,7 +86,7 @@ bool King::checkValidMove(const Move& move, const Chess& chess) const
 			return false;
 		}
 		*/
-	
+
 
 		// Check if all spaces between the two pieces are empty
 		for (int i = std::min(move.fromCol, rookCol) + 1; i < std::max(move.fromCol, rookCol); i++)
@@ -97,13 +97,14 @@ bool King::checkValidMove(const Move& move, const Chess& chess) const
 			}
 		}
 
-	// Prevent the king from moving more than one space 
-	if (std::abs(move.toCol - move.fromCol) > 1 || std::abs(move.toRow - move.fromRow) > 1)
-	{
-		return false;
-	}
+		// Prevent the king from moving more than one space 
+		if (std::abs(move.toCol - move.fromCol) > 1 || std::abs(move.toRow - move.fromRow) > 1)
+		{
+			return false;
+		}
 
-	return true;
+		return true;
+	}
 }
 
 void King::movePiece(const Move& move, Chess& chess)
