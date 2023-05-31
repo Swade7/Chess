@@ -41,18 +41,11 @@ void Chess::initializeBoard()
 	board[4][whiteRow] = new King(Player::White);
 	board[4][blackRow] = new King(Player::Black);
 
-
-	// Initialize the pieces as the correct color
-	for (int i = 0; i < BOARD_SIZE; i++)
+	// Initialize the empty places
+	for (int j = 2; j < 6; j++)
 	{
-		board[i][0].player = Player::White;
-		board[i][7].player = Player::Black;
-		// Initialize empty places
-		for (int j = 2; j < 6; j++)
-		{
-			board[i][j].pieceType = PieceType::Empty;
-			board[i][j].player = Player::None;
-		}
+		board[i][j].pieceType = PieceType::Empty;
+		board[i][j].player = Player::None;
 	}
 
 	// Set the current player to white
