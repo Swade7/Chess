@@ -20,7 +20,7 @@ bool Rook::checkValidMove(const Move& move, const Chess& chess) const
 	}
 
 	// Get the board
-	const Pieces* (&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
+	const Pieces* const (&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
 
 	// Check if the piece belongs to the current player
 	if (board[move.fromCol][move.fromRow]->getPlayer() != chess.getCurrentPlayer())
