@@ -5,6 +5,7 @@
 Rook::Rook(Player player)
 	: Pieces(PieceType::Rook, player)
 {
+	hasMoved = false;
 }
 
 // Destructor
@@ -119,4 +120,7 @@ void Rook::movePiece(const Move& move, Chess& chess)
 	{
 		chess.updateBoard(move);
 	}
+
+	// Update hasMoved to true
+	hasMoved = true;
 }
