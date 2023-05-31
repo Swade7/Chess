@@ -182,7 +182,6 @@ bool Queen::checkValidDiagonalMove(const Move& move, const Chess& chess) const
 	}
 
 	return true;
-
 }
 
 void Queen::movePiece(const Move& move, Chess& chess)
