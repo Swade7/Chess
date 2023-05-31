@@ -124,3 +124,8 @@ void Rook::movePiece(const Move& move, Chess& chess)
 	// Update hasMoved to true
 	hasMoved = true;
 }
+
+const bool Rook::gethasMoved() const
+{
+	return hasMoved;
+}
