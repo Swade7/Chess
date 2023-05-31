@@ -75,17 +75,21 @@ void Chess::changeTurn()
 void Chess::updateBoard(const Move& move)
 {
 	// If a piece is captured, add it to the capturedPieces vector and remove it from the appropriate pieces vector
-	if (board[move.toCol][move.toRow].pieceType != PieceType::Empty)
+	if (board[move.toCol][move.toRow]->getPieceType() != PieceType::Empty)
 	{
-		Pieces::addToCapturedPieces(board[move.toCol][move.toRow].pieceType, board[move.toCol][move.toRow].player);
-		Pieces::removeFromPieces(board[move.toCol][move.toRow].pieceType, board[move.toCol][move.toRow].player);
+		Pieces::addToCapturedPieces(board[move.toCol][move.toRow]->getPieceType(), board[move.toCol][move.toRow]->getPlayer());
+		Pieces::removeFromPieces(board[move.toCol][move.toRow]->getPieceType(), board[move.toCol][move.toRow]->getPlayer());
 	}
 	
+	// Delete the piece that used to occupy the location
+	Pieces* toDelete = board[move.toCol][move.toRow];
+	delete toDelete;
 
 	// Set the to location equal to the from location
 	board[move.toCol][move.toRow] = board[move.fromCol][move.fromRow];
-	board[move.fromCol][move.fromRow].pieceType = PieceType::Empty;
-	board[move.fromCol][move.fromRow].player = Player::None;
+
+	// Create an empty piece where the piece used to be
+	board[move.fromCol][move.fromRow] = new Empty();
 }
 
 void Chess::addMove(const Move& move)
