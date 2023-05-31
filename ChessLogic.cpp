@@ -8,49 +8,39 @@ Chess::Chess()
 
 void Chess::initializeBoard()
 {
+	// Declare the starting rows for the white and black pieces
+	int whiteRow = 0;
+	int blackRow = BOARD_SIZE - 1;
+
 	// Place pawns
 	for (int i = 0; i < BOARD_SIZE; i++)
 	{
-		// White pawns
-		board[i][1].pieceType = PieceType::Pawn;
-		board[i][1].player = Player::White;
-		// This is the correct initialization
-		//[i][1] = new Pawn(Player::White);
-
-		// Black pawns
-		board[i][6].pieceType = PieceType::Pawn;
-		board[i][6].player = Player::Black;
+		board[i][whiteRow + 1] = new Pawn(Player::White);
+		board[i][blackRow - 1] = new Pawn(Player::Black);
 	}
 
-	// Place remaining white peices
 	// Rooks
-	board[0][0].pieceType = PieceType::Rook;;
-	board[7][0].pieceType = PieceType::Rook;
+	board[0][whiteRow] = new Rook(Player::White);
+	board[0][blackRow] = new Rook(Player::Black);
+	board[7][whiteRow] = new Rook(Player::White);
+	board[7][blackRow] = new Rook(Player::Black);
 	// Knights
-	board[1][0].pieceType = PieceType::Knight;
-	board[6][0].pieceType = PieceType::Knight;
+	board[1][whiteRow] = new Knight(Player::White);
+	board[1][blackRow] = new Knight(Player::Black);
+	board[6][whiteRow] = new Knight(Player::White);
+	board[6][blackRow] = new Knight(Player::Black);
 	// Bishops
-	board[2][0].pieceType = PieceType::Bishop;
-	board[5][0].pieceType = PieceType::Bishop;
+	board[2][whiteRow] = new Bishop(Player::White);
+	board[2][blackRow] = new Bishop(Player::Black);
+	board[5][whiteRow] = new Bishop(Player::White);
+	board[5][blackRow] = new Bishop(Player::Black);
 	//Queen
-	board[3][0].pieceType = PieceType::Queen;
+	board[3][whiteRow] = new Queen(Player::White);
+	board[3][blackRow] = new Queen(Player::Black);
 	//King
-	board[4][0].pieceType = PieceType::King;
+	board[4][whiteRow] = new King(Player::White);
+	board[4][blackRow] = new King(Player::Black);
 
-	// Place the remaining black pieces
-	// Rooks
-	board[0][7].pieceType = PieceType::Rook;;
-	board[7][7].pieceType = PieceType::Rook;
-	// Knights
-	board[1][7].pieceType = PieceType::Knight;
-	board[6][7].pieceType = PieceType::Knight;
-	// Bishops
-	board[2][7].pieceType = PieceType::Bishop;
-	board[5][7].pieceType = PieceType::Bishop;
-	//Queen
-	board[3][7].pieceType = PieceType::Queen;
-	//King
-	board[4][7].pieceType = PieceType::King;
 
 	// Initialize the pieces as the correct color
 	for (int i = 0; i < BOARD_SIZE; i++)
