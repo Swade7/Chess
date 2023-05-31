@@ -41,134 +41,61 @@ bool King::checkValidMove(const Move& move, const Chess& chess) const
 	// Check if trying to castle
 	if (!hasMoved && std::abs(move.fromCol - move.toCol) == 2 && move.fromRow == move.toRow)
 	{
-		// White
+
+		// Get the col of the rook
+		int rookCol;
+		if (move.fromCol > move.toCol)
+		{
+			rookCol = 0;
+		}
+		else if (move.fromCol < move.toCol)
+		{
+			rookCol = 7;
+		}
+
+		// Get the Row of the rook
+		int rookRow;
 		if (board[move.fromCol][move.fromRow]->getPlayer() == Player::White)
 		{
-			if (board[move.toCol][move.toRow]->getPieceType() == PieceType::Empty)
-			{
-				// Left rook
-				if (move.toCol < move.fromCol)
-				{
-					for (int i = move.fromCol; i > 0; i--)
-					{
-						//if (check(board[i][move.fromRow] && i >= move.toCol)
-						//{
-						//	return false;
-						//}
-
-						if (board[i][move.fromRow]->getPieceType() != PieceType::Empty)
-						{
-							return false;
-						}
-					}
-					// I think I can do this more efficiently
-					/*
-					vector<Move> moves = chess.getMoves();
-					for (int i = 0; i < moves.size(); i++)
-					{
-						if (moves.at(i).fromCol == 0 && moves.at(i).fromRow == 0)
-						{
-							return false;
-						}
-					}
-					*/
-
-					if (board[0][0]->getPieceType() == PieceType::Rook)
-					{
-						const Rook* rook = dynamic_cast<const Rook*>(board[0][0]);
-						if (rook->gethasMoved())
-						{
-							return false;
-						}
-					}
-					else
-					{
-						return false;
-					}
-
-				}
-				// Right rook
-				else
-				{
-					for (int i = move.fromCol; i < 7; i++)
-					{
-						//if (check(board[i][move.fromRow] && i <= move.toCol)
-						//{
-						//	return false;
-						//}
-						if (board[i][move.fromRow]->getPieceType() != PieceType::Empty)
-						{
-							return false;
-						}
-					}
-					vector<Move> moves = chess.getMoves();
-					for (int i = 0; i < moves.size(); i++)
-					{
-						if (moves.at(i).fromCol == 7 && moves.at(i).fromRow == 0)
-						{
-							return false;
-						}
-					}
-				}
-			}
+			rookRow = 0;
 		}
-
-		// Black
 		else if (board[move.fromCol][move.fromRow]->getPlayer() == Player::Black)
 		{
-			// Left rook
-			if (move.toCol < move.fromCol)
-			{
-				for (int i = move.fromCol; i > 0; i--)
-				{
-					//if (check(board[i][move.fromRow] && i >= move.toCol)
-					//{
-					//	return false;
-					//}
-
-					if (board[i][move.fromRow]->getPieceType() != PieceType::Empty)
-					{
-						return false;
-					}
-				}
-				vector<Move> moves = chess.getMoves();
-				for (int i = 0; i < moves.size(); i++)
-				{
-					if (moves.at(i).fromCol == 0 && moves.at(i).fromRow == 7)
-					{
-						return false;
-					}
-				}
-			}
-			// Right rook
-			else
-			{
-				for (int i = move.fromCol; i < 7; i++)
-				{
-					//if (check(board[i][move.fromRow] && i <= move.toCol)
-					//{
-					//	return false;
-					//}
-					if (board[i][move.fromRow]->getPieceType() != PieceType::Empty)
-					{
-						return false;
-					}
-				}
-				vector<Move> moves = chess.getMoves();
-				for (int i = 0; i < moves.size(); i++)
-				{
-					if (moves.at(i).fromCol == 7 && moves.at(i).fromRow == 7)
-					{
-						return false;
-					}
-				}
-			}
+			rookRow = 7;
 		}
-		else
+
+		// Check if the rook has been moved
+		if (board[rookCol][rookRow]->getPieceType() != PieceType::Rook)
 		{
 			return false;
 		}
-	}
+		else
+		{
+			const Rook* rook = dynamic_cast<const Rook*>(board[rookCol][rookRow]);
+			if (rook->getHasMoved())
+			{
+				return false;
+			}
+		}
+
+		// Check if any place being moved through or the king's current position would be in check
+		/*
+		* for (int i = std::min(move.fromCol, rookCol); i <= std::max(move.fromCol, rookCol); i++)
+		if (check(i, move.fromRow) && i != rookCol)
+		{
+			return false;
+		}
+		*/
+	
+
+		// Check if all spaces between the two pieces are empty
+		for (int i = std::min(move.fromCol, rookCol) + 1; i < std::max(move.fromCol, rookCol); i++)
+		{
+			if (board[i][rookRow]->getPieceType() != PieceType::Empty)
+			{
+				return false;
+			}
+		}
 
 	// Prevent the king from moving more than one space 
 	if (std::abs(move.toCol - move.fromCol) > 1 || std::abs(move.toRow - move.fromRow) > 1)
@@ -186,5 +113,7 @@ void King::movePiece(const Move& move, Chess& chess)
 		chess.updateBoard(move);
 	}
 
+	// Set the hasMoved variable to true
 	hasMoved = true;
 }
+

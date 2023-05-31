@@ -16,7 +16,7 @@ public:
 	void movePiece(const Move& move, Chess& chess) override;
 
 	// Getters
-	const bool gethasMoved() const;
+	const bool getHasMoved() const;
 
 private:
 	bool hasMoved;

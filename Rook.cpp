@@ -125,7 +125,7 @@ void Rook::movePiece(const Move& move, Chess& chess)
 	hasMoved = true;
 }
 
-const bool Rook::gethasMoved() const
+const bool Rook::getHasMoved() const
 {
 	return hasMoved;
 }
