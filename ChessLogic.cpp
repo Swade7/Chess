@@ -42,11 +42,14 @@ void Chess::initializeBoard()
 	board[4][blackRow] = new King(Player::Black);
 
 	// Initialize the empty places
-	for (int j = 2; j < 6; j++)
+	for (int col = 0; col < BOARD_SIZE; col++)
 	{
-		board[i][j].pieceType = PieceType::Empty;
-		board[i][j].player = Player::None;
+		for (int row = whiteRow + 2; row < blackRow - 2; row++)
+		{
+			board[col][row] = new Empty();
+		}
 	}
+	
 
 	// Set the current player to white
 	currentPlayer = Player::White;
@@ -97,7 +100,7 @@ const Player& Chess::getCurrentPlayer() const
 	return currentPlayer;
 }
 
-const Piece(&Chess::getBoard() const)[BOARD_SIZE][BOARD_SIZE]
+const Pieces* const (&Chess::getBoard() const)[BOARD_SIZE][BOARD_SIZE]
 {
 	return board;
 }

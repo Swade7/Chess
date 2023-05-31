@@ -7,6 +7,7 @@
 #include "Rook.hpp"
 #include "knight.hpp"
 #include "Bishop.hpp"
+#include "Empty.hpp"
 #include<string>
 #include<vector>
 
@@ -41,7 +42,7 @@ public:
 
 	// Getters
 	const Player& getCurrentPlayer() const;
-	const Pieces*(&getBoard() const)[BOARD_SIZE][BOARD_SIZE];
+	const Pieces* const (&getBoard() const)[BOARD_SIZE][BOARD_SIZE];
 	const vector<Move> getMoves() const;
 	const Move& getLastMove() const;
 	const int getNumMoves() const;
