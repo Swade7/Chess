@@ -51,63 +51,67 @@ std::ostream& operator<<(std::ostream& out, PieceType const& pieceType)
 
 void chessIO::printBoard(const Chess& chess)
 {
-	Player p = chess.getCurrentPlayer();
-	cout << p << "'s turn";
+	Player currentPlayer = chess.getCurrentPlayer();
+	cout << currentPlayer << "'s turn";
 	cout << endl << " ";
 
 	for (int col = 0; col < BOARD_SIZE * 4 + 1; col++)
 	{
 		cout << "_";
 	}
-
 	cout << endl;
+
+	// Get the board
+	const Pieces* const (&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
+
 	for (int row = 0; row < BOARD_SIZE; row++)
 	{
 		cout << "| ";
 		for (int col = 0; col < BOARD_SIZE; col++)
-		{
-			
-			const Piece& piece = chess.getBoard(col, row);
+		{	
+			PieceType pieceType = board[col][row]->getPieceType();
+			Player player = board[col][row]->getPlayer();
 
-			// Output which player the piece belongs to
-			if (piece.player == Player::None)
+			// Output which player the piece belongs to at the location
+			if (player == Player::None)
 			{
 				cout << "+ ";
 			}
-			else if (piece.player == Player::White)
+			else if (player == Player::White)
 			{
 				cout << "W";
 			}
-			else if (piece.player == Player::Black)
+			else if (player == Player::Black)
 			{
 				cout << "B";
 			}
 
-			if (piece.pieceType == PieceType::Empty)
+			// Output what type of piece is at the location
+			if (pieceType == PieceType::Empty)
 			{
 				cout << " ";
 			}
-			else if (piece.pieceType == PieceType::Pawn)
+			else if (pieceType == PieceType::Pawn)
 			{
 				cout << "P ";
 			}
-			else if (piece.pieceType == PieceType::Rook)
+			else if (pieceType == PieceType::Rook)
 			{
 				cout << "R ";
 			}
-			else if (piece.pieceType == PieceType::Knight)
+			else if (pieceType == PieceType::Knight)
 			{
 				cout << "N ";
 			}
-			else if (piece.pieceType == PieceType::Bishop)
+			else if (pieceType == PieceType::Bishop)
 			{
 				cout << "B ";
 			}
-			else if (piece.pieceType == PieceType::Queen)
+			else if (pieceType == PieceType::Queen)
 			{
 				cout << "Q ";
 			}
-			else if (piece.pieceType == PieceType::King)
+			else if (pieceType == PieceType::King)
 			{
 				cout << "K ";
 			}
@@ -132,9 +136,12 @@ void chessIO::printBoard(const Chess& chess)
 
 void chessIO::printMove(const Chess& chess, const Move& move)
 {
-	Player p = chess.getCurrentPlayer();
+	// Get the board
+	const Pieces* const (&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
 
-	cout << p << " Moved their " << chess.getPieceType(move) << " from "  << intToChar(move.fromCol) << move.fromRow << " to " << intToChar(move.toCol) << move.toRow << endl;
+	Player player = board[move.toCol][move.toRow]->getPlayer();
+
+	cout << player << " Moved their " << board[move.toCol][move.toRow]->getPieceType() << " from "  << intToChar(move.fromCol) << move.fromRow << " to " << intToChar(move.toCol) << move.toRow << endl;
 }
 
 void chessIO::printInvalidMove(std::ostream& out)
@@ -235,7 +242,27 @@ Move chessIO::getMove()
 	move.toCol = charToInt(to[0]);
 	move.toRow = int(to[1] + 1);
 
-	return move;
+	if (inRange(move.fromCol, move.toCol) && inRange(move.toCol, move.fromCol))
+	{
+		return move;
+	}
+	else
+	{
+		// Print invalid input
+		getMove();
+	}
+}
+
+bool chessIO::inRange(int a, int b)
+{
+	if (a > BOARD_SIZE || a < 1 || b > BOARD_SIZE || b < 1)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
 }
 
 
