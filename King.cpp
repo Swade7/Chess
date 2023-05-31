@@ -113,7 +113,7 @@ void King::movePiece(const Move& move, Chess& chess)
 	{
 		chess.updateBoard(move);
 	}
-
+	// Need to also move the rook if castling
 	// Set the hasMoved variable to true
 	hasMoved = true;
 }
