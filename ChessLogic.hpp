@@ -37,7 +37,7 @@ public:
 	//Constructor
 	Chess();
 
-	Move GetPossibleMoves();
+	const vector<Move> GetPossibleMoves() const;
 
 	// Getters
 	const Player& getCurrentPlayer() const;
@@ -65,7 +65,7 @@ private:
 	Pieces* board[BOARD_SIZE][BOARD_SIZE];
 
 	// Keep track of the current player's turn
-	Player currentPlayer;
+	Player currentPlayer = Player::White;
 
 	// Keep track of if each player has castled
 	bool hasWhiteCastled = false;
