@@ -1,10 +1,13 @@
 #include "Pieces.hpp"
-#include "ChessLogic.hpp"
 
 Pieces::Pieces(PieceType pieceType, Player player)
 {
     this->pieceType = pieceType;
     this->player = player;
+}
+
+Pieces::~Pieces()
+{
 }
 
 
