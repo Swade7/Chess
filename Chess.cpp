@@ -1,4 +1,4 @@
-#include "ChessLogic.hpp"
+//#include "Pieces.hpp"
 #include "ChessIO.hpp"
 
 int main()
@@ -12,7 +12,7 @@ int main()
 	while (status == Status::Active)
 	{
 		Move move = io.getMove();
-		chess.(move);
+		//chess.(move);
 
 	}
 	return 0;

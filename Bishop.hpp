@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ChessLogic.hpp"
+#include "Pieces.hpp"
 
 class Bishop : public Pieces
 {

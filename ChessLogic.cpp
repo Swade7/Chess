@@ -1,8 +1,25 @@
 #include "ChessLogic.hpp"
 
+/*#include "Pieces.hpp"*/
+#include "Pawn.hpp"
+#include "King.hpp"
+#include "Queen.hpp"
+#include "Rook.hpp"
+#include "knight.hpp"
+#include "Bishop.hpp"
+#include "Empty.hpp"
+
 
 Chess::Chess()
 {
+	// Initialize the board with nullptrs
+	for (int row = 0; row < BOARD_SIZE; row++)
+	{
+		for (int col = 0; col < BOARD_SIZE; col++)
+		{
+			board[row][col] = nullptr;
+		}
+	}
 	initializeBoard();
 }
 
@@ -64,7 +81,7 @@ void Chess::changeTurn()
 {
 	if (currentPlayer == Player::White)
 	{
-		currentPlayer == Player::Black;
+		currentPlayer = Player::Black;
 	}
 	else if (currentPlayer == Player::Black)
 	{
@@ -104,7 +121,7 @@ const Player& Chess::getCurrentPlayer() const
 	return currentPlayer;
 }
 
-const Pieces* const (&Chess::getBoard() const)[BOARD_SIZE][BOARD_SIZE]
+Pieces* (&Chess::getBoard() const)[BOARD_SIZE][BOARD_SIZE]
 {
 	return board;
 }

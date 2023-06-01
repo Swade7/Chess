@@ -1,17 +1,17 @@
 #pragma once
 
-#include "Pieces.hpp"
-#include "Pawn.hpp"
-#include "King.hpp"
-#include "Queen.hpp"
-#include "Rook.hpp"
-#include "knight.hpp"
-#include "Bishop.hpp"
-#include "Empty.hpp"
 #include<string>
 #include<vector>
 
 using std::vector;
+
+enum class PieceType : char;
+
+enum class Player : char;
+
+struct Piece;
+
+class Pieces;
 
 
 enum class Status
@@ -42,7 +42,7 @@ public:
 
 	// Getters
 	const Player& getCurrentPlayer() const;
-	const Pieces* const (&getBoard() const)[BOARD_SIZE][BOARD_SIZE];
+	Pieces* (&getBoard() const)[BOARD_SIZE][BOARD_SIZE];
 	const vector<Move> getMoves() const;
 	const Move& getLastMove() const;
 	const int getNumMoves() const;
@@ -63,10 +63,10 @@ private:
 	void initializeBoard();
 
 	// Declare the board using a 2D array of the Pieces class
-	Pieces* board[BOARD_SIZE][BOARD_SIZE];
+	Pieces* (&board)[BOARD_SIZE][BOARD_SIZE];
 
 	// Keep track of the current player's turn
-	Player currentPlayer = Player::White;
+	Player currentPlayer;
 
 	// Keep track of if each player has castled
 	bool hasWhiteCastled = false;

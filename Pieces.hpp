@@ -2,6 +2,9 @@
 
 #include"ChessLogic.hpp"
 
+
+
+
 enum class PieceType : char
 {
 	Empty = '+',
@@ -13,18 +16,20 @@ enum class PieceType : char
 	King = 'K'
 };
 
-struct Piece
-{
-	PieceType pieceType;
-	Player player;
-};
-
 enum class Player : char
 {
 	White = 'W',
 	Black = 'B',
 	None = 'N'
 };
+
+struct Piece
+{
+	PieceType pieceType;
+	Player player;
+};
+
+class Chess;
 
 class Pieces
 {
@@ -53,8 +58,8 @@ private:
 	static vector<Piece> blackPieces;
 
 	// Vectors for captured pieces
-	static vector<PieceType> capturedWhitePieces;
-	static vector<PieceType> capturedBlackPieces;
+	static vector<Piece> capturedWhitePieces;
+	static vector<Piece> capturedBlackPieces;
 
 	// Store the PieceType and Player
 	PieceType pieceType;

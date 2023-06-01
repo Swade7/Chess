@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ChessLogic.hpp"
+#include "Pieces.hpp"
 #include<iostream>
 #include <ostream>
 using std::cout;
