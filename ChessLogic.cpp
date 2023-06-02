@@ -12,14 +12,6 @@
 
 Chess::Chess()
 {
-	// Initialize the board with nullptrs
-	for (int row = 0; row < BOARD_SIZE; row++)
-	{
-		for (int col = 0; col < BOARD_SIZE; col++)
-		{
-			board[row][col] = nullptr;
-		}
-	}
 	initializeBoard();
 }
 
@@ -61,7 +53,7 @@ void Chess::initializeBoard()
 	// Initialize the empty places
 	for (int col = 0; col < BOARD_SIZE; col++)
 	{
-		for (int row = whiteRow + 2; row < blackRow - 2; row++)
+		for (int row = whiteRow + 2; row <= blackRow - 2; row++)
 		{
 			board[col][row] = new Empty();
 		}
@@ -94,8 +86,8 @@ void Chess::updateBoard(const Move& move)
 	// If a piece is captured, add it to the capturedPieces vector and remove it from the appropriate pieces vector
 	if (board[move.toCol][move.toRow]->getPieceType() != PieceType::Empty)
 	{
-		Pieces::addToCapturedPieces(board[move.toCol][move.toRow]->getPieceType(), board[move.toCol][move.toRow]->getPlayer());
-		Pieces::removeFromPieces(board[move.toCol][move.toRow]->getPieceType(), board[move.toCol][move.toRow]->getPlayer());
+		//Pieces::addToCapturedPieces(board[move.toCol][move.toRow]->getPieceType(), board[move.toCol][move.toRow]->getPlayer());
+		//Pieces::removeFromPieces(board[move.toCol][move.toRow]->getPieceType(), board[move.toCol][move.toRow]->getPlayer());
 	}
 	
 	// Delete the piece that used to occupy the location
@@ -121,7 +113,7 @@ const Player& Chess::getCurrentPlayer() const
 	return currentPlayer;
 }
 
-Pieces* (&Chess::getBoard() const)[BOARD_SIZE][BOARD_SIZE]
+Pieces* const (&Chess::getBoard() const)[BOARD_SIZE][BOARD_SIZE]
 {
 	return board;
 }

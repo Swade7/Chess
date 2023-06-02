@@ -20,7 +20,7 @@ public:
 	void printMove(const Chess& chess, const Move& move);
 	void printInvalidMove(std::ostream& out);
 	const char intToChar(const int& i);
-	const int charToInt(char& c);
+	const int charToInt(const char& c);
 	Move getMove();
 	bool inRange(int a, int b);
 };

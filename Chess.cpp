@@ -13,6 +13,8 @@ int main()
 	{
 		Move move = io.getMove();
 		//chess.(move);
+		chess.addMove(move);
+		status = Status::BlackWin;
 
 	}
 	return 0;

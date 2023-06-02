@@ -1,4 +1,5 @@
 #include "ChessIO.hpp"
+#include<cstdlib>
 
 
 std::ostream& operator<<(std::ostream& out, Player const& player)
@@ -62,7 +63,7 @@ void chessIO::printBoard(const Chess& chess)
 	cout << endl;
 
 	// Get the board
-	const Pieces* const (&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
+	Pieces* const (&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
 
 	for (int row = 0; row < BOARD_SIZE; row++)
 	{
@@ -137,7 +138,7 @@ void chessIO::printBoard(const Chess& chess)
 void chessIO::printMove(const Chess& chess, const Move& move)
 {
 	// Get the board
-	const Pieces* const (&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
+	Pieces* const (&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
 
 	Player player = board[move.toCol][move.toRow]->getPlayer();
 
@@ -185,11 +186,12 @@ const char chessIO::intToChar(const int& i)
 	}
 }
 
-const int chessIO::charToInt(char& c)
+const int chessIO::charToInt(const char& c)
 {
-	c = toupper(c);
+	/*c = char(toupper(c));
 	if (c == 'A')
 	{
+		cout << "A" << endl;
 		return 0;
 	}
 	else if (c == 'B')
@@ -220,48 +222,58 @@ const int chessIO::charToInt(char& c)
 	{
 		return 7;
 	}
+	*/
+	char upper = toupper(c);
+	return upper - 'A';
 }
 
 Move chessIO::getMove()
 {
-	char from[2];
-	char to[2];
+	char from[3];
+	char to[3];
 	// Get the from and to locations from the user
 	cout << "Enter the piece you would like to move: ";
-	cin.getline(from, 2);
+	cin.getline(from, 3);
 	cout << endl;
 	cout << "Enter the destination location: ";
-	cin.getline(to, 2);
+	cin.getline(to, 3);
 	cout << endl;
 
 	// TO DO -- Add data validation checks
-
+	//int intFrom = atoi(charFrom);
+	//int intTo = atoi(std::string(1, charTo[1]).c_str()) - 1;
 	Move move;
 	move.fromCol = charToInt(from[0]);
-	move.fromRow = int(from[1] + 1);
+	move.fromRow = atoi(std::string(1, from[1]).c_str()) - 1;
 	move.toCol = charToInt(to[0]);
-	move.toRow = int(to[1] + 1);
+	move.toRow = atoi(std::string(1, to[1]).c_str()) - 1;
 
-	if (inRange(move.fromCol, move.toCol) && inRange(move.toCol, move.fromCol))
+	cout << move.fromCol  << " " << move.fromRow << " " << move.toCol << " " << move.toRow << " " << endl;
+
+	if (inRange(move.fromCol, move.fromRow) && inRange(move.toCol, move.toRow))
 	{
 		return move;
 	}
 	else
 	{
 		// Print invalid input
-		getMove();
+		//getMove();
+		cout << "Error";
 	}
 }
 
 bool chessIO::inRange(int a, int b)
 {
-	if (a > BOARD_SIZE || a < 1 || b > BOARD_SIZE || b < 1)
+	if (a > BOARD_SIZE || a < 0 || b > BOARD_SIZE || b < 0)
 	{
+		cout << "Out of range" << endl;
 		return false;
+		
 	}
 	else
 	{
 		return true;
+		cout << "Yes" << endl;
 	}
 }
 

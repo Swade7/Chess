@@ -1,5 +1,7 @@
 #include "King.hpp"
 
+#include"Rook.hpp"
+
 King::King(Player player)
 	: Pieces(PieceType::King, player)
 {
@@ -17,7 +19,7 @@ bool King::checkValidMove(const Move& move, const Chess& chess) const
 	}
 
 	// Get the board
-	const Pieces* const (&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
+	Pieces* const (&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
 
 	// Check if the piece belongs to the current player
 	if (board[move.fromCol][move.fromRow]->getPlayer() != chess.getCurrentPlayer())

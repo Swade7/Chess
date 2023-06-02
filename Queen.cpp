@@ -19,7 +19,7 @@ bool Queen::checkValidMove(const Move& move, const Chess& chess) const
 	}
 
 	// Get the board
-	const Pieces* const (&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
+	Pieces* const (&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
 
 	// Check if the piece belongs to the current player
 	if (board[move.fromCol][move.fromRow]->getPlayer() != chess.getCurrentPlayer())
@@ -60,7 +60,7 @@ bool Queen::checkValidStraightMove(const Move& move, const Chess& chess) const
 	}
 
 	// Get the board
-	const Pieces* const (&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
+	Pieces* const (&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
 
 	// Check if another piece is blocking the path
 	// Checks for vertical movements
@@ -131,7 +131,7 @@ bool Queen::checkValidDiagonalMove(const Move& move, const Chess& chess) const
 	}
 
 	// Get the board
-	const Pieces* const (&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
+	Pieces* const (&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
 
 	// Check for pieces blocking the path
 	if (move.toCol > move.fromCol)

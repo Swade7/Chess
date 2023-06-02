@@ -53,14 +53,14 @@ protected:
 	virtual void movePiece(const Move& move, Chess& chess) = 0;
 
 private:
-	// Vectors for pieces
+/*	// Vectors for pieces
 	static vector<Piece> whitePieces;
 	static vector<Piece> blackPieces;
 
 	// Vectors for captured pieces
-	static vector<Piece> capturedWhitePieces;
-	static vector<Piece> capturedBlackPieces;
-
+	static vector<PieceType> capturedWhitePieces;
+	static vector<PieceType> capturedBlackPieces;
+*/
 	// Store the PieceType and Player
 	PieceType pieceType;
 	Player player;

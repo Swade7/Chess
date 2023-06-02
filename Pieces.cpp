@@ -23,7 +23,7 @@ const Player& Pieces::getPlayer() const
     return player;
 }
 
-void Pieces::addToCapturedPieces(PieceType capturedPiece, Player player)
+/*void Pieces::addToCapturedPieces(PieceType capturedPiece, Player player)
 {
     // White
     if (player == Player::White)
@@ -64,5 +64,5 @@ void Pieces::removeFromPieces(PieceType piece, Player player)
         }
     }
 }
-
+*/
 
