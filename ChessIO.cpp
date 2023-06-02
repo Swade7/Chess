@@ -152,6 +152,7 @@ void chessIO::printInvalidMove(std::ostream& out)
 
 const char chessIO::intToChar(const int& i)
 {
+	/*
 	if (i == 0)
 	{
 		return 'A';
@@ -184,45 +185,13 @@ const char chessIO::intToChar(const int& i)
 	{
 		return 'H';
 	}
+	*/
+	char c = static_cast<char>(i);
+	return('A' + c);
 }
 
 const int chessIO::charToInt(const char& c)
 {
-	/*c = char(toupper(c));
-	if (c == 'A')
-	{
-		cout << "A" << endl;
-		return 0;
-	}
-	else if (c == 'B')
-	{
-		return 1;
-	}
-	else if (c == 'C')
-	{
-		return 2;
-	}
-	else if (c == 'D')
-	{
-		return 3;
-	}
-	else if (c == 'E')
-	{
-		return 4;
-	}
-	else if (c == 'F')
-	{
-		return 5;
-	}
-	else if (c == 'G')
-	{
-		return 6;
-	}
-	else if (c == 'H')
-	{
-		return 7;
-	}
-	*/
 	char upper = toupper(c);
 	return upper - 'A';
 }
@@ -240,8 +209,7 @@ Move chessIO::getMove()
 	cout << endl;
 
 	// TO DO -- Add data validation checks
-	//int intFrom = atoi(charFrom);
-	//int intTo = atoi(std::string(1, charTo[1]).c_str()) - 1;
+
 	Move move;
 	move.fromCol = charToInt(from[0]);
 	move.fromRow = atoi(std::string(1, from[1]).c_str()) - 1;

@@ -133,6 +133,11 @@ const int Chess::getNumMoves() const
 	return moves.size();
 }
 
+Pieces* Chess::getPiece(int col, int row)
+{
+	return board[col][row];
+}
+
 
 
 

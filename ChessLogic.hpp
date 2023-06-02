@@ -46,6 +46,7 @@ public:
 	const vector<Move> getMoves() const;
 	const Move& getLastMove() const;
 	const int getNumMoves() const;
+	Pieces* getPiece(int col, int row);
 
 	// Setters
 	void changeTurn();
