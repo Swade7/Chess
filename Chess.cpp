@@ -13,8 +13,9 @@ int main()
 	{
 		Move move = io.getMove();
 		//chess.(move);
-		chess.addMove(move);
-		status = Status::BlackWin;
+		chess.makeMove(move);
+		//status = Status::BlackWin;
+		io.printBoard(chess);
 
 	}
 	return 0;

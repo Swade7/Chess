@@ -48,8 +48,8 @@ public:
 	static void addToCapturedPieces(PieceType capturedPiece, Player player);
 	static void removeFromPieces(PieceType piece, Player player);
 
-	virtual bool checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE]) const = 0;
-	virtual void movePiece(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE]) = 0;
+	virtual bool checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE], Player currentPlayer, const Move& lastMove) const = 0;
+	virtual void updatePiece() = 0;
 	
 
 private:

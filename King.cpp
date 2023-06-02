@@ -16,7 +16,7 @@ const PieceType& King::getPieceType() const
 	return PieceType::King;
 }
 
-bool King::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE], Player currentPlayer) const
+bool King::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE], Player currentPlayer, const Move& lastMove) const
 {
 	// Check if the move is out of bounds
 	if (move.toRow > BOARD_SIZE - 1 || move.toRow < 0 || move.toCol > BOARD_SIZE - 1 || move.toCol < 0)
@@ -123,12 +123,9 @@ bool King::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE
 	}
 }
 
-void King::movePiece(const Move& move, Chess& chess)
+void King::updatePiece()
 {
-	if (checkValidMove(move, chess))
-	{
-		chess.updateBoard(move);
-	}
+
 	// Need to also move the rook if castling
 	// Set the hasMoved variable to true
 	hasMoved = true;

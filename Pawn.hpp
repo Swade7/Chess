@@ -16,7 +16,7 @@ public:
 
 private:
 	// Overridden functions
-	bool checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE]) const override;
-	void movePiece(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE]) override;
+	bool checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE], Player currentPlayer, const Move& lastMove) const override;
+	void updatePiece() override;
 
 };

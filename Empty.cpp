@@ -14,12 +14,9 @@ const PieceType& Empty::getPieceType() const
 	return PieceType::Empty;
 }
 
-bool Empty::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE], Player currentPlayer) const
+bool Empty::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE], Player currentPlayer, const Move& lastMove) const
 {
 	return false;
 }
 
-void Empty::movePiece(const Move& move, Chess& chess)
-{
-	// Add output telling user that the location is empty
-}
+void Empty::updatePiece() {};

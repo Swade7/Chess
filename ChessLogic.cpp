@@ -106,13 +106,13 @@ void Chess::makeMove(const Move& move)
 	Pieces* piece = getPiece(move.fromCol, move.fromRow);
 	PieceType pieceType = piece->getPieceType();
 
-	if (piece->checkValidMove(move, board))
+	if (piece->checkValidMove(move, board, currentPlayer, getLastMove()))
 	{
-		piece->movePiece(move, board);
+		updateBoard(move);
+		piece->updatePiece();
 		moves.push_back(move);
-	}
-	
-	
+		changeTurn();
+	}		
 }
 
 // Getters
@@ -134,7 +134,15 @@ const vector<Move> Chess::getMoves() const
 
 const Move& Chess::getLastMove() const
 {
-	return moves.at(moves.size() - 1);
+	if (moveCount > 0)
+	{
+		return moves.at(moves.size() - 1);
+	}
+	else
+	{
+		Move temp = { -1, -1, -1, -1 };
+		return temp;
+	}
 }
 
 const int Chess::getNumMoves() const

@@ -11,7 +11,7 @@ Rook::Rook(Player player)
 // Destructor
 Rook::~Rook() = default;
 
-bool Rook::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE], Player currentPlayer) const
+bool Rook::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE], Player currentPlayer, const Move& lastMove) const
 {
 	// Check if the move is out of bounds
 	if (move.toRow > BOARD_SIZE - 1 || move.toRow < 0 || move.toCol > BOARD_SIZE - 1 || move.toCol < 0)
@@ -114,9 +114,8 @@ bool Rook::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE
 	return true;
 }
 
-void Rook::updatePiece(const Move& move, Chess& chess)
+void Rook::updatePiece()
 {
-	// set hasMoved to true
 	hasMoved = true;
 }
 
