@@ -48,9 +48,9 @@ public:
 	static void addToCapturedPieces(PieceType capturedPiece, Player player);
 	static void removeFromPieces(PieceType piece, Player player);
 
-protected:
-	virtual bool checkValidMove(const Move& move, const Chess& chess) const = 0;
-	virtual void movePiece(const Move& move, Chess& chess) = 0;
+	virtual bool checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE]) const = 0;
+	virtual void movePiece(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE]) = 0;
+	
 
 private:
 /*	// Vectors for pieces

@@ -14,7 +14,7 @@ const PieceType& Empty::getPieceType() const
 	return PieceType::Empty;
 }
 
-bool Empty::checkValidMove(const Move& move, const Chess& chess) const
+bool Empty::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE], Player currentPlayer) const
 {
 	return false;
 }

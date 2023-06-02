@@ -16,8 +16,8 @@ public:
 	const PieceType& getPieceType() const override;
 
 	// Overriden functions
-	bool checkValidMove(const Move& move, const Chess& chess) const override;
-	void movePiece(const Move& move, Chess& chess) override;
+	bool checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE]) const override;
+	void movePiece(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE]) override;
 
 	
 

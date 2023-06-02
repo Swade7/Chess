@@ -15,7 +15,7 @@ const PieceType& Pawn::getPieceType() const
 	return PieceType::Pawn;
 }
 
-bool Pawn::checkValidMove(const Move& move, const Chess& chess) const 
+bool Pawn::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE], Player currentPlayer) const
 {
 	// Check if the move is out of bounds
 	if (move.toRow > BOARD_SIZE - 1 || move.toRow < 0 || move.toCol > BOARD_SIZE - 1 || move.toCol < 0)

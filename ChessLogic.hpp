@@ -51,7 +51,7 @@ public:
 	// Setters
 	void changeTurn();
 	void updateBoard(const Move& move);
-	void addMove(const Move& move);
+	void makeMove(const Move& move);
 
 	// Checks for check/checkmate/stalemate
 	bool checkmate();

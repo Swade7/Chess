@@ -101,9 +101,18 @@ void Chess::updateBoard(const Move& move)
 	board[move.fromCol][move.fromRow] = new Empty();
 }
 
-void Chess::addMove(const Move& move)
+void Chess::makeMove(const Move& move)
 {
-	moves.push_back(move);
+	Pieces* piece = getPiece(move.fromCol, move.fromRow);
+	PieceType pieceType = piece->getPieceType();
+
+	if (piece->checkValidMove(move, board))
+	{
+		piece->movePiece(move, board);
+		moves.push_back(move);
+	}
+	
+	
 }
 
 // Getters
