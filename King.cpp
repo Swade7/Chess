@@ -10,6 +10,12 @@ King::King(Player player)
 
 King::~King() = default;
 
+// Getters
+const PieceType& King::getPieceType() const
+{
+	return PieceType::King;
+}
+
 bool King::checkValidMove(const Move& move, const Chess& chess) const
 {
 	// Check if the move is out of bounds

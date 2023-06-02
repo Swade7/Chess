@@ -10,6 +10,12 @@ Queen::Queen(Player player)
 // Destructor
 Queen::~Queen() = default;
 
+// Getters
+const PieceType& Queen::getPieceType() const
+{
+	return PieceType::Queen;
+}
+
 bool Queen::checkValidMove(const Move& move, const Chess& chess) const
 {
 	// Check if the move is out of bounds

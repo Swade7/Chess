@@ -129,3 +129,8 @@ const bool Rook::getHasMoved() const
 {
 	return hasMoved;
 }
+
+const PieceType& Rook::getPieceType() const
+{
+	return PieceType::Rook;
+}

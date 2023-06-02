@@ -41,7 +41,7 @@ public:
 	virtual ~Pieces();
 
 	// Getters
-	const PieceType& getPieceType() const;
+	virtual const PieceType& getPieceType() const = 0;
 	const Player& getPlayer() const;
 
 	// Setters

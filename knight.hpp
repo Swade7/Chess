@@ -11,6 +11,9 @@ public:
 	// Destructor
 	~Knight() override;
 
+	// Getters
+	const PieceType& getPieceType() const override;
+
 	bool checkValidMove(const Move& move, const Chess& chess) const override;
 	void movePiece(const Move& move, Chess& chess) override;
 };

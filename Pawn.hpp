@@ -11,6 +11,9 @@ public:
 	// Destructor
 	~Pawn() override;
 
+	// Getters
+	const PieceType& getPieceType() const override;
+
 private:
 	// Overridden functions
 	bool checkValidMove(const Move& move, const Chess& chess) const override;

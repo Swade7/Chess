@@ -9,6 +9,12 @@ Bishop::Bishop(Player player)
 // Destructor
 Bishop::~Bishop() = default;
 
+// Getters
+const PieceType& Bishop::getPieceType() const
+{
+	return PieceType::Bishop;
+}
+
 bool Bishop::checkValidMove(const Move& move, const Chess& chess) const
 {
 	// Check if the move is out of bounds

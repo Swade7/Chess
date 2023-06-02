@@ -10,6 +10,12 @@ Knight::Knight(Player player)
 // Destructor
 Knight::~Knight() = default;
 
+// Getters
+const PieceType& Knight::getPieceType() const
+{
+	return PieceType::Knight;
+}
+
 bool Knight::checkValidMove(const Move& move, const Chess& chess) const
 {
 	// Check if the move is out of bounds

@@ -9,6 +9,11 @@ Pawn::Pawn(Player player)
 
 Pawn::~Pawn() = default;
 
+// getters
+const PieceType& Pawn::getPieceType() const
+{
+	return PieceType::Pawn;
+}
 
 bool Pawn::checkValidMove(const Move& move, const Chess& chess) const 
 {

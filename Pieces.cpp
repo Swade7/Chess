@@ -10,14 +10,6 @@ Pieces::~Pieces()
 {
 }
 
-
-
-
-const PieceType& Pieces::getPieceType() const
-{
-    return pieceType;
-}
-
 const Player& Pieces::getPlayer() const
 {
     return player;

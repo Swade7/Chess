@@ -8,6 +8,12 @@ Empty::Empty()
 // Destructor
 Empty::~Empty() = default;
 
+// Getters
+const PieceType& Empty::getPieceType() const
+{
+	return PieceType::Empty;
+}
+
 bool Empty::checkValidMove(const Move& move, const Chess& chess) const
 {
 	return false;
