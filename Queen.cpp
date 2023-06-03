@@ -3,9 +3,7 @@
 
 // Constructor
 Queen::Queen(Player player)
-	: Pieces(PieceType::Queen, player)
-{
-}
+	: Pieces(PieceType::Queen, player){}
 
 // Destructor
 Queen::~Queen() = default;
@@ -23,9 +21,6 @@ bool Queen::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZ
 	{
 		return false;
 	}
-
-	// Get the board
-	//Pieces* const (&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
 
 	// Check if the piece belongs to the current player
 	if (board[move.fromCol][move.fromRow]->getPlayer() != currentPlayer)
@@ -74,9 +69,6 @@ bool Queen::checkValidStraightMove(const Move& move, Pieces* board[BOARD_SIZE][B
 	{
 		dir = 'h';
 	}
-
-	// Get the board
-	//Pieces* const (&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
 
 	// Check if another piece is blocking the path
 	// Checks for vertical movements
