@@ -6,9 +6,7 @@ Pieces::Pieces(PieceType pieceType, Player player)
     this->player = player;
 }
 
-Pieces::~Pieces()
-{
-}
+Pieces::~Pieces(){}
 
 const Player& Pieces::getPlayer() const
 {

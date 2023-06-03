@@ -21,6 +21,8 @@ public:
 	void printInvalidMove(std::ostream& out);
 	const char intToChar(const int& i);
 	const int charToInt(const char& c);
-	Move getMove();
 	bool inRange(int a, int b);
+
+	// Getters
+	Move getMove();
 };

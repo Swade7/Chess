@@ -3,9 +3,7 @@
 
 // Constructor
 Knight::Knight(Player player)
-	: Pieces(PieceType::Knight, player)
-{
-}
+	: Pieces(PieceType::Knight, player){}
 
 // Destructor
 Knight::~Knight() = default;
@@ -23,9 +21,6 @@ bool Knight::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SI
 	{
 		return false;
 	}
-
-	// Get the board
-	//Pieces* const (&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
 
 	// Check if the piece belongs to the current player
 	if (board[move.fromCol][move.fromRow]->getPlayer() != currentPlayer)

@@ -18,7 +18,7 @@ public:
 	void updatePiece() override;
 
 private:
-	bool checkValidStraightMove(const Move& move, const Chess& chess) const;
-	bool checkValidDiagonalMove(const Move& move, const Chess& chess) const;
+	bool checkValidStraightMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE]) const;
+	bool checkValidDiagonalMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE]) const;
 	
 };

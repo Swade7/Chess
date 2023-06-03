@@ -24,9 +24,6 @@ bool King::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE
 		return false;
 	}
 
-	// Get the board
-	//Pieces* const (&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
-
 	// Check if the piece belongs to the current player
 	if (board[move.fromCol][move.fromRow]->getPlayer() != currentPlayer)
 	{

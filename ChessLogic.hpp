@@ -78,6 +78,4 @@ private:
 
 	// Keep track of the moves
 	vector<Move> moves;
-
-
 };

@@ -3,8 +3,6 @@
 #include"ChessLogic.hpp"
 
 
-
-
 enum class PieceType : char
 {
 	Empty = '+',

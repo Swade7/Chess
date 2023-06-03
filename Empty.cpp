@@ -2,8 +2,7 @@
 
 // Constructor
 Empty::Empty()
-	: Pieces(PieceType::Empty, Player::None)
-{}
+	: Pieces(PieceType::Empty, Player::None){}
 
 // Destructor
 Empty::~Empty() = default;

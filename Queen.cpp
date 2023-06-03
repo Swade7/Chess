@@ -44,9 +44,19 @@ bool Queen::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZ
 	{
 		return false;
 	}
+
+	// Call checkValidStraightMove() and checkValidDiagonalMove 
+	if (checkValidStraightMove(move, board) || checkValidDiagonalMove(move, board))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
-bool Queen::checkValidStraightMove(const Move& move, const Chess& chess) const
+bool Queen::checkValidStraightMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE]) const
 {
 	// Check if trying to move diagonally
 	if (move.toCol != move.fromCol && move.toRow != move.fromRow)
@@ -66,7 +76,7 @@ bool Queen::checkValidStraightMove(const Move& move, const Chess& chess) const
 	}
 
 	// Get the board
-	Pieces* const (&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
+	//Pieces* const (&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
 
 	// Check if another piece is blocking the path
 	// Checks for vertical movements
@@ -126,7 +136,7 @@ bool Queen::checkValidStraightMove(const Move& move, const Chess& chess) const
 	return true;
 }
 
-bool Queen::checkValidDiagonalMove(const Move& move, const Chess& chess) const
+bool Queen::checkValidDiagonalMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE]) const
 {
 	int rowDifference = std::abs(move.toRow - move.fromRow);
 	int colDifference = std::abs(move.toCol - move.fromCol);
@@ -135,9 +145,6 @@ bool Queen::checkValidDiagonalMove(const Move& move, const Chess& chess) const
 	{
 		return false;
 	}
-
-	// Get the board
-	Pieces* const (&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
 
 	// Check for pieces blocking the path
 	if (move.toCol > move.fromCol)

@@ -123,8 +123,7 @@ void chessIO::printBoard(const Chess& chess)
 		if (row < 7)
 		{
 			cout << endl << endl;
-		}
-		
+		}		
 	}
 	cout << endl << " ";
 	for (int col = 0; col < BOARD_SIZE * 4 + 1; col++)
@@ -152,40 +151,6 @@ void chessIO::printInvalidMove(std::ostream& out)
 
 const char chessIO::intToChar(const int& i)
 {
-	/*
-	if (i == 0)
-	{
-		return 'A';
-	}
-	else if (i == 1)
-	{
-		return 'B';
-	}
-	else if (i == 2)
-	{
-		return 'C';
-	}
-	else if (i == 3)
-	{
-		return 'D';
-	}
-	else if (i == 4)
-	{
-		return 'E';
-	}
-	else if (i == 5)
-	{
-		return 'F';
-	}
-	else if (i == 6)
-	{
-		return 'G';
-	}
-	else if (i == 7)
-	{
-		return 'H';
-	}
-	*/
 	char c = static_cast<char>(i);
 	return('A' + c);
 }
@@ -225,7 +190,6 @@ Move chessIO::getMove()
 	else
 	{
 		// Print invalid input
-		//getMove();
 		cout << "Error";
 	}
 }
@@ -235,14 +199,10 @@ bool chessIO::inRange(int a, int b)
 	if (a > BOARD_SIZE || a < 0 || b > BOARD_SIZE || b < 0)
 	{
 		cout << "Out of range" << endl;
-		return false;
-		
+		return false;		
 	}
 	else
 	{
 		return true;
-		cout << "Yes" << endl;
 	}
 }
-
-

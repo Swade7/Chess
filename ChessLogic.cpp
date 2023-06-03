@@ -1,6 +1,4 @@
 #include "ChessLogic.hpp"
-
-/*#include "Pieces.hpp"*/
 #include "Pawn.hpp"
 #include "King.hpp"
 #include "Queen.hpp"
@@ -59,16 +57,11 @@ void Chess::initializeBoard()
 		}
 	}
 	
-
 	// Set the current player to white
 	currentPlayer = Player::White;
 }
 
-
-
 // Setters
-
-
 void Chess::changeTurn()
 {
 	if (currentPlayer == Player::White)
@@ -116,7 +109,6 @@ void Chess::makeMove(const Move& move)
 }
 
 // Getters
-
 const Player& Chess::getCurrentPlayer() const
 {
 	return currentPlayer;
@@ -154,7 +146,3 @@ Pieces* Chess::getPiece(int col, int row)
 {
 	return board[col][row];
 }
-
-
-
-

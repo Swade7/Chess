@@ -2,9 +2,7 @@
 
 // Constructor
 Bishop::Bishop(Player player)
-	: Pieces(PieceType::Bishop, player)
-{
-}
+	: Pieces(PieceType::Bishop, player){}
 
 // Destructor
 Bishop::~Bishop() = default;
@@ -22,9 +20,6 @@ bool Bishop::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SI
 	{
 		return false;
 	}
-
-	// Get the board
-	//Pieces* const (&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
 
 	// Check if the piece belongs to the current player
 	if (board[move.fromCol][move.fromRow]->getPlayer() != currentPlayer)

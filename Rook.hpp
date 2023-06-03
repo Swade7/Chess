@@ -19,8 +19,6 @@ public:
 	bool checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE], Player currentPlayer, const Move& lastMove) const override;
 	void updatePiece() override;
 
-	
-
 private:
 	bool hasMoved;
 };

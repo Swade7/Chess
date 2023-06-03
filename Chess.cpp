@@ -12,9 +12,7 @@ int main()
 	while (status == Status::Active)
 	{
 		Move move = io.getMove();
-		//chess.(move);
 		chess.makeMove(move);
-		//status = Status::BlackWin;
 		io.printBoard(chess);
 
 	}
