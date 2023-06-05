@@ -120,16 +120,8 @@ bool Pawn::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE
 				return false;				
 			}
 		}
-		/*
-		// Check for en passant capturing
-		if (board[move.toCol][move.toRow]->getPlayer() != Player::Black)
-		{
-			if (move.fromRow != 4 || (board[move.toCol][move.fromRow]->getPieceType() != PieceType::Pawn && board[move.toCol][move.fromRow]->getPlayer() != Player::Black))
-				return false;
-		}
-		*/
 	}
-
+	
 	// Check if the location is already occupied if not capturing
 	else if (board[move.toCol][move.toRow]->getPlayer() != Player::None)
 	{
@@ -141,63 +133,6 @@ bool Pawn::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE
 	{
 		return false;
 	}
-
-
-	/*
-	else if (currentPlayer == Player::Black)
-	{
-		// Allow movements of 1 or 2 places if the pawn has not been moved yet, else, only allow 1
-		if (move.fromRow == 6)
-		{
-			maxDistance = -2;
-		}
-		else
-		{
-			maxDistance = -1;
-		}
-
-		// Check if the location is invalid
-		if ((move.toRow >= move.fromRow) || (maxDistance < (move.toRow - move.fromRow)))
-		{
-
-			return false;
-		}
-
-		// Only allow horizontal moves if capturing
-		if (move.toCol != move.fromCol)
-		{
-			if (board[move.toCol][move.toRow]->getPlayer() != Player::White)
-			{
-				// Check for en passant
-				if (board[move.toCol][move.toRow]->getPieceType() != PieceType::Pawn)
-				{
-					return false;
-				}
-				else
-				{
-					if (lastMove.fromCol != move.toCol || lastMove.fromRow != move.toRow - 1 || lastMove.toCol != move.toCol || lastMove.toRow != move.fromRow)
-					{
-						return false;
-					}
-				}
-			}
-		}
-
-		// If not capturing, make sure the location is empty
-		else if (board[move.toCol][move.toRow]->getPlayer() != Player::None && move.toCol == move.fromCol)
-		{
-			return false;
-		}
-
-		// If moving two places, make sure the piece is not moving through another piece
-		else if (move.fromRow - move.toRow == 2 && board[move.toRow + 1][move.toCol]->getPlayer() != Player::None)
-		{
-			return false;
-		}
-
-		return true;
-	}
-	*/
 	return true;
 }
 
