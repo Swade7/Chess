@@ -54,7 +54,7 @@ bool Pawn::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE
 	if (currentPlayer == Player::White)
 	{
 		// If the player has not moved the pawn yet, allow them to move one or two places, else, allow them to move it only one place
-		if (move.fromRow == 2)
+		if (move.fromRow == 1)
 		{
 			maxDistance = 2;
 		}
