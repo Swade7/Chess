@@ -113,27 +113,33 @@ bool Pawn::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE
 				std::cout << "First check";
 				return false;
 			}
-			std::cout << lastMove.fromCol << ", " << lastMove.fromRow << ", " << lastMove.toCol << ", " << lastMove.toRow << std::endl;
+			
 			if (lastMove.fromCol != move.toCol)
 			{
 				std::cout << "One";
-				if (lastMove.toRow != move.toRow - dir)
-				{
-					std::cout << "Two";
-				}
-				if (lastMove.toCol != move.toCol)
-				{
-					std::cout << "Three";
-					if (lastMove.toRow != move.fromRow)
-					{
-						std::cout << "Four";
-					}
-				}
+				return false;
 			}
+			if (lastMove.toRow != move.toRow - dir)
 			{
+				std::cout << "Two";
+				return false;
+			}
+			if (lastMove.toCol != move.toCol)
+			{
+				std::cout << "Three";
+				return false;
+			}
+			if (lastMove.toRow != move.fromRow)
+			{
+				std::cout << "Four";
+				return false;
+			}
+				
+			if ()
+			/* {
 				std::cout << "Second check";
 				return false;				
-			}
+			}*/
 		}
 		/*
 		// Check for en passant capturing

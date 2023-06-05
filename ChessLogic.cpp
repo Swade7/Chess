@@ -105,6 +105,9 @@ void Chess::makeMove(const Move& move)
 		piece->updatePiece();
 		moves.push_back(move);
 		changeTurn();
+
+		Move lastMove = getLastMove();
+		std::cout << lastMove.fromCol << ", " << lastMove.fromRow << ", " << lastMove.toCol << ", " << lastMove.toRow << std::endl;
 	}		
 }
 
@@ -126,7 +129,7 @@ const vector<Move> Chess::getMoves() const
 
 const Move& Chess::getLastMove() const
 {
-	if (moveCount > 0)
+	if (getNumMoves() > 0)
 	{
 		return moves.at(moves.size() - 1);
 	}
