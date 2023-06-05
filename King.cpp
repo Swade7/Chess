@@ -115,9 +115,8 @@ bool King::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE
 		{
 			return false;
 		}
-
-		return true;
 	}
+	return true;
 }
 
 void King::updatePiece()
