@@ -12,7 +12,12 @@ const PieceType& Bishop::getPieceType() const
 {
 	return PieceType::Bishop;
 }
-
+/*
+const Player& Bishop::getPlayer() const
+{
+	// TODO: insert return statement here
+}
+*/
 bool Bishop::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE], Player currentPlayer, const Move& lastMove) const
 {
 	// Check if the move is out of bounds

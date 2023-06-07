@@ -92,6 +92,12 @@ void Chess::updateBoard(const Move& move)
 
 	// Create an empty piece where the piece used to be
 	board[move.fromCol][move.fromRow] = new Empty();
+	if (board[move.fromCol][move.fromRow]->getPlayer() == Player::White)
+	{
+		std::cout << "Piece is still white" << std::endl;
+	}
+	if (board[move.fromCol][move.fromRow]->getPieceType() != PieceType::Empty)
+		std::cout << "The PieceType is not empty" << std::endl;
 }
 
 void Chess::makeMove(const Move& move)

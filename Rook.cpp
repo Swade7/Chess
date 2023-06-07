@@ -58,13 +58,18 @@ bool Rook::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE
 	// Checks for vertical movements
 	if (dir == 'v')
 	{
-		// Right
+		// Up
 		if (move.toRow > move.fromRow)
 		{
-			for (int i = move.fromRow; i < move.toRow; i++)
+			for (int i = move.fromRow + 1; i < move.toRow; i++)
 			{
 				if (board[i][move.fromCol]->getPlayer() != Player::None)
 				{
+					std::cout << i << ", " << move.fromCol << " is occupied by ";
+					if (board[i][move.fromCol]->getPlayer() == Player::White)
+						std::cout << "White" << std::endl;
+					if (board[i][move.fromCol]->getPlayer() == Player::Black)
+						std::cout << "Black" << std::endl;
 					return false;
 				}
 			}
@@ -72,7 +77,7 @@ bool Rook::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE
 		// Left
 		else if (move.toRow < move.fromRow)
 		{
-			for (int i = move.toRow; i < move.fromRow; i++)
+			for (int i = move.toRow + 1; i < move.fromRow; i++)
 			{
 				if (board[i][move.fromCol]->getPlayer() != Player::None)
 				{
@@ -87,7 +92,7 @@ bool Rook::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE
 		// Right
 		if (move.toCol > move.fromCol)
 		{
-			for (int i = move.fromCol; i < move.toCol; i++)
+			for (int i = move.fromCol + 1; i < move.toCol; i++)
 			{
 				if (board[move.fromRow][i]->getPlayer() != Player::None)
 				{
@@ -98,7 +103,7 @@ bool Rook::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE
 		// Left
 		else if (move.toCol < move.fromCol)
 		{
-			for (int i = move.toCol; i < move.fromCol; i++)
+			for (int i = move.toCol + 1; i < move.fromCol; i++)
 			{
 				if (board[move.fromRow][i]->getPlayer() != Player::None)
 				{

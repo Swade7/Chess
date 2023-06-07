@@ -52,11 +52,13 @@ std::ostream& operator<<(std::ostream& out, PieceType const& pieceType)
 
 void chessIO::printBoard(const Chess& chess)
 {
-	Player currentPlayer = chess.getCurrentPlayer();
+	const Player currentPlayer = chess.getCurrentPlayer();
 	cout << currentPlayer << "'s turn";
-	cout << endl << " ";
+	cout << endl;
+	cout << "  A   B   C   D   E   F   G   H" << endl;
+	cout << "   ";
 
-	for (int col = 0; col < BOARD_SIZE * 4 + 1; col++)
+	for (int col = 0; col < BOARD_SIZE * 4; col++)
 	{
 		cout << "_";
 	}
@@ -67,6 +69,7 @@ void chessIO::printBoard(const Chess& chess)
 
 	for (int row = 0; row < BOARD_SIZE; row++)
 	{
+		cout << row + 1 << " ";
 		cout << "| ";
 		for (int col = 0; col < BOARD_SIZE; col++)
 		{	
@@ -117,7 +120,10 @@ void chessIO::printBoard(const Chess& chess)
 				cout << "K ";
 			}
 			
-			cout << " ";
+			if (col < BOARD_SIZE - 1)
+			{
+				cout << " ";
+			}
 		}
 		cout << "|";
 		if (row < 7)
@@ -125,8 +131,8 @@ void chessIO::printBoard(const Chess& chess)
 			cout << endl << endl;
 		}		
 	}
-	cout << endl << " ";
-	for (int col = 0; col < BOARD_SIZE * 4 + 1; col++)
+	cout << endl << "   ";
+	for (int col = 0; col < BOARD_SIZE * 4; col++)
 	{
 		cout << "-";
 	}
