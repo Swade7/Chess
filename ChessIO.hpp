@@ -29,7 +29,10 @@ public:
 
 	// Getters
 	static Move getMove();
+	static char saveChoice();
 
 	// Setters
 	static void saveGame(const Chess& chess, std::string& file);
+	static std::string createSaveName();
+	static std::string getExistingSaveName();
 };

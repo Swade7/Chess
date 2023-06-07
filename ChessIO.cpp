@@ -55,7 +55,7 @@ void chessIO::printBoard(const Chess& chess)
 	const Player currentPlayer = chess.getCurrentPlayer();
 	cout << currentPlayer << "'s turn";
 	cout << endl;
-	cout << "  A   B   C   D   E   F   G   H" << endl;
+	cout << "    A   B   C   D   E   F   G   H" << endl;
 	cout << "   ";
 
 	for (int col = 0; col < BOARD_SIZE * 4; col++)
@@ -158,16 +158,19 @@ int chessIO::startMenu()
 	cout << "Enter 2 to load a previously saved game." << endl;
 	cout << "Enter your choice here: ";
 	cin >> choice;
+	cout << endl;
 
 	// Only accept 1 or 2
-	while (choice != 1 || choice != 2)
+	while (choice < 1 || choice > 2)
 	{
 		cout << "Invalid input." << endl;
 		cout << "Enter 1 to start a new game." << endl;
 		cout << "Enter 2 to load a previously saved game." << endl;
 		cout << "Enter your choice here: ";
 		cin >> choice;
+		cout << endl;
 	}
+
 	return choice;
 }
 
@@ -200,7 +203,6 @@ Move chessIO::getMove()
 	cin.getline(to, 3);
 	cout << endl;
 
-	// TO DO -- Add data validation checks
 
 	Move move;
 	move.fromCol = charToInt(from[0]);
@@ -210,15 +212,61 @@ Move chessIO::getMove()
 
 	cout << move.fromCol  << " " << move.fromRow << " " << move.toCol << " " << move.toRow << " " << endl;
 
-	if (inRange(move.fromCol, move.fromRow) && inRange(move.toCol, move.toRow))
+	// Validation checks
+	bool isValid = false;
+	while (!isValid)
 	{
-		return move;
+		if (inRange(move.fromCol, move.fromRow) && inRange(move.toCol, move.toRow))
+		{
+			isValid = true;
+			return move;
+		}
+		else
+		{
+			// Print invalid input and call the function again
+			cout << "Invalid input." << endl;
+			cout << "Enter the piece you would like to move: ";
+			cin.getline(from, 3);
+			cout << endl;
+			cout << "Enter the destination location: ";
+			cin.getline(to, 3);
+			cout << endl;
+
+			move.fromCol = charToInt(from[0]);
+			move.fromRow = atoi(std::string(1, from[1]).c_str()) - 1;
+			move.toCol = charToInt(to[0]);
+			move.toRow = atoi(std::string(1, to[1]).c_str()) - 1;
+		}
 	}
-	else
+	
+}
+
+char chessIO::saveChoice()
+{
+	char choice;
+	cout << "Would you like to create a new save (Y/N)? ";
+
+	// Loop until valid input
+	bool validChoice = false;
+	while (!validChoice)
 	{
-		// Print invalid input
-		cout << "Error";
+		// Get the choice from the user
+		cin >> choice;
+		choice = toupper(choice);
+		if (choice == 'Y' || choice == 'N')
+		{
+			validChoice = true;
+		}
+		else
+		{
+			validChoice = false;
+			cout << endl;
+			cout << "Invalid input. Enter Y to create a new save, or N to play without saving: ";
+		}
 	}
+	
+	cout << endl;
+	return choice;
 }
 
 
@@ -260,4 +308,30 @@ void chessIO::saveGame(const Chess& chess, std::string& fileName)
 	{
 		cout << "Fail" << endl;
 	}
+}
+
+std::string chessIO::createSaveName()
+{
+	std::string saveName;
+	
+	// Get the name of the file from the user
+	cout << "Enter the name of the new save to create: ";
+	cin >> saveName;
+	cout << endl;
+
+	return saveName + ".txt";
+}
+
+std::string chessIO::getExistingSaveName()
+{
+	std::string saveName;
+	cout << "Enter the name of the save you would like to load. Enter 'Cancel' to return: ";
+	// Maybe find a way to print the existing files
+	cin >> saveName;
+	if ((saveName) == "Cancel")
+	{
+		return saveName;
+	}
+
+	return saveName + ".txt";
 }
