@@ -18,13 +18,18 @@ public:
 	friend std::ostream& operator << (std::ostream& out, PieceType const& pieceType);
 
 	static void printBoard(const Chess& chess);
-	void printMove(const Chess& chess, const Move& move);
-	void printInvalidMove(std::ostream& out);
-	const char intToChar(const int& i);
-	const int charToInt(const char& c);
-	bool inRange(int a, int b);
-	void saveGame(const Chess& chess, std::string& file);
+	static void printMove(const Chess& chess, const Move& move);
+	static int startMenu();
+	static void printInvalidMove(std::ostream& out);
+
+
+	static const char intToChar(const int& i);
+	static const int charToInt(const char& c);
+	static bool inRange(int a, int b);
 
 	// Getters
-	Move getMove();
+	static Move getMove();
+
+	// Setters
+	static void saveGame(const Chess& chess, std::string& file);
 };

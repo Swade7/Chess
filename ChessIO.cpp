@@ -150,6 +150,27 @@ void chessIO::printMove(const Chess& chess, const Move& move)
 	cout << player << " Moved their " << board[move.toCol][move.toRow]->getPieceType() << " from "  << intToChar(move.fromCol) << move.fromRow << " to " << intToChar(move.toCol) << move.toRow << endl;
 }
 
+int chessIO::startMenu()
+{
+	int choice = 0;
+	cout << "Welcome to Chess!" << endl;
+	cout << "Enter 1 to start a new game." << endl;
+	cout << "Enter 2 to load a previously saved game." << endl;
+	cout << "Enter your choice here: ";
+	cin >> choice;
+
+	// Only accept 1 or 2
+	while (choice != 1 || choice != 2)
+	{
+		cout << "Invalid input." << endl;
+		cout << "Enter 1 to start a new game." << endl;
+		cout << "Enter 2 to load a previously saved game." << endl;
+		cout << "Enter your choice here: ";
+		cin >> choice;
+	}
+	return choice;
+}
+
 void chessIO::printInvalidMove(std::ostream& out)
 {
 	out << "Invalid move" << endl;
@@ -199,6 +220,7 @@ Move chessIO::getMove()
 		cout << "Error";
 	}
 }
+
 
 bool chessIO::inRange(int a, int b)
 {

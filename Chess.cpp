@@ -1,6 +1,19 @@
 //#include "Pieces.hpp"
 #include "ChessIO.hpp"
+Status playChess()
+{
+	// Set the status to active
+	Status status = Status::Active;
 
+	// Create a Chess object
+	Chess chess;
+
+	// 1 to start a new game, 2 to load an existing game
+	int choice = chessIO::startMenu();
+
+	if ()
+
+}
 int main()
 {
 	Chess chess;
