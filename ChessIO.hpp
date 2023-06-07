@@ -3,6 +3,7 @@
 #include "Pieces.hpp"
 #include<iostream>
 #include <ostream>
+#include<fstream>
 using std::cout;
 using std::cin;
 using std::endl;
@@ -22,6 +23,7 @@ public:
 	const char intToChar(const int& i);
 	const int charToInt(const char& c);
 	bool inRange(int a, int b);
+	void saveGame(const Chess& chess, std::string& file);
 
 	// Getters
 	Move getMove();

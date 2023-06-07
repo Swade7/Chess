@@ -63,7 +63,7 @@ bool Rook::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE
 		{
 			for (int i = move.fromRow + 1; i < move.toRow; i++)
 			{
-				if (board[i][move.fromCol]->getPlayer() != Player::None)
+				if (board[i][move.fromCol]->getPlayer() != Player::None && board[i][move.fromCol]->getPieceType() != PieceType::Empty)
 				{
 					std::cout << i << ", " << move.fromCol << " is occupied by ";
 					if (board[i][move.fromCol]->getPlayer() == Player::White)

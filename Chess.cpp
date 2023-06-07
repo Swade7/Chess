@@ -9,12 +9,15 @@ int main()
 
 	Status status = Status::Active;
 
-	while (status == Status::Active)
+	int counter = 0;
+	while (counter < 5)
 	{
 		Move move = io.getMove();
 		chess.makeMove(move);
 		io.printBoard(chess);
-
+		counter++;
 	}
+	std::string save = "save.txt";
+	io.saveGame(chess, save);
 	return 0;
 }

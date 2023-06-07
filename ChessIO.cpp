@@ -212,3 +212,30 @@ bool chessIO::inRange(int a, int b)
 		return true;
 	}
 }
+
+void chessIO::saveGame(const Chess& chess, std::string& fileName)
+{
+	// Create the file
+	std::ofstream file(fileName);
+
+	// Get the moves
+	const vector<Move> moves = chess.getMoves();
+
+	if (file.is_open())
+	{
+		for (int i = 0; i < moves.size(); i++)
+		{
+			file << moves.at(i).fromCol << moves.at(i).fromRow << moves.at(i).toCol << moves.at(i).toRow;
+		}
+		file << endl;
+
+		// Close the file
+		file.close();
+
+		cout << "Success" << endl;
+	}
+	else
+	{
+		cout << "Fail" << endl;
+	}
+}
