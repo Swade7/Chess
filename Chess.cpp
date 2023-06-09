@@ -23,7 +23,11 @@ Status playChess()
 		if (saveChoice == 'Y')
 		{
 			saveName = chessIO::createSaveName();
-		}		
+		}
+		else
+		{
+			saveName = "CANCEL";
+		}
 	}
 
 	// Load a save file
@@ -42,7 +46,6 @@ Status playChess()
 		{
 			playChess();
 		}	
-
 	}
 
 	while (status == Status::Active)
@@ -52,26 +55,19 @@ Status playChess()
 
 		// Get and make the move
 		chess.makeMove(chessIO::getMove());
+
+		// Save the game if the user chose to saave it
+		if (saveName != "CANCEL")
+		{
+			chessIO::saveGame(chess.getMoves(), saveName);
+		}
+		
 	}
+	return status;
 
 }
 int main()
 {
-	Chess chess;
-	chessIO io;
-	io.printBoard(chess);
-
-	Status status = Status::Active;
-
-	int counter = 0;
-	while (counter < 5)
-	{
-		Move move = io.getMove();
-		chess.makeMove(move);
-		io.printBoard(chess);
-		counter++;
-	}
-	std::string save = "save.txt";
-	io.saveGame(chess, save);
+	playChess();
 	return 0;
 }

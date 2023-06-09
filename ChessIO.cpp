@@ -287,13 +287,13 @@ bool chessIO::fileExists(std::string file)
 	return std::filesystem::exists(file);
 }
 
-void chessIO::saveGame(const Chess& chess, std::string& fileName)
+void chessIO::saveGame(const vector<Move> moves, std::string& fileName)
 {
 	// Create the file
 	std::ofstream file(fileName);
 
 	// Get the moves
-	const vector<Move> moves = chess.getMoves();
+	//const vector<Move> moves = chess.getMoves();
 
 	if (file.is_open())
 	{
