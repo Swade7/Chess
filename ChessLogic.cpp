@@ -124,7 +124,8 @@ void Chess::makeMove(const Move& move)
 bool Chess::check(Piece piece, int col, int row)
 {
 	// Declare variables for the king location
-	int kingCol, kingRow = -1;
+	int kingCol = -1;
+	int kingRow = -1;
 
 	// Get the opponent
 	Player opponent = getOpponent();
