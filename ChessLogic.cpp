@@ -121,10 +121,79 @@ void Chess::makeMove(const Move& move)
 	}
 }
 
+bool Chess::check(Piece piece, int col, int row)
+{
+	// Declare variables for the king location
+	int kingCol, kingRow = -1;
+
+	// Get the opponent
+	Player opponent = getOpponent();
+
+	// Locate the king
+	for (int col = 0; col < BOARD_SIZE; col++)
+	{
+		for (int row = 0; row < BOARD_SIZE; row++)
+		{
+			// Get the piece at the location
+			Pieces* piece = getPiece(col, row);
+			if (piece->getPieceType() == PieceType::King && piece->getPlayer() == currentPlayer)
+			{
+				kingCol = col;
+				kingRow = row;
+
+				break;
+			}
+		}
+		if (kingCol != -1 && kingRow != -1)
+		{
+			break;
+		}
+	}
+
+	// Iterate through the rest of the board and check if the king is in check
+	for (int col = 0; col < BOARD_SIZE; col++)
+	{
+		for (int row = 0; row < BOARD_SIZE; row++)
+		{
+			// Get the piece at the location
+			Pieces* piece = getPiece(col, row);
+
+			if (piece->getPlayer() == opponent)
+			{
+				// Create a Move variable for formatting
+				Move move = { col, row, kingCol, kingRow };
+				if (piece->checkValidMove(move, board, currentPlayer, getLastMove()))
+				{
+					return true;
+				}
+			}
+			
+		}
+	}
+
+	return false;
+}
+
 // Getters
 const Player& Chess::getCurrentPlayer() const
 {
 	return currentPlayer;
+}
+
+const Player& Chess::getOpponent() const
+{
+	if (currentPlayer == Player::White)
+	{
+		return Player::Black;
+	}
+	else if (currentPlayer == Player::Black)
+	{
+		return Player::White;
+	}
+	else
+	{
+		return Player::None;
+	}
 }
 
 Pieces* const (&Chess::getBoard() const)[BOARD_SIZE][BOARD_SIZE]

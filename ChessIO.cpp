@@ -328,11 +328,11 @@ void chessIO::saveGame(const vector<Move> moves, std::string& fileName)
 		// Close the file
 		file.close();
 
-		cout << "Success" << endl;
+		cout << "Game saved successfully." << endl;
 	}
 	else
 	{
-		cout << "Fail" << endl;
+		cout << "Failed to save game. " << endl;
 	}
 }
 

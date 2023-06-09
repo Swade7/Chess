@@ -43,6 +43,7 @@ public:
 
 	// Getters
 	const Player& getCurrentPlayer() const;
+	const Player& getOpponent() const;
 	Pieces* const (&getBoard() const)[BOARD_SIZE][BOARD_SIZE];
 	const vector<Move> getMoves() const;
 	const Move& getLastMove() const;
