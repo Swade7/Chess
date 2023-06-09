@@ -32,11 +32,16 @@ Status playChess()
 		// Get the name of the existing file (learn how to check if it exists)
 		// Call makeMove() until eof
 		std::string answer = chessIO::getExistingSaveName();
-		if (toupper(answer) != "CANCEL")
+		if (answer != "CANCEL")
 		{
 			saveName = answer;
 		}
-		
+
+		// Start over (Might not be the best way to do this)
+		else
+		{
+			playChess();
+		}	
 
 	}
 

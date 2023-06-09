@@ -1,9 +1,12 @@
 #pragma once
 
 #include "Pieces.hpp"
-#include<iostream>
+#include <iostream>
 #include <ostream>
-#include<fstream>
+#include <fstream>
+#include <cstdlib>
+#include <filesystem>
+
 using std::cout;
 using std::cin;
 using std::endl;
@@ -26,6 +29,7 @@ public:
 	static const char intToChar(const int& i);
 	static const int charToInt(const char& c);
 	static bool inRange(int a, int b);
+	static bool fileExists(std::string);
 
 	// Getters
 	static Move getMove();

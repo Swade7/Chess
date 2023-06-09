@@ -1,5 +1,4 @@
 #include "ChessIO.hpp"
-#include<cstdlib>
 
 
 std::ostream& operator<<(std::ostream& out, Player const& player)
@@ -283,6 +282,11 @@ bool chessIO::inRange(int a, int b)
 	}
 }
 
+bool chessIO::fileExists(std::string file)
+{
+	return std::filesystem::exists(file);
+}
+
 void chessIO::saveGame(const Chess& chess, std::string& fileName)
 {
 	// Create the file
@@ -319,7 +323,31 @@ std::string chessIO::createSaveName()
 	cin >> saveName;
 	cout << endl;
 
-	return saveName + ".txt";
+	saveName += ".txt";
+
+	// Check if the file already exists
+	if (!fileExists(saveName))
+	{
+		return saveName;
+	}
+
+	else
+	{
+		// Ask if the user wants to override the existing file
+		char response;
+		cout << " The name file name you entered is already in use. Would you like to override the existing file(Y/N)? ";
+		cin >> response;
+		response = toupper(response);
+
+		if (response == 'Y')
+		{
+			return saveName;
+		}
+		else
+		{
+			createSaveName();
+		}
+	}
 }
 
 std::string chessIO::getExistingSaveName()
@@ -333,5 +361,16 @@ std::string chessIO::getExistingSaveName()
 		return saveName;
 	}
 
-	return saveName + ".txt";
+	saveName += ".txt";
+	
+	// Check if the file already exists
+	if (fileExists(saveName))
+	{
+		return saveName;
+	}
+	else
+	{
+		cout << "File does not exist." << endl;
+		getExistingSaveName();
+	}
 }
