@@ -287,19 +287,41 @@ bool chessIO::fileExists(std::string file)
 	return std::filesystem::exists(file);
 }
 
+bool chessIO::loadSavedGame(Chess& chess, std::string savedFile)
+{
+	// Open the file
+	std::ifstream inputFile(savedFile);
+
+	// Make sure the file is open
+	if (!inputFile)
+	{
+		cout << "Error opening file '" << savedFile << "'." << endl;
+		return false;
+	}
+	else
+	{
+		// Read the file and make the saved moves until there are no more moves
+		int fromCol, fromRow, toCol, toRow;
+		while (inputFile >> fromCol >> fromRow >> toCol >> toRow)
+		{
+			Move move = { fromCol, fromRow, toCol, toRow };
+			chess.makeMove(move);
+		}
+		return true;
+	}
+}
+
 void chessIO::saveGame(const vector<Move> moves, std::string& fileName)
 {
 	// Create the file
 	std::ofstream file(fileName);
 
-	// Get the moves
-	//const vector<Move> moves = chess.getMoves();
-
+	// Make sure the file is open
 	if (file.is_open())
 	{
 		for (int i = 0; i < moves.size(); i++)
 		{
-			file << moves.at(i).fromCol << moves.at(i).fromRow << moves.at(i).toCol << moves.at(i).toRow;
+			file << moves.at(i).fromCol << " " << moves.at(i).fromRow << " " << moves.at(i).toCol << " " << moves.at(i).toRow << " ";
 		}
 		file << endl;
 

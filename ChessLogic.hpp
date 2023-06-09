@@ -25,10 +25,10 @@ enum class Status
 };
 
 struct Move {
-	int fromRow;
 	int fromCol;
-	int toRow;
+	int fromRow;
 	int toCol;
+	int toRow;
 };
 
 const int BOARD_SIZE = 8;

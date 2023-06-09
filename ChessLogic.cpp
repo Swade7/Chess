@@ -114,7 +114,11 @@ void Chess::makeMove(const Move& move)
 
 		Move lastMove = getLastMove();
 		std::cout << lastMove.fromCol << ", " << lastMove.fromRow << ", " << lastMove.toCol << ", " << lastMove.toRow << std::endl;
-	}		
+	}	
+	else
+	{
+		std::cout << "Invalid move." << std::endl;
+	}
 }
 
 // Getters

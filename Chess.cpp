@@ -39,6 +39,9 @@ Status playChess()
 		if (answer != "CANCEL")
 		{
 			saveName = answer;
+
+			// Load the saved game
+			chessIO::loadSavedGame(chess, saveName);
 		}
 
 		// Start over (Might not be the best way to do this)
@@ -48,11 +51,14 @@ Status playChess()
 		}	
 	}
 
+	// Flush the buffer
+	char temp[1];
+	cin.getline(temp, 1);
 	while (status == Status::Active)
 	{
 		// Print the board
 		chessIO::printBoard(chess);
-
+		
 		// Get and make the move
 		chess.makeMove(chessIO::getMove());
 
