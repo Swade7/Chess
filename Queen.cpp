@@ -88,7 +88,7 @@ bool Queen::checkValidStraightMove(const Move& move, Pieces* board[BOARD_SIZE][B
 
 			for (int i = move.fromRow; i < move.toRow; i++)
 			{
-				if (board[i][move.fromCol]->getPlayer() != Player::None)
+				if (board[move.fromCol][i]->getPlayer() != Player::None)
 				{
 					return false;
 				}
@@ -99,7 +99,7 @@ bool Queen::checkValidStraightMove(const Move& move, Pieces* board[BOARD_SIZE][B
 		{
 			for (int i = move.toRow; i < move.fromRow; i++)
 			{
-				if (board[i][move.fromCol]->getPlayer() != Player::None)
+				if (board[move.fromCol][i]->getPlayer() != Player::None)
 				{
 					return false;
 				}
@@ -114,7 +114,7 @@ bool Queen::checkValidStraightMove(const Move& move, Pieces* board[BOARD_SIZE][B
 		{
 			for (int i = move.fromCol; i < move.toCol; i++)
 			{
-				if (board[move.fromRow][i]->getPlayer() != Player::None)
+				if (board[i][move.fromRow]->getPlayer() != Player::None)
 				{
 					return false;
 				}
@@ -125,7 +125,7 @@ bool Queen::checkValidStraightMove(const Move& move, Pieces* board[BOARD_SIZE][B
 		{
 			for (int i = move.toCol; i < move.fromCol; i++)
 			{
-				if (board[move.fromRow][i]->getPlayer() != Player::None)
+				if (board[i][move.fromRow]->getPlayer() != Player::None)
 				{
 					return false;
 				}

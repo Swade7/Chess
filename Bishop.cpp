@@ -52,6 +52,7 @@ bool Bishop::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SI
 
 	if (rowDifference != colDifference)
 	{
+		std::cout << "Not diagonal" << std::endl;
 		return false;
 	}
 

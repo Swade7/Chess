@@ -64,7 +64,7 @@ bool Rook::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE
 		{
 			for (int i = move.fromRow + 1; i < move.toRow; i++)
 			{
-				if (board[i][move.fromCol]->getPlayer() != Player::None && board[i][move.fromCol]->getPieceType() != PieceType::Empty)
+				if (board[move.fromCol][i]->getPlayer() != Player::None && board[i][move.fromCol]->getPieceType() != PieceType::Empty)
 				{
 					std::cout << i << ", " << move.fromCol << " is occupied by ";
 					if (board[i][move.fromCol]->getPlayer() == Player::White)
@@ -80,7 +80,7 @@ bool Rook::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE
 		{
 			for (int i = move.toRow + 1; i < move.fromRow; i++)
 			{
-				if (board[i][move.fromCol]->getPlayer() != Player::None)
+				if (board[move.fromCol][i]->getPlayer() != Player::None)
 				{
 					return false;
 				}
@@ -95,7 +95,7 @@ bool Rook::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE
 		{
 			for (int i = move.fromCol + 1; i < move.toCol; i++)
 			{
-				if (board[move.fromRow][i]->getPlayer() != Player::None)
+				if (board[i][move.fromRow]->getPlayer() != Player::None)
 				{
 					return false;
 				}
@@ -106,7 +106,7 @@ bool Rook::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE
 		{
 			for (int i = move.toCol + 1; i < move.fromCol; i++)
 			{
-				if (board[move.fromRow][i]->getPlayer() != Player::None)
+				if (board[i][move.fromRow]->getPlayer() != Player::None)
 				{
 					return false;
 				}
