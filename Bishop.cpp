@@ -102,6 +102,7 @@ bool Bishop::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SI
 			}
 		}
 	}  
+	// Still need to fix after this
 	else
 	{
 		if (move.toRow > move.fromRow)
