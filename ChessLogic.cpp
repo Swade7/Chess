@@ -121,7 +121,43 @@ void Chess::makeMove(const Move& move)
 	}
 }
 
-bool Chess::check(Piece piece, int col, int row)
+bool Chess::checkmate()
+{
+	if (check())
+	{
+		// Get the king's location
+		int kingCol = -1;
+		int kingRow = -1;
+
+		for (int col = 0; col < BOARD_SIZE; col++)
+		{
+			for (int row = 0; row < BOARD_SIZE; row++)
+			{
+				// Get the piece at the location
+				Pieces* piece = getPiece(col, row);
+				if (piece->getPieceType() == PieceType::King && piece->getPlayer() == currentPlayer)
+				{
+					kingCol = col;
+					kingRow = row;
+
+					break;
+				}
+			}
+			if (kingCol != -1 && kingRow != -1)
+			{
+				break;
+			}
+		}
+
+
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool Chess::check()
 {
 	// Declare variables for the king location
 	int kingCol = -1;
@@ -172,6 +208,15 @@ bool Chess::check(Piece piece, int col, int row)
 		}
 	}
 
+	return false;
+}
+
+bool Chess::isStalemate()
+{
+	if (!check())
+	{
+
+	}
 	return false;
 }
 

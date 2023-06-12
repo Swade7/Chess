@@ -3,7 +3,10 @@
 
 // Constructor
 Knight::Knight(Player player)
-	: Pieces(PieceType::Knight, player){}
+	: Pieces(PieceType::Knight, player)
+{
+	this->player = player;
+}
 
 // Destructor
 Knight::~Knight() = default;
@@ -12,6 +15,11 @@ Knight::~Knight() = default;
 const PieceType& Knight::getPieceType() const
 {
 	return PieceType::Knight;
+}
+
+const Player& Knight::getPlayer() const
+{
+	return player;
 }
 
 bool Knight::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE], Player currentPlayer, const Move& lastMove) const

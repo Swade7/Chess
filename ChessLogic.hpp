@@ -57,7 +57,7 @@ public:
 
 	// Checks for check/checkmate/stalemate
 	bool checkmate();
-	bool check(Piece piece, int col, int row);
+	bool check();
 	bool isStalemate();
 
 

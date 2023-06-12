@@ -5,6 +5,7 @@
 Rook::Rook(Player player)
 	: Pieces(PieceType::Rook, player)
 {
+	this->player = player;
 	hasMoved = false;
 }
 
@@ -129,4 +130,9 @@ const bool Rook::getHasMoved() const
 const PieceType& Rook::getPieceType() const
 {
 	return PieceType::Rook;
+}
+
+const Player& Rook::getPlayer() const
+{
+	return player;
 }

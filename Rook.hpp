@@ -14,6 +14,7 @@ public:
 	// Getters
 	const bool getHasMoved() const;
 	const PieceType& getPieceType() const override;
+	const Player& getPlayer() const override;
 
 	// Overriden functions
 	bool checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE], Player currentPlayer, const Move& lastMove) const override;
@@ -21,4 +22,5 @@ public:
 
 private:
 	bool hasMoved;
+	Player player;
 };

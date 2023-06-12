@@ -2,7 +2,10 @@
 
 // Constructor
 Bishop::Bishop(Player player)
-	: Pieces(PieceType::Bishop, player){}
+	: Pieces(PieceType::Bishop, player)
+{
+	this->player = player;
+}
 
 // Destructor
 Bishop::~Bishop() = default;
@@ -12,12 +15,11 @@ const PieceType& Bishop::getPieceType() const
 {
 	return PieceType::Bishop;
 }
-/*
 const Player& Bishop::getPlayer() const
 {
-	// TODO: insert return statement here
+	return player;
 }
-*/
+
 bool Bishop::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE], Player currentPlayer, const Move& lastMove) const
 {
 	// Check if the move is out of bounds

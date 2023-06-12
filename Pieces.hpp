@@ -40,7 +40,7 @@ public:
 
 	// Getters
 	virtual const PieceType& getPieceType() const = 0;
-	const Player& getPlayer() const;
+	virtual const Player& getPlayer() const = 0;
 
 	// Setters
 	static void addToCapturedPieces(PieceType capturedPiece, Player player);

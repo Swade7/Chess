@@ -5,6 +5,7 @@
 King::King(Player player)
 	: Pieces(PieceType::King, player)
 {
+	this->player = player;
 	hasMoved = false;
 }
 
@@ -14,6 +15,11 @@ King::~King() = default;
 const PieceType& King::getPieceType() const
 {
 	return PieceType::King;
+}
+
+const Player& King::getPlayer() const
+{
+	return player
 }
 
 bool King::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE], Player currentPlayer, const Move& lastMove) const

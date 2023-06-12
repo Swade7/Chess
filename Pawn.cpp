@@ -2,7 +2,10 @@
 
 // Constructor
 Pawn::Pawn(Player player)
-	: Pieces(PieceType::Pawn, player){}
+	: Pieces(PieceType::Pawn, player)
+{
+	this->player = player;
+}
 
 Pawn::~Pawn() = default;
 
@@ -10,6 +13,11 @@ Pawn::~Pawn() = default;
 const PieceType& Pawn::getPieceType() const
 {
 	return PieceType::Pawn;
+}
+
+const Player& Pawn::getPlayer() const
+{
+	return player;
 }
 
 bool Pawn::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE], Player currentPlayer, const Move& lastMove) const

@@ -3,7 +3,10 @@
 
 // Constructor
 Queen::Queen(Player player)
-	: Pieces(PieceType::Queen, player){}
+	: Pieces(PieceType::Queen, player)
+{
+	this->player = player;
+}
 
 // Destructor
 Queen::~Queen() = default;
@@ -12,6 +15,11 @@ Queen::~Queen() = default;
 const PieceType& Queen::getPieceType() const
 {
 	return PieceType::Queen;
+}
+
+const Player& Queen::getPlayer() const
+{
+	return player;
 }
 
 bool Queen::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE], Player currentPlayer, const Move& lastMove) const
