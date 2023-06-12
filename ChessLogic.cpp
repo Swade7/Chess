@@ -210,7 +210,7 @@ bool Chess::check()
 
 	return false;
 }
-
+/*
 bool Chess::isStalemate()
 {
 	if (!check())
@@ -219,6 +219,8 @@ bool Chess::isStalemate()
 	}
 	return false;
 }
+*/
+
 
 // Getters
 const Player& Chess::getCurrentPlayer() const

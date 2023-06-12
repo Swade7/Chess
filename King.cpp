@@ -19,7 +19,7 @@ const PieceType& King::getPieceType() const
 
 const Player& King::getPlayer() const
 {
-	return player
+	return player;
 }
 
 bool King::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE], Player currentPlayer, const Move& lastMove) const
