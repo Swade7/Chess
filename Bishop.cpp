@@ -61,6 +61,17 @@ bool Bishop::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SI
 	{
 		if (move.toRow > move.fromRow)
 		{
+			for (int i = move.fromCol + 1; i < move.toCol; i++)
+			{
+				if (board[i][move.fromRow + (i - move.fromCol)]->getPlayer() != Player::None)
+				{
+					return false;
+				}
+			}
+		}
+		/*
+		if (move.toRow > move.fromRow)
+		{
 			for (int i = move.fromRow + 1; i < move.toRow; i++)
 			{
 				if (board[i][move.fromCol + (i - move.fromRow)]->getPlayer() != Player::None)
@@ -69,11 +80,22 @@ bool Bishop::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SI
 				}
 			}
 		}
+		*/
 		else
 		{
+			/*
 			for (int i = move.fromRow - 1; i > move.toRow; i--)
 			{
 				if (board[i][move.fromCol + (i - move.fromRow)]->getPlayer() != Player::None)
+				{
+					return false;
+				}
+			}
+		}
+		*/
+			for (int i = move.fromCol + 1; i < move.toCol; i++)
+			{
+				if (board[i][move.fromRow - (i - move.fromCol)]->getPlayer() != Player::None)
 				{
 					return false;
 				}
