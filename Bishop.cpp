@@ -117,9 +117,9 @@ bool Bishop::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SI
 		}
 		else
 		{
-			for (int i = move.fromRow - 1; i > move.toRow; i--)
+			for (int i = move.toCol + 1; i < move.fromCol; i++)
 			{
-				if (board[i][move.fromCol - (i - move.fromRow)]->getPlayer() != Player::None)
+				if (board[i][move.toRow + (i - move.toCol)]->getPlayer() != Player::None)
 				{
 					return false;
 				}
