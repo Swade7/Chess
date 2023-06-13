@@ -13,6 +13,13 @@ Chess::Chess()
 	initializeBoard();
 }
 
+const vector<Move> Chess::GetPossibleMoves() const
+{
+	vector<Move> moves;
+
+	return moves;
+}
+
 void Chess::initializeBoard()
 {
 	// Declare the starting rows for the white and black pieces
@@ -149,12 +156,19 @@ bool Chess::checkmate()
 			}
 		}
 
-
+		// Check if there are any possible moves that would put the player no longer in check
+		vector <Move> moves = GetPossibleMoves();
+		if (moves.size() > 0)
+		{
+			return false;
+		}
 	}
 	else
 	{
 		return false;
 	}
+
+	return true;
 }
 
 bool Chess::check()
