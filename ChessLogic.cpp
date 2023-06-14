@@ -13,13 +13,6 @@ Chess::Chess()
 	initializeBoard();
 }
 
-const vector<Move> Chess::GetPossibleMoves() const
-{
-	vector<Move> moves;
-
-	return moves;
-}
-
 void Chess::initializeBoard()
 {
 	// Declare the starting rows for the white and black pieces
@@ -166,18 +159,13 @@ bool Chess::checkmate()
 		}
 
 		// Check if there are any possible moves that would put the player no longer in check
-		vector <Move> moves = GetPossibleMoves();
-		if (moves.size() > 0)
+		if (GetPossibleMoves().size() == 0)
 		{
-			return false;
+			return true;
 		}
 	}
-	else
-	{
-		return false;
-	}
 
-	return true;
+	return false;
 }
 
 bool Chess::check()
@@ -226,26 +214,77 @@ bool Chess::check()
 				{
 					return true;
 				}
-			}
-			
+			}			
 		}
 	}
 
 	return false;
 }
-/*
+
 bool Chess::isStalemate()
 {
 	if (!check())
 	{
-
+		if (GetPossibleMoves().size() == 0)
+		{
+			return true;
+		}	
 	}
 	return false;
 }
-*/
+
 
 
 // Getters
+const vector<Move> Chess::GetPossibleMoves() 
+{
+	// Create a vector to store the possible moves
+	vector<Move> moves;
+	// Get that belong to the current player
+	vector<Pieces*> pieces;
+	if (currentPlayer == Player::White)
+	{
+		pieces = whitePieces;
+	}
+	else if (currentPlayer == Player::Black)
+	{
+		pieces = blackPieces;
+	}
+
+	int piecesChecked = 0;
+	// Iterate over the board to find the pieces that belong to the currentPlayer
+	for (int col = 0; col < BOARD_SIZE; col++)
+	{
+		for (int row = 0; row < BOARD_SIZE; row++)
+		{
+			if (board[col][row]->getPlayer() == currentPlayer)
+			{
+				Pieces* currentPiece = getPiece(col, row);
+				// Check each possible to location
+				for (int toCol = 0; toCol < BOARD_SIZE; toCol++)
+				{
+					for (int toRow = 0; toRow < BOARD_SIZE; toRow++)
+					{
+						Move move = { col, row, toCol , toRow };
+						if (board[row][col]->checkValidMove(move, board, currentPlayer, getLastMove()))
+						{
+							moves.push_back(move);
+							piecesChecked++;
+
+							if (piecesChecked >= pieces.size())
+							{
+								return moves;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	return moves;
+}
+
 const Player& Chess::getCurrentPlayer() const
 {
 	return currentPlayer;
