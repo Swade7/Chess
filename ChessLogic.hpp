@@ -80,4 +80,8 @@ private:
 
 	// Keep track of the moves
 	vector<Move> moves;
+
+	// Keep track of the pieces for each color
+	vector<Pieces*> whitePieces;
+	vector<Pieces*> blackPieces;
 };

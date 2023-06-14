@@ -55,6 +55,15 @@ void Chess::initializeBoard()
 	board[4][whiteRow] = new King(Player::White);
 	board[4][blackRow] = new King(Player::Black);
 
+	// Add the pieces to the vector of each piece type
+	for (int i = 0; i < BOARD_SIZE; i++)
+	{
+		whitePieces.push_back(board[i][whiteRow]);
+		whitePieces.push_back(board[i][whiteRow + 1]);
+		blackPieces.push_back(board[i][blackRow]);
+		blackPieces.push_back(board[i][blackRow + 1]);
+	}
+
 	// Initialize the empty places
 	for (int col = 0; col < BOARD_SIZE; col++)
 	{
