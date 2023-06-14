@@ -39,7 +39,7 @@ public:
 	//Constructor
 	Chess();
 
-	const vector<Move> GetPossibleMoves() const;
+	const vector<Move> GetPossibleMoves();
 
 	// Getters
 	const Player& getCurrentPlayer() const;

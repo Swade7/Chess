@@ -61,7 +61,7 @@ void Chess::initializeBoard()
 		whitePieces.push_back(board[i][whiteRow]);
 		whitePieces.push_back(board[i][whiteRow + 1]);
 		blackPieces.push_back(board[i][blackRow]);
-		blackPieces.push_back(board[i][blackRow + 1]);
+		blackPieces.push_back(board[i][blackRow - 1]);
 	}
 
 	// Initialize the empty places
