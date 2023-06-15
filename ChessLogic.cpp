@@ -126,6 +126,10 @@ void Chess::makeMove(const Move& move)
 			Move lastMove = getLastMove();
 			std::cout << lastMove.fromCol << ", " << lastMove.fromRow << ", " << lastMove.toCol << ", " << lastMove.toRow << std::endl;
 		}
+		else
+		{
+			std::cout << "Would be check" << std::endl;
+		}
 	}	
 	else
 	{
@@ -220,7 +224,7 @@ bool Chess::check()
 			}			
 		}
 	}
-
+	std::cout << "Not Check" << std::endl;
 	return false;
 }
 
@@ -241,13 +245,14 @@ bool Chess::wouldBeCheck(Move move)
 	// Create a copy of the game to test a move
 	Chess chessCopy = *this;
 
-	chessCopy.makeMove(move);
+	Pieces* piece = this->getPiece(move.fromCol, move.fromRow);
 
-	// Swap the turn back to the original user to correctly check if they are in check
-	chessCopy.changeTurn();
+	chessCopy.updateBoard(move);
+	piece->updatePiece();
 
 	// Return if the user is still in check or not
-	return !chessCopy.check();
+	return chessCopy.check();
+	//return false;
 }
 
 
