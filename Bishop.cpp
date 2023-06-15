@@ -56,6 +56,9 @@ bool Bishop::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SI
 		return false;
 	}
 
+	// Check if the user is in check, and if the move would put them no longer in check
+	if 
+
 	// Check for pieces blocking the path
 	if (move.toCol > move.fromCol)
 	{

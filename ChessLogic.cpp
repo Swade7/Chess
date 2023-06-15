@@ -116,13 +116,16 @@ void Chess::makeMove(const Move& move)
 
 	if (piece->checkValidMove(move, board, currentPlayer, getLastMove()))
 	{
-		updateBoard(move);
-		piece->updatePiece();
-		moves.push_back(move);
-		changeTurn();
+		if (!wouldBeCheck(move))
+		{
+			updateBoard(move);
+			piece->updatePiece();
+			moves.push_back(move);
+			changeTurn();
 
-		Move lastMove = getLastMove();
-		std::cout << lastMove.fromCol << ", " << lastMove.fromRow << ", " << lastMove.toCol << ", " << lastMove.toRow << std::endl;
+			Move lastMove = getLastMove();
+			std::cout << lastMove.fromCol << ", " << lastMove.fromRow << ", " << lastMove.toCol << ", " << lastMove.toRow << std::endl;
+		}
 	}	
 	else
 	{
@@ -233,7 +236,7 @@ bool Chess::isStalemate()
 	return false;
 }
 
-bool Chess::stillInCheck(Move move)
+bool Chess::wouldBeCheck(Move move)
 {
 	// Create a copy of the game to test a move
 	Chess chessCopy = *this;
