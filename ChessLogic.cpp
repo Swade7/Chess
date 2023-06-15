@@ -233,6 +233,20 @@ bool Chess::isStalemate()
 	return false;
 }
 
+bool Chess::stillInCheck(Move move)
+{
+	// Create a copy of the game to test a move
+	Chess chessCopy = *this;
+
+	chessCopy.makeMove(move);
+
+	// Swap the turn back to the original user to correctly check if they are in check
+	chessCopy.changeTurn();
+
+	// Return if the user is still in check or not
+	return !chessCopy.check();
+}
+
 
 
 // Getters

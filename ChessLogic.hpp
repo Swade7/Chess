@@ -59,6 +59,7 @@ public:
 	bool checkmate();
 	bool check();
 	bool isStalemate();
+	bool stillInCheck(Move move);
 
 
 private:
