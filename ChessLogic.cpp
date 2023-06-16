@@ -7,10 +7,29 @@
 #include "Bishop.hpp"
 #include "Empty.hpp"
 
-
+// Constructor
 Chess::Chess()
 {
 	initializeBoard();
+}
+
+// Copy Constructor
+Chess::Chess(Chess& rhs)
+{
+	// Copy the board
+	for (int col = 0; col < BOARD_SIZE; col++) 
+	{
+		for (int row = 0; row < BOARD_SIZE; row++) 
+		{
+			board[col][row] = rhs.board[col][row]->clone();
+		}
+	}
+
+	// Set the variables of the copy to the correct values
+	currentPlayer = rhs.currentPlayer;
+	hasWhiteCastled = rhs.hasWhiteCastled;
+	hasBlackCastled = rhs.hasBlackCastled;
+
 }
 
 void Chess::initializeBoard()
