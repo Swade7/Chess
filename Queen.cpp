@@ -62,21 +62,10 @@ bool Queen::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZ
 	{
 		return checkValidStraightMove(move, board);
 	}
-	// Call checkValidStraightMove() and checkValidDiagonalMove 
-	/*if (checkValidStraightMove(move, board) || checkValidDiagonalMove(move, board))
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-	*/
 }
 
 bool Queen::checkValidStraightMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE]) const
 {
-	std::cout << "Straight" << std::endl;
 	// Check if trying to move diagonally
 	if (move.toCol != move.fromCol && move.toRow != move.fromRow)
 	{
@@ -159,7 +148,6 @@ bool Queen::checkValidDiagonalMove(const Move& move, Pieces* board[BOARD_SIZE][B
 
 	if (rowDifference != colDifference)
 	{
-		std::cout << "Not diagonal" << std::endl;
 		return false;
 	}
 
