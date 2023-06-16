@@ -55,6 +55,7 @@ public:
 	void changeTurn();
 	void updateBoard(const Move& move);
 	void makeMove(const Move& move);
+	Status updateStatus();
 
 	// Checks for check/checkmate/stalemate
 	bool checkmate();

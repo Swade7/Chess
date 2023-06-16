@@ -158,6 +158,27 @@ void Chess::makeMove(const Move& move)
 	}
 }
 
+Status Chess::updateStatus()
+{
+	if (isStalemate)
+	{
+		return Status::Stalemate;
+	}
+	else if (checkmate)
+	{
+		if (currentPlayer == Player::White)
+		{
+			return Status::BlackWin;
+		}
+		else if (currentPlayer == Player::Black)
+		{
+			return Status::WhiteWin;
+		}
+	}
+	
+	return Status::Active;
+}
+
 bool Chess::checkmate()
 {
 	if (check())
