@@ -160,11 +160,11 @@ void Chess::makeMove(const Move& move)
 
 Status Chess::updateStatus()
 {
-	if (isStalemate)
+	if (isStalemate())
 	{
 		return Status::Stalemate;
 	}
-	else if (checkmate)
+	else if (checkmate())
 	{
 		if (currentPlayer == Player::White)
 		{
@@ -210,6 +210,7 @@ bool Chess::checkmate()
 		// Check if there are any possible moves that would put the player no longer in check
 		if (GetPossibleMoves().size() == 0)
 		{
+			std::cout << "Checkmate" << std::endl;
 			return true;
 		}
 	}

@@ -81,7 +81,7 @@ bool Rook::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE
 				}
 			}
 		}
-		// Left
+		// Down
 		else if (move.toRow < move.fromRow)
 		{
 			for (int i = move.toRow + 1; i < move.fromRow; i++)

@@ -68,6 +68,7 @@ Status playChess()
 			chessIO::saveGame(chess.getMoves(), saveName);
 		}
 		
+		status = chess.updateStatus();
 	}
 	return status;
 

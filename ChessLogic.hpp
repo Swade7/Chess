@@ -52,21 +52,24 @@ public:
 	Pieces* getPiece(int col, int row);
 
 	// Setters
-	void changeTurn();
-	void updateBoard(const Move& move);
 	void makeMove(const Move& move);
 	Status updateStatus();
+
+	
+
+
+private:
+	// Function Definitions
+	void initializeBoard();
+
+	void changeTurn();
+	void updateBoard(const Move& move);
 
 	// Checks for check/checkmate/stalemate
 	bool checkmate();
 	bool check();
 	bool isStalemate();
 	bool wouldBeCheck(Move move);
-
-
-private:
-	// Function Definitions
-	void initializeBoard();
 
 	// Declare the board using a 2D array of the Pieces class
 	Pieces* board[BOARD_SIZE][BOARD_SIZE];
