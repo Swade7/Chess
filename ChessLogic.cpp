@@ -29,7 +29,7 @@ Chess::Chess(Chess& rhs)
 	currentPlayer = rhs.currentPlayer;
 	hasWhiteCastled = rhs.hasWhiteCastled;
 	hasBlackCastled = rhs.hasBlackCastled;
-
+	moveCount = rhs.moveCount;
 }
 
 void Chess::initializeBoard()
@@ -87,6 +87,8 @@ void Chess::initializeBoard()
 	
 	// Set the current player to white
 	currentPlayer = Player::White;
+
+	moveCount = 0;
 }
 
 // Setters
