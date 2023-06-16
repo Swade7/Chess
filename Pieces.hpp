@@ -38,6 +38,9 @@ public:
 	// Destructor
 	virtual ~Pieces();
 
+	// Copy
+	virtual Pieces* clone() const = 0;
+
 	// Getters
 	virtual const PieceType& getPieceType() const = 0;
 	virtual const Player& getPlayer() const = 0;

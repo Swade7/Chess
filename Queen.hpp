@@ -11,6 +11,9 @@ public:
 	// Destructor
 	~Queen() override;
 
+	// Copy
+	Queen* clone() const override;
+
 	// Getters
 	const PieceType& getPieceType() const override;
 	const Player& getPlayer() const override;

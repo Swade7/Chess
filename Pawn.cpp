@@ -7,7 +7,14 @@ Pawn::Pawn(Player player)
 	this->player = player;
 }
 
+// Destructor
 Pawn::~Pawn() = default;
+
+// Copy
+Pawn* Pawn::clone() const
+{
+	return new Pawn(*this);
+}
 
 // getters
 const PieceType& Pawn::getPieceType() const

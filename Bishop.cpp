@@ -10,6 +10,12 @@ Bishop::Bishop(Player player)
 // Destructor
 Bishop::~Bishop() = default;
 
+// Copy
+Bishop* Bishop::clone() const
+{
+	return new Bishop(*this);
+}
+
 // Getters
 const PieceType& Bishop::getPieceType() const
 {

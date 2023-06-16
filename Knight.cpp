@@ -11,6 +11,12 @@ Knight::Knight(Player player)
 // Destructor
 Knight::~Knight() = default;
 
+// Copy
+Knight* Knight::clone() const
+{
+	return new Knight(*this);
+}
+
 // Getters
 const PieceType& Knight::getPieceType() const
 {

@@ -7,6 +7,12 @@ Empty::Empty()
 // Destructor
 Empty::~Empty() = default;
 
+// Copy
+Empty* Empty::clone() const
+{
+	return new Empty(*this);
+}
+
 // Getters
 const PieceType& Empty::getPieceType() const
 {

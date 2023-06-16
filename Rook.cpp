@@ -12,6 +12,12 @@ Rook::Rook(Player player)
 // Destructor
 Rook::~Rook() = default;
 
+// Copy
+Rook* Rook::clone() const
+{
+	return new Rook(*this);
+}
+
 bool Rook::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE], Player currentPlayer, const Move& lastMove) const
 {
 	// Check if the move is out of bounds

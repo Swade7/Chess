@@ -11,6 +11,12 @@ Queen::Queen(Player player)
 // Destructor
 Queen::~Queen() = default;
 
+// Copy
+Queen* Queen::clone() const
+{
+	return new Queen(*this);
+}
+
 // Getters
 const PieceType& Queen::getPieceType() const
 {

@@ -11,6 +11,9 @@ public:
 	// Destructor
 	~Rook() override;
 
+	// Copy
+	Rook* clone() const override;
+
 	// Getters
 	const bool getHasMoved() const;
 	const PieceType& getPieceType() const override;

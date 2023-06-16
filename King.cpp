@@ -2,6 +2,7 @@
 
 #include"Rook.hpp"
 
+// Constructor
 King::King(Player player)
 	: Pieces(PieceType::King, player)
 {
@@ -9,7 +10,14 @@ King::King(Player player)
 	hasMoved = false;
 }
 
+// Destructor
 King::~King() = default;
+
+// Copy
+King* King::clone() const
+{
+	return new King(*this);
+}
 
 // Getters
 const PieceType& King::getPieceType() const

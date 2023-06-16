@@ -11,6 +11,9 @@ public:
 	// Destructor
 	~Pawn() override;
 
+	// Copy
+	Pawn* clone() const override;
+
 	// Getters
 	const PieceType& getPieceType() const override;
 	const Player& getPlayer() const override;
