@@ -240,7 +240,6 @@ bool Chess::check()
 				Move move = { col, row, kingCol, kingRow };
 				if (piece->checkValidMove(move, board, opponent, getLastMove()))
 				{
-					std::cout << col << row << kingCol << kingRow << std::endl;
 					return true;
 				}
 			}			
