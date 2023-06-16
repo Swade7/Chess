@@ -123,13 +123,14 @@ bool King::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE
 				return false;
 			}
 		}
-
-		// Prevent the king from moving more than one space 
-		if (std::abs(move.toCol - move.fromCol) > 1 || std::abs(move.toRow - move.fromRow) > 1)
-		{
-			return false;
-		}
 	}
+
+	// Prevent the king from moving more than one space 
+	if (std::abs(move.toCol - move.fromCol) > 1 || std::abs(move.toRow - move.fromRow) > 1)
+	{
+		return false;
+	}
+	
 	return true;
 }
 

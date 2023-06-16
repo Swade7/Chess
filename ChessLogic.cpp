@@ -238,8 +238,9 @@ bool Chess::check()
 			{
 				// Create a Move variable for formatting
 				Move move = { col, row, kingCol, kingRow };
-				if (piece->checkValidMove(move, board, currentPlayer, getLastMove()))
+				if (piece->checkValidMove(move, board, opponent, getLastMove()))
 				{
+					std::cout << col << row << kingCol << kingRow << std::endl;
 					return true;
 				}
 			}			
@@ -266,9 +267,10 @@ bool Chess::wouldBeCheck(Move move)
 	// Create a copy of the game to test a move
 	Chess chessCopy = *this;
 
-	Pieces* piece = this->getPiece(move.fromCol, move.fromRow);
+	Pieces* piece = chessCopy.getPiece(move.fromCol, move.fromRow);
 
-// THIS LINE CAUSES THE CRASH	chessCopy.updateBoard(move);
+	// Update the board	
+	chessCopy.updateBoard(move);
 	piece->updatePiece();
 
 	// Return if the user is still in check or not
