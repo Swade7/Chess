@@ -36,8 +36,9 @@ const int BOARD_SIZE = 8;
 class Chess
 {
 public:
-	//Constructor
+	//Constructors
 	Chess();
+	const Chess(Chess& rhs);
 
 	const vector<Move> GetPossibleMoves();
 

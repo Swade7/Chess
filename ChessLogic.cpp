@@ -247,7 +247,7 @@ bool Chess::wouldBeCheck(Move move)
 
 	Pieces* piece = this->getPiece(move.fromCol, move.fromRow);
 
-	chessCopy.updateBoard(move);
+// THIS LINE CAUSES THE CRASH	chessCopy.updateBoard(move);
 	piece->updatePiece();
 
 	// Return if the user is still in check or not
