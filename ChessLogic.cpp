@@ -35,10 +35,6 @@ Chess::Chess(Chess& rhs)
 
 void Chess::initializeBoard()
 {
-	// Declare the starting rows for the white and black pieces
-	//int whiteRow = 0;
-	//int blackRow = BOARD_SIZE - 1;
-
 	// Place pawns
 	for (int i = 0; i < BOARD_SIZE; i++)
 	{
@@ -123,12 +119,6 @@ void Chess::updateBoard(const Move& move)
 
 	// Create an empty piece where the piece used to be
 	board[move.fromCol][move.fromRow] = new Empty();
-	if (board[move.fromCol][move.fromRow]->getPlayer() == Player::White)
-	{
-		std::cout << "Piece is still white" << std::endl;
-	}
-	if (board[move.fromCol][move.fromRow]->getPieceType() != PieceType::Empty)
-		std::cout << "The PieceType is not empty" << std::endl;
 }
 
 void Chess::makeMove(const Move& move)
@@ -360,8 +350,6 @@ bool Chess::wouldBeCheck(Move move)
 	// Return if the user would be in check as a result of the move
 	return chessCopy.check();
 }
-
-
 
 // Getters
 const vector<Move> Chess::GetPossibleMoves() 
