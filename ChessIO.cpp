@@ -143,7 +143,7 @@ void chessIO::printMove(const Chess& chess, const Move& move)
 {
 	// Get the board
 	Pieces* const (&board)[BOARD_SIZE][BOARD_SIZE] = chess.getBoard();
-
+	// Get the current player
 	Player player = board[move.toCol][move.toRow]->getPlayer();
 
 	cout << player << " Moved their " << board[move.toCol][move.toRow]->getPieceType() << " from "  << intToChar(move.fromCol) << move.fromRow << " to " << intToChar(move.toCol) << move.toRow << endl;
@@ -201,8 +201,8 @@ Move chessIO::getMove()
 	cout << "Enter the destination location: ";
 	cin.getline(to, 3);
 	cout << endl;
-
-
+	
+	// Convert the input into type Move
 	Move move;
 	move.fromCol = charToInt(from[0]);
 	move.fromRow = atoi(std::string(1, from[1]).c_str()) - 1;
@@ -237,7 +237,6 @@ Move chessIO::getMove()
 			move.toRow = atoi(std::string(1, to[1]).c_str()) - 1;
 		}
 	}
-	
 }
 
 char chessIO::saveChoice()
