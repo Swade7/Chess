@@ -2,6 +2,7 @@
 
 #include "Pieces.hpp"
 
+
 class Queen : public Pieces
 {
 public:

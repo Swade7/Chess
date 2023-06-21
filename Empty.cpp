@@ -1,5 +1,6 @@
 #include "Empty.hpp"
 
+
 // Constructor
 Empty::Empty()
 	: Pieces(PieceType::Empty, Player::None){}

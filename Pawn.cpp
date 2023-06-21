@@ -1,5 +1,6 @@
 #include "Pawn.hpp"
 
+
 // Constructor
 Pawn::Pawn(Player player)
 	: Pieces(PieceType::Pawn, player)

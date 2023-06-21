@@ -27,7 +27,7 @@ struct Piece
 	Player player;
 };
 
-class Chess;
+//class Chess;
 
 class Pieces
 {

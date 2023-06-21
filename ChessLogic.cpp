@@ -8,6 +8,7 @@
 #include "Empty.hpp"
 #include "ChessIO.hpp"
 
+
 // Constructor
 Chess::Chess()
 {

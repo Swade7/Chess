@@ -1,6 +1,6 @@
 #include "King.hpp"
-
 #include"Rook.hpp"
+
 
 // Constructor
 King::King(Player player)
@@ -137,8 +137,6 @@ bool King::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE
 
 void King::updatePiece()
 {
-
-	// Need to also move the rook if castling
 	// Set the hasMoved variable to true
 	hasMoved = true;
 }

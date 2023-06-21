@@ -1,5 +1,6 @@
 #include "Bishop.hpp"
 
+
 // Constructor
 Bishop::Bishop(Player player)
 	: Pieces(PieceType::Bishop, player)

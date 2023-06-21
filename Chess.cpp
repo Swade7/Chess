@@ -1,5 +1,6 @@
-//#include "Pieces.hpp"
 #include "ChessIO.hpp"
+
+
 Status playChess()
 {
 	// Variable declarations
@@ -33,8 +34,7 @@ Status playChess()
 	// Load a save file
 	else if (choice == 2)
 	{
-		// Get the name of the existing file (learn how to check if it exists)
-		// Call makeMove() until eof
+		// Get the name of the existing file 
 		std::string answer = chessIO::getExistingSaveName();
 		if (answer != "CANCEL")
 		{
