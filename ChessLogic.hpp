@@ -32,6 +32,8 @@ struct Move {
 };
 
 const int BOARD_SIZE = 8;
+const int WHITE_ROW = 0;
+const int BLACK_ROW = BOARD_SIZE - 1;
 
 class Chess
 {
@@ -62,6 +64,8 @@ private:
 	// Function Definitions
 	void initializeBoard();
 
+	// Setters
+	void castle(const Move& move);
 	void changeTurn();
 	void updateBoard(const Move& move);
 

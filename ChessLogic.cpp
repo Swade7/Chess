@@ -36,51 +36,51 @@ Chess::Chess(Chess& rhs)
 void Chess::initializeBoard()
 {
 	// Declare the starting rows for the white and black pieces
-	int whiteRow = 0;
-	int blackRow = BOARD_SIZE - 1;
+	//int whiteRow = 0;
+	//int blackRow = BOARD_SIZE - 1;
 
 	// Place pawns
 	for (int i = 0; i < BOARD_SIZE; i++)
 	{
-		board[i][whiteRow + 1] = new Pawn(Player::White);
-		board[i][blackRow - 1] = new Pawn(Player::Black);
+		board[i][WHITE_ROW + 1] = new Pawn(Player::White);
+		board[i][BLACK_ROW - 1] = new Pawn(Player::Black);
 	}
 
 	// Rooks
-	board[0][whiteRow] = new Rook(Player::White);
-	board[0][blackRow] = new Rook(Player::Black);
-	board[7][whiteRow] = new Rook(Player::White);
-	board[7][blackRow] = new Rook(Player::Black);
+	board[0][WHITE_ROW] = new Rook(Player::White);
+	board[0][BLACK_ROW] = new Rook(Player::Black);
+	board[7][WHITE_ROW] = new Rook(Player::White);
+	board[7][BLACK_ROW] = new Rook(Player::Black);
 	// Knights
-	board[1][whiteRow] = new Knight(Player::White);
-	board[1][blackRow] = new Knight(Player::Black);
-	board[6][whiteRow] = new Knight(Player::White);
-	board[6][blackRow] = new Knight(Player::Black);
+	board[1][WHITE_ROW] = new Knight(Player::White);
+	board[1][BLACK_ROW] = new Knight(Player::Black);
+	board[6][WHITE_ROW] = new Knight(Player::White);
+	board[6][BLACK_ROW] = new Knight(Player::Black);
 	// Bishops
-	board[2][whiteRow] = new Bishop(Player::White);
-	board[2][blackRow] = new Bishop(Player::Black);
-	board[5][whiteRow] = new Bishop(Player::White);
-	board[5][blackRow] = new Bishop(Player::Black);
+	board[2][WHITE_ROW] = new Bishop(Player::White);
+	board[2][BLACK_ROW] = new Bishop(Player::Black);
+	board[5][WHITE_ROW] = new Bishop(Player::White);
+	board[5][BLACK_ROW] = new Bishop(Player::Black);
 	//Queen
-	board[3][whiteRow] = new Queen(Player::White);
-	board[3][blackRow] = new Queen(Player::Black);
+	board[3][WHITE_ROW] = new Queen(Player::White);
+	board[3][BLACK_ROW] = new Queen(Player::Black);
 	//King
-	board[4][whiteRow] = new King(Player::White);
-	board[4][blackRow] = new King(Player::Black);
+	board[4][WHITE_ROW] = new King(Player::White);
+	board[4][BLACK_ROW] = new King(Player::Black);
 
 	// Add the pieces to the vector of each piece type
 	for (int i = 0; i < BOARD_SIZE; i++)
 	{
-		whitePieces.push_back(board[i][whiteRow]);
-		whitePieces.push_back(board[i][whiteRow + 1]);
-		blackPieces.push_back(board[i][blackRow]);
-		blackPieces.push_back(board[i][blackRow - 1]);
+		whitePieces.push_back(board[i][WHITE_ROW]);
+		whitePieces.push_back(board[i][WHITE_ROW + 1]);
+		blackPieces.push_back(board[i][WHITE_ROW]);
+		blackPieces.push_back(board[i][BLACK_ROW - 1]);
 	}
 
 	// Initialize the empty places
 	for (int col = 0; col < BOARD_SIZE; col++)
 	{
-		for (int row = whiteRow + 2; row <= blackRow - 2; row++)
+		for (int row = WHITE_ROW + 2; row <= BLACK_ROW - 2; row++)
 		{
 			board[col][row] = new Empty();
 		}
@@ -140,6 +140,11 @@ void Chess::makeMove(const Move& move)
 	{
 		if (!wouldBeCheck(move))
 		{
+			// If castling, move the rook as well
+			if (pieceType == PieceType::King && std::abs(move.fromCol - move.toCol) == 2)
+			{
+				castle(move);
+			}
 			updateBoard(move);
 			piece->updatePiece();
 			moves.push_back(move);
@@ -157,6 +162,51 @@ void Chess::makeMove(const Move& move)
 	{
 		std::cout << "Invalid move." << std::endl;
 	}
+}
+
+void Chess::castle(const Move& move)
+{
+	// Get the location of the Rook and move it
+	Move rookMove;
+	// Set the to and from row based on the player's color
+	if (currentPlayer == Player::White)
+	{
+		rookMove.fromRow = WHITE_ROW;
+		rookMove.toRow = WHITE_ROW;
+	}
+	else if (currentPlayer == Player::Black)
+	{
+		rookMove.fromRow = BLACK_ROW;
+		rookMove.toRow = BLACK_ROW;
+	}
+	else
+	{
+		return;
+	}
+	// Determine if the rook to the left or right should be moved
+	// Left
+	if (move.fromCol > move.toCol)
+	{
+		rookMove.fromCol = 0;
+		rookMove.toCol = move.toCol + 1;
+	}
+	// Right
+	else if (move.fromCol < move.toCol)
+	{
+		rookMove.fromCol = BOARD_SIZE - 1;
+		rookMove.toCol = move.toCol - 1;
+	}
+	else
+	{
+		return;
+	}
+
+	// get the Rook at the location
+	Rook* rook = dynamic_cast<Rook*>(getPiece(rookMove.fromCol, rookMove.fromRow));
+
+	// Update the piece and the board
+	updateBoard(rookMove);
+	rook->updatePiece();
 }
 
 Status Chess::updateStatus()
