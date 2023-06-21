@@ -111,16 +111,6 @@ bool King::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE
 			}
 		}
 
-		// Check if any place being moved through or the king's current position would be in check
-		/*
-		* for (int i = std::min(move.fromCol, rookCol); i <= std::max(move.fromCol, rookCol); i++)
-		if (check(i, move.fromRow) && i != rookCol)
-		{
-			return false;
-		}
-		*/
-
-
 		// Check if all spaces between the two pieces are empty
 		for (int i = std::min(move.fromCol, rookCol) + 1; i < std::max(move.fromCol, rookCol); i++)
 		{
