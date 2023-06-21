@@ -87,19 +87,19 @@ bool Queen::checkValidStraightMove(const Move& move, Pieces* board[BOARD_SIZE][B
 	// Checks for vertical movements
 	if (dir == 'v')
 	{
-		// Up
+		// Down
 		if (move.toRow > move.fromRow)
 		{
 
 			for (int i = move.fromRow + 1; i < move.toRow; i++)
 			{
-				if (board[move.fromCol][i]->getPlayer() != Player::None && board[i][move.fromCol]->getPieceType() != PieceType::Empty)
+				if (board[move.fromCol][i]->getPlayer() != Player::None || board[move.fromCol][i]->getPieceType() != PieceType::Empty)
 				{
 					return false;
 				}
 			}
 		}
-		// Down
+		// Up
 		else if (move.toRow < move.fromRow)
 		{
 			for (int i = move.toRow + 1; i < move.fromRow; i++)
