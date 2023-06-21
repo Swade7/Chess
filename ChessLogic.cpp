@@ -6,6 +6,7 @@
 #include "knight.hpp"
 #include "Bishop.hpp"
 #include "Empty.hpp"
+#include "ChessIO.hpp"
 
 // Constructor
 Chess::Chess()
@@ -262,6 +263,15 @@ bool Chess::check()
 				Move move = { col, row, kingCol, kingRow };
 				if (piece->checkValidMove(move, board, opponent, getLastMove()))
 				{
+					PieceType piecetype = piece->getPieceType();
+					std::cout << col << ", " << row << " ";
+					if (piecetype == PieceType::Empty)
+						std::cout << "Empty";
+					else if (piecetype == PieceType::Pawn)
+						std::cout << "Pawn";
+					else if (piecetype == PieceType::Queen)
+						std::cout << "Queen";
+					std::cout << std::endl;
 					return true;
 				}
 			}			
@@ -294,9 +304,8 @@ bool Chess::wouldBeCheck(Move move)
 	chessCopy.updateBoard(move);
 	piece->updatePiece();
 
-	// Return if the user is still in check or not
+	// Return if the user would be in check as a result of the move
 	return chessCopy.check();
-	//return false;
 }
 
 
@@ -347,7 +356,18 @@ const vector<Move> Chess::GetPossibleMoves()
 			}
 		}
 	}
-
+	for (int i = 0; i < moves.size(); i++)
+	{
+		Pieces* piece = getPiece(moves.at(i).fromCol, moves.at(i).fromRow);
+		if (piece->getPieceType() == PieceType::Queen)
+		{
+			std::cout << moves.at(i).fromCol << ", " << moves.at(i).fromRow << std::endl;
+		}
+		else
+		{
+			std::cout << "No" << moves.at(i).fromCol << ", " << moves.at(i).fromRow << std::endl;;
+		}
+	}
 	return moves;
 }
 
