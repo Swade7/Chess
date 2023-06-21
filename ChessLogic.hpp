@@ -66,6 +66,7 @@ private:
 
 	// Setters
 	void castle(const Move& move);
+	void enPassant(const Move& move);
 	void changeTurn();
 	void updateBoard(const Move& move);
 

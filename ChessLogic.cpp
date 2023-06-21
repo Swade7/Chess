@@ -136,6 +136,12 @@ void Chess::makeMove(const Move& move)
 			{
 				castle(move);
 			}
+			// Delete the captured piece if capturing by en passant
+			else if (pieceType == PieceType::Pawn && std::abs(move.fromCol - move.toCol) == 2)
+			{
+				enPassant(move);
+			}
+
 			updateBoard(move);
 			piece->updatePiece();
 			moves.push_back(move);
@@ -198,6 +204,27 @@ void Chess::castle(const Move& move)
 	// Update the piece and the board
 	updateBoard(rookMove);
 	rook->updatePiece();
+}
+
+void Chess::enPassant(const Move& move)
+{
+	// get the location of the pawn being captured
+	if (currentPlayer == Player::White)
+	{
+		Pieces* toDelete = board[move.toRow + 1][move.toCol];
+		delete toDelete;
+		board[move.toRow + 1][move.toCol] = new Empty();
+	}
+	else if (currentPlayer == Player::Black)
+	{
+		Pieces* toDelete = board[move.toRow - 1][move.toCol];
+		delete toDelete;
+		board[move.toRow - 1][move.toCol] = new Empty();
+	}
+	else
+	{
+		return;
+	}
 }
 
 Status Chess::updateStatus()
