@@ -125,13 +125,11 @@ bool Pawn::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE
 		{
 			if (move.fromRow != startingRow + (3 * dir) || board[move.toCol][move.fromRow]->getPieceType() != PieceType::Pawn)
 			{
-				std::cout << "First check";
 				return false;
 			}
 				
 			if (lastMove.fromCol != move.toCol || lastMove.toRow != move.toRow - dir || lastMove.toCol != move.toCol || lastMove.toRow != move.fromRow)
 			{
-				std::cout << "Second check";
 				return false;				
 			}
 		}

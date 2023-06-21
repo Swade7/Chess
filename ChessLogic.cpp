@@ -313,6 +313,7 @@ bool Chess::check()
 				Move move = { col, row, kingCol, kingRow };
 				if (piece->checkValidMove(move, board, opponent, getLastMove()))
 				{
+					std::cout << "In check by: ";
 					PieceType piecetype = piece->getPieceType();
 					std::cout << col << ", " << row << " ";
 					if (piecetype == PieceType::Empty)
@@ -321,13 +322,15 @@ bool Chess::check()
 						std::cout << "Pawn";
 					else if (piecetype == PieceType::Queen)
 						std::cout << "Queen";
+					else
+						std::cout << "Check!";
 					std::cout << std::endl;
 					return true;
 				}
 			}			
 		}
 	}
-	std::cout << "Not Check" << std::endl;
+	//std::cout << "Not Check" << std::endl;
 	return false;
 }
 
@@ -415,7 +418,7 @@ const vector<Move> Chess::GetPossibleMoves()
 		}
 		else
 		{
-			std::cout << "No" << moves.at(i).fromCol << ", " << moves.at(i).fromRow << std::endl;;
+			std::cout << "Not Queen" << moves.at(i).fromCol << ", " << moves.at(i).fromRow << std::endl;;
 		}
 	}
 	return moves;
