@@ -65,7 +65,7 @@ bool Rook::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE
 	// Checks for vertical movements
 	if (dir == 'v')
 	{
-		// Up
+		// Down
 		if (move.toRow > move.fromRow)
 		{
 			for (int i = move.fromRow + 1; i < move.toRow; i++)
@@ -81,7 +81,7 @@ bool Rook::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE
 				}
 			}
 		}
-		// Down
+		// Up
 		else if (move.toRow < move.fromRow)
 		{
 			for (int i = move.toRow + 1; i < move.fromRow; i++)
