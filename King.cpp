@@ -98,7 +98,6 @@ bool King::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE
 		// Check if the rook has been moved
 		if (board[rookCol][rookRow]->getPieceType() != PieceType::Rook)
 		{
-			std::cout << "The rook location does not contain the rook" << std::endl;
 			return false;
 		}
 		else
@@ -106,7 +105,6 @@ bool King::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE
 			const Rook* rook = dynamic_cast<const Rook*>(board[rookCol][rookRow]);
 			if (rook->getHasMoved())
 			{
-				std::cout << "The rook has been moved" << std::endl;
 				return false;
 			}
 		}
@@ -116,7 +114,6 @@ bool King::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE
 		{
 			if (board[i][rookRow]->getPieceType() != PieceType::Empty)
 			{
-				std::cout << "A space between the two pieces is occupied" << std::endl;
 				return false;
 			}
 		}
@@ -126,7 +123,6 @@ bool King::checkValidMove(const Move& move, Pieces* board[BOARD_SIZE][BOARD_SIZE
 		// Prevent the king from moving more than one space 
 		if (std::abs(move.toCol - move.fromCol) > 1 || std::abs(move.toRow - move.fromRow) > 1)
 		{
-			std::cout << "The king is being attempted to moved more than one space" << std::endl;
 			return false;
 		}
 	}
