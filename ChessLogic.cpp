@@ -395,7 +395,6 @@ const vector<Move> Chess::GetPossibleMoves()
 		pieces = blackPieces;
 	}
 
-	int piecesChecked = 0;
 	// Iterate over the board to find the pieces that belong to the currentPlayer
 	for (int col = 0; col < BOARD_SIZE; col++)
 	{
@@ -410,15 +409,9 @@ const vector<Move> Chess::GetPossibleMoves()
 					for (int toRow = 0; toRow < BOARD_SIZE; toRow++)
 					{
 						Move move = { col, row, toCol , toRow };
-						if (board[row][col]->checkValidMove(move, board, currentPlayer, getLastMove()))
+						if (board[col][row]->checkValidMove(move, board, currentPlayer, getLastMove()) && !wouldBeCheck(move))
 						{
 							moves.push_back(move);
-							piecesChecked++;
-
-							if (piecesChecked >= pieces.size())
-							{
-								return moves;
-							}
 						}
 					}
 				}
