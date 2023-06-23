@@ -75,6 +75,7 @@ Status playChess()
 }
 int main()
 {
-	playChess();
+	Status status;
+	status = playChess();
 	return 0;
 }

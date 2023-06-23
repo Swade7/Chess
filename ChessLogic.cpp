@@ -145,6 +145,13 @@ void Chess::makeMove(const Move& move)
 			updateBoard(move);
 			piece->updatePiece();
 			moves.push_back(move);
+
+			// If a pawn reaches the other side of the board, turn it into a queen
+			if (pieceType == PieceType::Pawn && (move.toRow == 0 || move.toRow == BOARD_SIZE - 1))
+			{
+				pawnToQueen(move);
+			}
+
 			changeTurn();
 
 			Move lastMove = getLastMove();
@@ -224,6 +231,14 @@ void Chess::enPassant(const Move& move)
 	{
 		return;
 	}
+}
+
+void Chess::pawnToQueen(const Move& move)
+{
+	// Delete the Pawn and create a Queen at the location
+	Pieces* toDelete = board[move.toCol][move.toRow];
+	delete toDelete;
+	board[move.toCol][move.toRow] = new Queen(currentPlayer);
 }
 
 Status Chess::updateStatus()

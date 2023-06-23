@@ -178,6 +178,26 @@ void chessIO::printInvalidMove(std::ostream& out)
 	out << "Invalid move" << endl;
 }
 
+void chessIO::printResult(Status status)
+{
+	if (status == Status::WhiteWin)
+	{
+		cout << "White wins!" << endl;
+	}
+	else if (status == Status::BlackWin)
+	{
+		cout << "Black wins!" << endl;
+	}
+	else if (status == Status::Stalemate)
+	{
+		cout << "The game has ended in a stalemate." << endl;
+	}
+	else
+	{
+		cout << "The game has ended." << endl;
+	}
+}
+
 const char chessIO::intToChar(const int& i)
 {
 	char c = static_cast<char>(i);

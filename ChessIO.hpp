@@ -24,6 +24,7 @@ public:
 	static void printMove(const Chess& chess, const Move& move);
 	static int startMenu();
 	static void printInvalidMove(std::ostream& out);
+	static void printResult(Status status);
 
 
 	static const char intToChar(const int& i);
