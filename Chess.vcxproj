@@ -128,6 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AI.cpp" />
     <ClCompile Include="Bishop.cpp" />
     <ClCompile Include="ChessIO.cpp" />
     <ClCompile Include="ChessLogic.cpp" />
@@ -141,6 +142,7 @@
     <ClCompile Include="Rook.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AI.hpp" />
     <ClInclude Include="Bishop.hpp" />
     <ClInclude Include="ChessIO.hpp" />
     <ClInclude Include="ChessLogic.hpp" />

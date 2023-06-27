@@ -1,6 +1,38 @@
 #include "ChessIO.hpp"
+#include "AI.hpp"
 
+int oneOrTwoPlayer()
+{
+	cout << endl;
+	cout << "Do you want to play a two player game or against the computer?" << endl;
+	cout << "Enter 1 to play against the computer. " << endl;
+	cout << "Enter 2 to play against another player. " << endl;
 
+	// Get the choice from the user
+	int answer;
+	bool valid = false;
+	cin >> answer;
+	if (answer == 1 || answer == 2)
+	{
+		valid = true;
+	}
+
+	// Keep asking for input until the answer is 1 or 2
+	while (valid == false)
+	{
+		cout << endl;
+		cout << "Invalid input." << endl;
+		cout << "Enter 1 to play against the computer. " << endl;
+		cout << "Enter 2 to play against another player. " << endl;
+
+		cin >> answer;
+		if (answer == 1 || answer == 2)
+		{
+			valid = true;
+		}
+	}
+	return answer;
+}
 Status playChess()
 {
 	// Variable declarations
@@ -14,6 +46,8 @@ Status playChess()
 
 	// 1 to start a new game, 2 to load an existing game
 	int choice = chessIO::startMenu();
+	// Get the choice for playing against a local opponent of the computer
+	int opponentChoice = 0;
 
 	// Create a new game
 	if (choice == 1)
@@ -29,6 +63,8 @@ Status playChess()
 		{
 			saveName = "CANCEL";
 		}
+
+		opponentChoice = oneOrTwoPlayer();
 	}
 
 	// Load a save file
@@ -59,8 +95,16 @@ Status playChess()
 		// Print the board
 		chessIO::printBoard(chess);
 		
-		// Get and make the move
-		chess.makeMove(chessIO::getMove());
+		// Have the CPU make a move if the user selected to play against the computer and it is black's turn
+		if (chess.getCurrentPlayer() == Player::Black && opponentChoice == 1)
+		{
+			AI::randomMoves(chess);
+		}
+		else
+		{
+			// Get and make the move
+			chess.makeMove(chessIO::getMove());
+		}
 
 		// Save the game if the user chose to saave it
 		if (saveName != "CANCEL")
