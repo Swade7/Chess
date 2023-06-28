@@ -38,6 +38,8 @@ Move AI::calculatedRandom(Chess& chess)
 	// Create a copy of the board to test possible moves
 	//Chess chessCopy = chess;
 
+	// Get the current player
+	Player currentPlayer = chess.getCurrentPlayer();
 	// Get the opponent
 	Player opponent = chess.getOpponent();
 
@@ -101,7 +103,20 @@ Move AI::calculatedRandom(Chess& chess)
 		}	
 
 		// Check if any pieces are currently under attack and if the move would protect the piece
-
+		for (int col = 0; col < BOARD_SIZE; col++)
+		{
+			for (int row = 0; row < BOARD_SIZE; row++)
+			{
+				if (board[col][row]->getPlayer() == currentPlayer)
+				{
+					if (chess.underAttack(col, row))
+					{
+						// Make a copy of the board and check if the piece would still be under attack after making the move
+						// Where I left off
+					}
+				}
+			}
+		}
 		
 		// Check if the move would put pices under attack
 
