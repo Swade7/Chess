@@ -15,7 +15,7 @@ void AI::randomMoves(Chess& chess)
 	chess.makeMove(possibleMoves.at(randomNumber));
 }
 
-void AI::calculatedRandom(Chess& chess)
+Move AI::calculatedRandom(Chess& chess)
 {
 	// Define values for each piece and possible scenarios
 	const int pawnVal = 1;
@@ -27,7 +27,7 @@ void AI::calculatedRandom(Chess& chess)
 	const int checkmateVal = 15;
 
 	// Define the default value for a move
-	const int defaultRanking = 10;
+	const int defaultRanking = 1;
 
 	// Get the possible moves
 	const vector<Move> possibleMoves = chess.GetPossibleMoves();
@@ -123,6 +123,6 @@ void AI::calculatedRandom(Chess& chess)
 	int randomNumber = dist(rng);
 
 	// Make the move
-	chess.makeMove(weightedMoves.at(randomNumber));
-
+	//chess.makeMove(weightedMoves.at(randomNumber));
+	return weightedMoves.at(randomNumber);
 }

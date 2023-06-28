@@ -37,6 +37,7 @@ Status playChess()
 {
 	// Variable declarations
 	std::string saveName;
+	Move move;
 
 	// Set the status to active
 	Status status = Status::Active;
@@ -98,13 +99,19 @@ Status playChess()
 		// Have the CPU make a move if the user selected to play against the computer and it is black's turn
 		if (chess.getCurrentPlayer() == Player::Black && opponentChoice == 1)
 		{
-			AI::calculatedRandom(chess);
+			move = AI::calculatedRandom(chess);
 		}
 		else
 		{
-			// Get and make the move
-			chess.makeMove(chessIO::getMove());
+			// Get the move from the user
+			move = chessIO::getMove();
 		}
+
+		// Make the move
+		chess.makeMove(move);
+
+		// Print the move
+		chessIO::printMove(chess, move);
 
 		// Save the game if the user chose to saave it
 		if (saveName != "CANCEL")

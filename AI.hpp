@@ -14,7 +14,7 @@ public:
 
 	void train();
 	static void randomMoves(Chess& chess);
-	static void calculatedRandom(Chess& chess);
+	static Move calculatedRandom(Chess& chess);
 private:
 	
 };
