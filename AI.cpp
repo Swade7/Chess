@@ -18,13 +18,13 @@ void AI::randomMoves(Chess& chess)
 Move AI::calculatedRandom(Chess& chess)
 {
 	// Define values for each piece and possible scenarios
-	const int pawnVal = 1;
-	const int knightVal = 3;
-	const int bishopVal = 4;
-	const int rookVal = 5;
-	const int queenVal = 7;
-	const int checkVal = 3;
-	const int checkmateVal = 15;
+	const int pawnVal = 3;
+	const int knightVal = 6;
+	const int bishopVal = 8;
+	const int rookVal = 12;
+	const int queenVal = 25;
+	const int checkVal = 10;
+	const int checkmateVal = 40;
 
 	// Define the default value for a move
 	const int defaultRanking = 1;
@@ -101,6 +101,7 @@ Move AI::calculatedRandom(Chess& chess)
 		}	
 
 		// Check if any pieces are currently under attack and if the move would protect the piece
+
 		
 		// Check if the move would put pices under attack
 

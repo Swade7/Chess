@@ -63,6 +63,8 @@ public:
 	bool isStalemate();
 	bool wouldBeCheck(Move move);
 
+	bool underAttack(int col, int row);
+
 private:
 	// Function Definitions
 	void initializeBoard();

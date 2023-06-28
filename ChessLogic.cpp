@@ -330,27 +330,8 @@ bool Chess::check()
 			break;
 		}
 	}
-
-	// Iterate through the rest of the board and check if the king is in check
-	for (int col = 0; col < BOARD_SIZE; col++)
-	{
-		for (int row = 0; row < BOARD_SIZE; row++)
-		{
-			// Get the piece at the location
-			Pieces* piece = getPiece(col, row);
-
-			if (piece->getPlayer() == opponent)
-			{
-				// Create a Move variable for formatting
-				Move move = { col, row, kingCol, kingRow };
-				if (piece->checkValidMove(move, board, opponent, getLastMove()))
-				{
-					return true;
-				}
-			}			
-		}
-	}
-	return false;
+	
+	return underAttack(kingCol, kingRow);
 }
 
 bool Chess::isStalemate()
@@ -378,6 +359,35 @@ bool Chess::wouldBeCheck(Move move)
 
 	// Return if the user would be in check as a result of the move
 	return chessCopy.check();
+}
+
+bool Chess::underAttack(int pieceCol, int pieceRow)
+{
+	// Get the opponent
+	Player opponent = getOpponent();
+
+	// Iterate through the rest of the board and check if the piece is under attack
+	for (int col = 0; col < BOARD_SIZE; col++)
+	{
+		for (int row = 0; row < BOARD_SIZE; row++)
+		{
+			// Get the piece at the location
+			Pieces* piece = getPiece(col, row);
+
+			if (piece->getPlayer() == opponent)
+			{
+				// Create a Move variable for formatting
+				Move move = { col, row, pieceCol, pieceRow };
+				if (piece->checkValidMove(move, board, opponent, getLastMove()))
+				{
+					return true;
+				}
+			}
+		}
+	}
+	return false;
+
+
 }
 
 // Getters
