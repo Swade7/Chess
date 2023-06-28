@@ -146,7 +146,7 @@ void chessIO::printMove(const Chess& chess, const Move& move)
 	// Get the current player
 	Player player = board[move.toCol][move.toRow]->getPlayer();
 
-	cout << player << " Moved their " << board[move.toCol][move.toRow]->getPieceType() << " from "  << intToChar(move.fromCol) << move.fromRow << " to " << intToChar(move.toCol) << move.toRow << endl;
+	cout << player << " Moved their " << board[move.toCol][move.toRow]->getPieceType() << " from "  << intToChar(move.fromCol) << move.fromRow + 1 << " to " << intToChar(move.toCol) << move.toRow + 1 << endl;
 }
 
 int chessIO::startMenu()
