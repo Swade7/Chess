@@ -57,8 +57,11 @@ public:
 	void makeMove(const Move& move);
 	Status updateStatus();
 
-	
-
+	// Checks for check/checkmate/stalemate
+	bool checkmate();
+	bool check();
+	bool isStalemate();
+	bool wouldBeCheck(Move move);
 
 private:
 	// Function Definitions
@@ -70,12 +73,6 @@ private:
 	void pawnToQueen(const Move& move);
 	void changeTurn();
 	void updateBoard(const Move& move);
-
-	// Checks for check/checkmate/stalemate
-	bool checkmate();
-	bool check();
-	bool isStalemate();
-	bool wouldBeCheck(Move move);
 
 	// Declare the board using a 2D array of the Pieces class
 	Pieces* board[BOARD_SIZE][BOARD_SIZE];

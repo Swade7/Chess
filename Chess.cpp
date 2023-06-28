@@ -98,7 +98,7 @@ Status playChess()
 		// Have the CPU make a move if the user selected to play against the computer and it is black's turn
 		if (chess.getCurrentPlayer() == Player::Black && opponentChoice == 1)
 		{
-			AI::randomMoves(chess);
+			AI::calculatedRandom(chess);
 		}
 		else
 		{

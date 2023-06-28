@@ -4,12 +4,17 @@
 #include <fstream>
 #include "Pieces.hpp"
 
-
+struct MoveRanking
+{
+	Move move;
+	int value;
+};
 class AI {
 public:
 
 	void train();
 	static void randomMoves(Chess& chess);
+	static void calculatedRandom(Chess& chess);
 private:
 	
 };
