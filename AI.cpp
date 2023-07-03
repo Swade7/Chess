@@ -107,6 +107,14 @@ Move AI::calculatedRandom(Chess& chess)
 							{
 								moveRankings.at(i).value += getPieceValue(board[col][row]->getPieceType());
 							}
+							else
+							{	
+								int pieceValue = getPieceValue(board[col][row]->getPieceType());
+								if ((moveRankings.at(i).value - pieceValue) >= 0)
+								{
+									moveRankings.at(i).value -= pieceValue;
+								}
+							}
 						}
 						
 					}
