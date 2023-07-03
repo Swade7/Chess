@@ -16,7 +16,7 @@ public:
 	static void randomMoves(Chess& chess);
 	static Move calculatedRandom(Chess& chess);
 private:
-	
+	static int getPieceValue(PieceType pieceType);
 };
 
 /*

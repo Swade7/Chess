@@ -1,6 +1,14 @@
 #include "AI.hpp"
 #include <random>
 
+const int pawnVal = 3;
+const int knightVal = 6;
+const int bishopVal = 8;
+const int rookVal = 12;
+const int queenVal = 25;
+const int checkVal = 10;
+const int checkmateVal = 40;
+
 void AI::randomMoves(Chess& chess)
 {
 	const vector<Move> possibleMoves = chess.GetPossibleMoves();
@@ -18,13 +26,7 @@ void AI::randomMoves(Chess& chess)
 Move AI::calculatedRandom(Chess& chess)
 {
 	// Define values for each piece and possible scenarios
-	const int pawnVal = 3;
-	const int knightVal = 6;
-	const int bishopVal = 8;
-	const int rookVal = 12;
-	const int queenVal = 25;
-	const int checkVal = 10;
-	const int checkmateVal = 40;
+	
 
 	// Define the default value for a move
 	const int defaultRanking = 1;
@@ -59,26 +61,7 @@ Move AI::calculatedRandom(Chess& chess)
 		// If capturing a piece, increase the move value an amount dependent on what is being captured
 		if (board[currentMove.toCol][currentMove.toRow]->getPlayer() == opponent)
 		{
-			if (board[currentMove.toCol][currentMove.toRow]->getPieceType() == PieceType::Pawn)
-			{
-				moveRankings.at(i).value += pawnVal;
-			}
-			else if (board[currentMove.toCol][currentMove.toRow]->getPieceType() == PieceType::Knight)
-			{
-				moveRankings.at(i).value += knightVal;
-			}
-			else if (board[currentMove.toCol][currentMove.toRow]->getPieceType() == PieceType::Bishop)
-			{
-				moveRankings.at(i).value += bishopVal;
-			}
-			else if (board[currentMove.toCol][currentMove.toRow]->getPieceType() == PieceType::Rook)
-			{
-				moveRankings.at(i).value += rookVal;
-			}
-			else if (board[currentMove.toCol][currentMove.toRow]->getPieceType() == PieceType::Queen)
-			{
-				moveRankings.at(i).value += queenVal;
-			}
+			moveRankings.at(i).value += getPieceValue(board[currentMove.toCol][currentMove.toRow]->getPieceType());
 		}
 
 		// Check if the move would put the opponent in check
@@ -113,6 +96,19 @@ Move AI::calculatedRandom(Chess& chess)
 					{
 						// Make a copy of the board and check if the piece would still be under attack after making the move
 						// Where I left off
+
+						for (int i = 0; i < possibleMoves.size(); i++)
+						{
+							Chess chessCopy = chess;
+							chessCopy.makeMove(moveRankings.at(i).move);
+
+							// Check if the piece is still under attack after the move
+							if (!chessCopy.underAttack(col, row))
+							{
+								moveRankings.at(i).value += getPieceValue(board[col][row]->getPieceType());
+							}
+						}
+						
 					}
 				}
 			}
@@ -141,4 +137,32 @@ Move AI::calculatedRandom(Chess& chess)
 	// Make the move
 	//chess.makeMove(weightedMoves.at(randomNumber));
 	return weightedMoves.at(randomNumber);
+}
+
+int AI::getPieceValue(PieceType pieceType)
+{
+	if (pieceType == PieceType::Pawn)
+	{
+		return pawnVal;
+	}
+	else if (pieceType == PieceType::Knight)
+	{
+		return knightVal;
+	}
+	else if (pieceType == PieceType::Bishop)
+	{
+		return bishopVal;
+	}
+	else if (pieceType == PieceType::Rook)
+	{
+		return rookVal;
+	}
+	else if (pieceType == PieceType::Queen)
+	{
+		return queenVal;
+	}
+	else
+	{
+		return 0;
+	}
 }
