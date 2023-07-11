@@ -124,6 +124,7 @@ Move AI::calculatedRandom(Chess& chess)
 		
 		// Check if the move would put pices under attack
 
+
 	}
 
 	// Add each possible move to a vector x the value
@@ -139,12 +140,22 @@ Move AI::calculatedRandom(Chess& chess)
 	// Get a random move with better moves having higher odds
 	std::random_device random;
 	std::mt19937 rng(random());
-	std::uniform_int_distribution<int> dist(0, weightedMoves.size() - 1);
+	std::uniform_int_distribution<int> dist(0, moveRankings.size() - 1);
 	int randomNumber = dist(rng);
 
-	// Make the move
-	//chess.makeMove(weightedMoves.at(randomNumber));
-	return weightedMoves.at(randomNumber);
+	Move bestMove = possibleMoves.at(randomNumber);
+
+	for (int i = 0; i < moveRankings.size(); i++)
+	{
+		if (moveRankings.at(i).value > moveRankings.at(randomNumber).value)
+		{
+			bestMove = possibleMoves.at(i);
+		}
+	}
+
+	// return the move
+	//return weightedMoves.at(randomNumber);
+	return bestMove;
 }
 
 int AI::getPieceValue(PieceType pieceType)
